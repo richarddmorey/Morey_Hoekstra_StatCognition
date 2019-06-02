@@ -4,7 +4,7 @@ layout: default
 id: home
 ---
 
-# Data Material for Morey & Hoekstra (2019)
+# Data and Material for Morey & Hoekstra (2019)
 
 * [Documents (preprint, supplement, etc)](documents)
 * [Data](data)
