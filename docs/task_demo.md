@@ -109,9 +109,9 @@ The value $x$ gives the location on the experimental "interface" and the color (
 
 ![Evidence Power 7, distributions](img/evidence7.svg)
 
-![Evidence Power 7, distributions](img/pvals7.svg)
+![Evidence Power 7, p values](img/pvals7.png)
 
 
 ![Evidence Power 7, distributions](img/evidence3.svg)
 
-![Evidence Power 7, distributions](img/pvals3.svg)
+![Evidence Power 7, p values](img/pvals3.png)
