@@ -1,9 +1,10 @@
 ---
 title: Morey & Hoekstra 2019
 layout: default
+id: task_demo
 ---
 
-* [Home](index)
+* [Home](home)
 
 ## Task demonstration
 

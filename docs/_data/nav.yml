@@ -1,7 +1,0 @@
-- title: "Home"
-  href: "/"
-
-- title: "Task details"
-  subcategories:
-    - subtitle: "Task demo"
-      subhref: "task_demo"
