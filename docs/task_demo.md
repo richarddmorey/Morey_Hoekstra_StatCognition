@@ -47,5 +47,6 @@ id: task_demo
 |moon-candy makers   |                   1.00|        0.11|
 
 
+![Evidence Power 7, distributions](img/evidence3.svg)
 
 
