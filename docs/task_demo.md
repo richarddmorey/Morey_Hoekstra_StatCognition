@@ -3,7 +3,7 @@ title: Morey & Hoekstra 2019
 layout: default
 ---
 
-* [Home](/)
+* [Home](index)
 
 ## Task demonstration
 
