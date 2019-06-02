@@ -6,4 +6,4 @@ id: home
 
 ## Documents
 
-Once the pre-print has been submitted, this area will by populated.
+Once the pre-print has been submitted, this area will be populated.
