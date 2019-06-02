@@ -1,11 +1,13 @@
 ---
 title: Morey & Hoekstra 2019
-mathjax: true
 layout: default
 id: task_demo
 ---
 
 * [Home](index)
+
+<hr>
+
 
 ## Task demonstration
 
@@ -35,7 +37,7 @@ Select parameters for the task below, or leave them at the defaults to be random
   <input type="submit" value="Go">
 </form>
 
-
+<hr>
 
 ## Task details
 
