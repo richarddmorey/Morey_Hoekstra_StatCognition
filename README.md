@@ -10,12 +10,9 @@ Data, analysis code, and demonstrations for Morey & Hoekstra's (2019) statistica
 * [Task code](#task-code)
 * [Shiny app](#shiny-app)
 * [Data](#data)
+* [Analysis code](#analysis-code)
 * [Figure list](#figure-list)
 * [Compressed data](#compressed-data)
-* [Analysis code](#analysis-code)
-
-
-
 
 
 ## Installation 
@@ -95,6 +92,18 @@ Object      | Description
 `christmas_stats_participants` | Summary information about each participant, including text responses 
 `christmas_stats_samples` | Every individual sample made by each participant
 
+## Analysis code
+
+All analysis code is available as package functions, from initial cleaning to figures. 
+
+Function      | Description 
+------------|-------------
+`load_complete_dataset()` | Reads original data from csv file and performs initial filtering
+`compile_complete_dataset()` | Compile the data, separating out the individual participant experimental samples and performing appropriate re-coding, etc.
+`load_clean_dataset()` | Main cleaning of the data set to reduce the sample down to only those that will be analyzed
+`load_text_responses()` | Load the text responses separately for convenience
+
+
 ## Figure list
 
 Figures are exported objects in the package. You can recreate them with the functions below. For an explanation of the arguments to these functions, see the corresponding R help (e.g. `?MoreyHoekstra2019::fig_evidence_p_vals`). 
@@ -132,17 +141,6 @@ load_complete_dataset()
 
 This will unzip the Qualtrics CSV file and check it against an MD5 hash. It will also do some light cleaning (filtering out non-respondents and rejected mobile users and filtering/renaming columns).
 
-
-## Analysis code
-
-All analysis code is available as package functions, from initial cleaning to figures. 
-
-Function      | Description 
-------------|-------------
-`load_complete_dataset()` | Reads original data from csv file and performs initial filtering
-`compile_complete_dataset()` | Compile the data, separating out the individual participant experimental samples and performing appropriate re-coding, etc.
-`load_clean_dataset()` | Main cleaning of the data set to reduce the sample down to only those that will be analyzed
-`load_text_responses()` | Load the text responses separately for convenience
 
 
 
