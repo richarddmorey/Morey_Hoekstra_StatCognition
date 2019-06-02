@@ -110,18 +110,49 @@ The value $x$ is a monotone transformation of the $Z$ statistic, and hence conta
 
 The figure below shows the distributions of the visual evidence ($x$) when $\delta=0.19$ ("rainbow clickers"). Each distribution is a sample size; with increasing sample size, the visual distibution of the test statistic moves further to the right. More extreme values are expected as the sample size increases.
 
+The figure below is for $q=7$, the narrow transformation.
+
 ![Evidence Power 7, distributions](img/evidence7.svg)
 
-The null distribution (the distribution of the "random shuffle reports") 
+When the evidence power is $q=3$, all distributions is visually much further to the right.
+
+![Evidence Power 3, distributions](img/evidence3.svg)
+
+The null sampling distributions (the distribution of the "random shuffle reports") are affected by the same transformation. The sampling distribution for the "wide" evidence power is *visually* wider than the narrow one.
+
+We can show see the relative visual spread of the sampling distributions by adding the implied p values to the interface. The participant, of course, would not see these. The figure below shows the implied p values from the narrow null evidence distribution:
 
 ![Evidence Power 7, p values](img/pvals7.png)
 
+And the wide null evidence distribution:
 
-![Evidence Power 7, distributions](img/evidence3.svg)
+![Evidence Power 3, p values](img/pvals3.png)
 
-![Evidence Power 7, p values](img/pvals3.png)
 
+These distributions must be discovered by the participant by sampling the random shuffle reports. To better see the effect of the evidence power maipulation, we have created an animation that shows how two hypothetical participants who got the same underlying data, but were randomly assigned to different evidence power conditions, would see the experiment. The top shows the narrow evidence power; the bottom, the wide evidence power. The p values are for reference and would not be shown to the participant. 
 
 <video style="width: 90%" controls>
   <source src="img/double_ani.mp4" type="video/mp4">
 </video>
+
+
+### Potential strategies
+
+When they are ready, participants must decide which of the two teams was faster based on the data they collected. There are several strategies one might deploy:
+
+* **Null sampling distribution**: Compare "experiments" to their respective null samples ("random shuffle reports") to determine if results as extreme would be unlikely. Under this strategy, "extremeness" is scaled by the sampling distribution. This is a significance testing stragegy.
+* **Sign test**: Count the number of experiments on each side to see if, on balance, they favor one side. This is a significance testing strategy, but a weak one (it throws away a lot of information).
+* **Visual extremeness**: Base the decision on visual extremeness. This is an invalid strategy, but one that might be deployed by someone who did not understand significance testing. Both color and horizontal distance are the most salient features of the display if someone does not know how to use the random shuffle reports.
+
+### Hypotheses
+
+The manipulation of evidence power is designed to determine whether people are using the salient visual cues (color and distance) or the valid significance-testing information (the null sampling distribution) to perform the task. 
+
+* If participants are using a **significance testing** strategy, the probability that one decides in favor of a team should be determined by the extremeness of the evidence *relative to the null sampling distribution*. Thus, visual extremeness will matter much more to participants in the narrow condition than in the wide.
+
+* If participants use an **invalid distance/color-based** strategy, the probability that one decides in favor of a team should be determined by the visual extremeness of the evidence. When aligned on the null sampling distribution, participants will be much more willing to decide in favor of a difference in the wide condition.
+
+
+
+
+
