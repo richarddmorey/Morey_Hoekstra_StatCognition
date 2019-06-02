@@ -6,7 +6,7 @@ id: task_demo
 
 * [Home](index)
 
-<hr>
+------
 
 
 ## Task demonstration
@@ -37,7 +37,7 @@ Select parameters for the task below, or leave them at the defaults to be random
   <input type="submit" value="Go">
 </form>
 
-<hr>
+-------
 
 ## Task details
 
@@ -106,8 +106,13 @@ $$ x = \mbox{sgn}(Z)\left[1 - \left(1 - F_{\chi_1^2}\left(Z^2\right)\right)^{\fr
 
 The value $x$ gives the location on the experimental "interface" and the color (from left, -1 to right, or 1). The power $q$ was randomly assigned to the participant (3 or 7, with equal probability).
 
+The value $x$ is a monotone transformation of the $Z$ statistic, and hence contains the same information. The value $q$&mdash;called the "evidence power"&mdash;only changes the *visual* effect of the samples. When $q=7$, the visual sampling distribution is narrower on the task interface; when $q=3$, it is wider.
+
+The figure below shows the distributions of the visual evidence ($x$) when $\delta=0.19$ ("rainbow clickers"). Each distribution is a sample size; with increasing sample size, the visual distibution of the test statistic moves further to the right. More extreme values are expected as the sample size increases.
 
 ![Evidence Power 7, distributions](img/evidence7.svg)
+
+The null distribution (the distribution of the "random shuffle reports") 
 
 ![Evidence Power 7, p values](img/pvals7.png)
 
@@ -115,3 +120,8 @@ The value $x$ gives the location on the experimental "interface" and the color (
 ![Evidence Power 7, distributions](img/evidence3.svg)
 
 ![Evidence Power 7, p values](img/pvals3.png)
+
+
+<video style="width: 90%" controls>
+  <source src="img/double_ani.mp4" type="video/mp4">
+</video>
