@@ -4,7 +4,7 @@ layout: default
 id: task_demo
 ---
 
-* [Home](home)
+* [Home](index)
 
 ## Task demonstration
 
@@ -31,4 +31,21 @@ id: task_demo
   <br/>
   <input type="submit" value="Go">
 </form>
+
+## Details
+
+
+|Toy name            | Hidden effect size (δ)| Probability|
+|:-------------------|----------------------:|-----------:|
+|whizbang balls      |                   0.00|        0.25|
+|constructo bricks   |                   0.10|        0.11|
+|rainbow clickers    |                   0.19|        0.11|
+|doodle noodles      |                   0.30|        0.11|
+|singing bling rings |                   0.43|        0.11|
+|brahma buddies      |                   0.60|        0.11|
+|magic colorclay     |                   0.79|        0.11|
+|moon-candy makers   |                   1.00|        0.11|
+
+
+
 
