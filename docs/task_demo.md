@@ -1,5 +1,6 @@
 ---
 title: Morey & Hoekstra 2019
+mathjax: true
 layout: default
 id: task_demo
 ---
@@ -7,6 +8,8 @@ id: task_demo
 * [Home](index)
 
 ## Task demonstration
+
+Select parameters for the task below, or leave them at the defaults to be randomly assigned to a condition. The task code is in javascript and will run locally on your computer; no data is sent anywhere. At the end, you will have the option to save your data.
 
 <form action="task.html" method="get">
 	Evidence power:
@@ -32,7 +35,16 @@ id: task_demo
   <input type="submit" value="Go">
 </form>
 
-## Details
+
+
+## Task details
+
+In a nutshell, the main task is to determine the sign of an effect, if it is nonzero. 
+
+
+### Effect sizes
+
+Participants were randomly assigned to one of eight effect size conditions, each with a unique toy name. The sign of the effect was then also randomly assigned (each with 50% probability). Because we were particularly interested in false positives, we assigned participants to the "no effect" condition with greater probability.
 
 
 |Toy name            | Hidden effect size (δ)| Probability|
@@ -45,6 +57,41 @@ id: task_demo
 |brahma buddies      |                   0.60|        0.11|
 |magic colorclay     |                   0.79|        0.11|
 |moon-candy makers   |                   1.00|        0.11|
+
+In the task, participants could sample test statistics at will from either a null distribution (δ=0; called "random shuffle reports") or the "experimental" distribution (with their assigned effect size). 
+
+### Sample sizes
+
+The participants could choose the sample size per "team", but the number was hidden from them. The sample size slider has 20 increments, corresponding to team sizes of 10 to 200. The table below shows the sample sizes, which increased non-linearly as a function of the increment. To induce a resource cost to experimentation, the time a participant had to wait for an experimental sample was proportional to the team size. Null samples were instantaneous.
+
+| n index|   n| Time (s)|
+|-------:|---:|--------:|
+|       1|  10|        1|
+|       2|  12|        2|
+|       3|  14|        2|
+|       4|  16|        2|
+|       5|  19|        2|
+|       6|  22|        3|
+|       7|  26|        3|
+|       8|  30|        3|
+|       9|  35|        4|
+|      10|  41|        5|
+|      11|  48|        5|
+|      12|  57|        6|
+|      13|  66|        7|
+|      14|  78|        8|
+|      15|  91|       10|
+|      16| 106|       11|
+|      17| 125|       13|
+|      18| 146|       15|
+|      19| 171|       18|
+|      20| 200|       20|
+
+### Evidence power
+
+The underlying test statistic was simply a $Z$ statistic, sampled from the appropriate
+
+$$ Z \sim \mbox{Normal}(\delta\sqrt{n/2}, 1) $$
 
 
 ![Evidence Power 7, distributions](img/evidence3.svg)
