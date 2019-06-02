@@ -1,0 +1,539 @@
+<html>
+	<head>
+		<title>Morey &amp; Hoekstra 2019, task demonstration</title>
+
+		<link href="css/jquery-ui.min.css" rel="stylesheet" />
+		<link href="css/santa.css" rel="stylesheet" />
+		<link href="css/base-min.css" rel="stylesheet" />
+		<link href="css/lato.css" rel="stylesheet" />
+
+		<script src="js/jquery-3.3.1.min.js"></script>
+		<script src="js/jquery-ui.min.js"></script>
+
+	</head>
+	<body>
+		<script src="js/getUrlParameter.js"></script>
+		<script src="js/task_pars.js"></script>
+
+		<script>
+
+			var s = Math.random();
+			var toy_name = getUrlParameter("toy_name");
+			var q = getUrlParameter("q");
+
+			if( Math.random() < 1/4 ){
+        var toy_idx = 0;
+      }else{
+        var toy_idx = Math.floor( Math.random() * 7 ) + 1;
+      }
+			var random_toy_name = effect_size_names[ toy_idx ];
+
+			if( ( toy_name == '' ) ){
+        toy_name = random_toy_name;
+			}else if( typeof effect_sizes[ toy_name ] === 'undefined' ){
+        toy_name = random_toy_name;
+   		}
+
+			var d = ( (s > 0.5)*2 - 1) * effect_sizes[ toy_name ];
+
+
+			if( q == '' ){
+			  var colorTransformPower = Math.random() > .5 ? 1/3 : 1/7;
+			}else{
+			  var colorTransformPower = 1/parseFloat(getUrlParameter("q"));
+			}
+			var evidence_power = colorTransformPower;
+
+
+		</script>
+
+		<script src="js/santa_utility.js"></script>
+
+
+		<div id="instr1" class = "page textpage">
+		<h3>Background story</h3>
+		<br>
+		(background and instructions, page 1/4)<br><br>
+		Still blindfolded, you carefully step off the sleigh onto the well-packed snow. Someone behind you removes your blindfold. The night sky, filled with the dancing greens and purples of the aurora borealis, dimly illuminates sprawling factory buildings and apartments. <em>The North Pole</em>: Santa's "workshop".<br>
+		<br>
+		If this were a typical December, the factories would be buzzing. Today, though, they are shut --- and that's why you're here. In strictest confidence, Santa has asked you, a statistician, to the North Pole to help save Christmas.<br>
+		<br>
+		You spend an hour or so warming yourself by a fire with hot cocoa, then head to your meeting with Santa. He explains the work stoppage. The elves have divided into <strong>two rival gangs</strong>: the <strong>Jinglies</strong>, who wear green hats with bells on top, and the <strong>Sparklies</strong>, who hate the bells and only wear hats covered in sequins.<br><br>
+
+		<center><img src="img/Christmas+hats2.png" style="text-align: -webkit-center; height: 174px;"></center><br>
+
+		<br>
+		This wasn't too much of a problem until Santa, hoping to motivate them to work harder, promised that&nbsp;<strong>whichever gang can make
+		<span class="toyname">TOY_NAME</span>, a popular children's toy, the fastest&nbsp;</strong>could take the whole next Christmas season as holiday. He explains that he's got another, cheaper labor source lined up anyway, but he needs another year to set up the infrastructure.<br>
+		<br>
+		But both gangs of elves have now stopped working until they are given an authoritative answer about <strong>which team&nbsp;can make&nbsp;<span class="toyname">TOY_NAME</span> the fastest</strong>, and hence, who gets next Christmas off. The elves demanded a scientifically rigorous approach to the problem. So here you are.<br>
+		<br>
+		Your job is to work out which team<strong> truly&nbsp;makes <span class="toyname">TOY_NAME</span> the fastest</strong>:&nbsp;the <strong>Sparklies</strong> or the <strong>Jinglies</strong>. They promise that once you've made your professional decision --- <em>whatever it is</em> --- they will begin working again. You must use statistics to save Christmas!
+		</div>
+
+		<div id="instr2" class = "page textpage">
+			<center><img src="img/Green+47700.png" style="width: 400px; height: 200px;" /></center><br />
+			(background and instructions, page 2/4)<br><br>
+			You&#39;re here at the North Pole as a statistical consultant to find out <b>which team truly makes <span class="toyname">TOY_NAME</span> the fastest</b>: the <b>Sparklies</b> or the <b>Jinglies</b>. But there&#39;s a problem: because of the strict secrecy involved in the trip to the North Pole, you weren&#39;t allowed to bring anything --- including your computer or any books --- on this trip! They told you not to worry: they have special statistical software at the North Pole.<br />
+			<br />
+			Santa has explained that you&#39;ll be allowed to ask the elves to organize themselves into groups of different sizes, and then they&#39;ll make a target number of <b><span class="toyname">TOY_NAME</span></b>. The results will be reported back to you.<br />
+			<br />
+			Two elves take you to the logistics center and introduce you to <em>Santa&#39;s Pretty Simple Statistics&trade;</em>, their custom statistics software. Santa demanded that the software have no numbers: instead, statistical results are represented with colors of varying saturation. Small numbers are white-ish, and large numbers are deep colors. They show you some sample output:<br />
+			<br />
+			<img alt="Santa's Pretty Simple Statistics Demo" height="275" src="img/spss_output.png" style="width: 492px; height: 275px; border-width: 1px; border-style: solid;" width="492" /><br />
+			<br />
+			&quot;Wait,&quot; you ask. &quot;The <b>sample size</b> and <b>statistical result</b> are reported as colors? Can&#39;t I just get the data myself?&quot; They shake their head. &quot;No! Our data is strictly secret! Also, you&#39;ll have to request your samples using a color slider, like this...&quot; They show you a color slider you&#39;ll be using to specify the <b>sample size</b> of each group in the experiment:<br />
+			<br />
+			<img src="img/interface_n.png" style="width: 224px; height: 100px;" /><br />
+			<br />
+			They further explain: &quot;Just use the slider and click the button perform an experiment with the specified, but secret, <b>sample size</b> indicated by the shade of blue.&quot;<br />
+			<br />
+			You can tell this is going to be long day.
+		</div>
+
+		<div id="instr3" class = "page textpage">
+			<center><img src="img/Green+47700.png" style="width: 400px; height: 200px;" /></center><br />
+
+			(background and instructions, page 3/4)<br><br>
+			As if sensing your frustration, they try to console you. &quot;Don&#39;t worry,&quot; they say, &quot;The software tracks all of the experiments you do in a nice graphical interface!&quot; They show you some sample output.<br /><br/>
+			<img src="img/interface.png" style="width: 500px; height: 289px;" /><br/><br/>
+
+			On the <b>left, y-axis</b>, you see the <b>sample size</b>: white (bottom) means smallest, dark blue (top) means largest. However, you don't know how large these numbers actually are: they could be anything, because the number of elves working at the North Pole is top secret information.<br><br>
+
+			They warn you that experiments with larger numbers of elves take longer to organize, so you will wait longer for those results.
+
+			On the <b>bottom, x-axis</b>, you see the report of statistical evidence. You don't know what this number is, except that numbers near the middle (white) mean less evidence for a difference, and numbers near the left and right sides (dark red) mean more evidence. Results to the <b>left of center</b> favor the <b>Sparklies</b>, and results to the <b>right of center</b> favor the <b>Jinglies</b>.<br/><br/>
+
+			"So," you ask, "when do we start?"<br/><br>
+
+			"Now, if you like, but there's one other thing you'll want to know..."
+		</div>
+
+		<div id="instr4" class = "page">
+			<center><img src="img/Green+47700.png" style="width: 400px; height: 200px;" /></center><br />
+
+			(background and instructions, page 4/4)<br><br>
+			The elves continue: "Santa told us you'd be wanting a little more information, so we've been doing some special experiments. He told us to <strong>randomly assign ourselves to teams</strong> so that there would be <strong>no real difference between the two groups</strong>. We've been recording the results of these experiments for weeks! We call them "random shuffle reports".<br><br>
+
+			"You can request one at any time; we'll just pull a random one from the records, so it won't take any time. You can request a few now!"<br><br>
+
+			<div id="tab_interface_null">
+			  <ul>
+			    <li><a href="#tabs-ran-null">Request random shuffles</a></li>
+			  </ul>
+
+			<div id="tabs-ran-null" class="mytab">
+
+
+			</div>
+			</div>
+
+			<br>
+
+			"Don't worry; even once you've started performing real experiments, you can request more random shuffle reports by clicking the <em>Request random shuffles</em> tab." <br><br>
+
+			<br><br>
+
+			"Santa said you might want to request random shuffle reports because they tell you <b>how much the evidence changes from experiment to experiment just as a function of sampling variability</b>; because we've been randomly assigned to a team, there's <b>no difference between the two teams, on average!"</b></u>
+
+			<br/><br/><br/>
+
+			<div>
+				Do you understand why the random shuffle reports could be useful?
+				<br/><br/>
+				<form class = "pure-form">
+					<input type="radio" name="shuffle"></input> Definitely yes<br/>
+					<input type="radio" name="shuffle"></input> Probably yes<br/>
+					<input type="radio" name="shuffle"></input> Probably not<br/>
+					<input type="radio" name="shuffle"></input> Definitely not<br/>
+					<input type="radio" name="shuffle"></input> Other <input type = "text"></input><br/>
+				</form>
+			</div>
+
+
+
+		</div>
+
+		<div id="recap" class = "page textpage">
+			<center><img src="img/Green+47700.png" style="width: 400px; height: 200px;" /></center><br />
+
+			<h3>Instructions, brief recap</h3>
+			<br>
+			(recap, page 1/1)<br><br>
+			You need to determine whether <b>Sparklies</b> or <b>Jinglies</b> are faster at making <b><span class="toyname">TOY_NAME</span></b>. You can request an experiment by choosing a secret <b>sample size</b> from the "Elves per team" color slider and clicking the "Perform an experiment" button. Larger sample sizes (darker, bluer colors) mean longer times to report results. <br><br>
+
+			You can also request as many "random shuffle reports," as you like by clicking on the "Request random shuffle" tab and clicking "Request random shuffle reports". These will give you a sense of the <b>variability of results due merely to sampling</b>. You can request as many of these as you like, and they will not take any time. You can even request these while you are waiting for an experiment to finish.
+
+			When you're ready to begin, click &rarr; below.
+		</div>
+
+		<div id="task" class = "page">
+			<center><img src="img/Green+47700.png" style="width: 400px; height: 200px;" /></center><br />
+
+			(experiment, page 1/1)<br><br>
+			Just click the <i>Perform an experiment</i> button, and we'll start making <b><span class="toyname">TOY_NAME</span></b> right away! Or, click over to the <i>Request random shuffles</i> tab to get some random shuffle reports.<br><br>
+			When you're ready to make your report, complete the questions below the statistical interface.<br><br>
+
+			<div id="tab_interface">
+			  <ul>
+			    <li><a href="#tabs-exp">Do experiments</a></li>
+			    <li><a href="#tabs-ran">Request random shuffles</a></li>
+			  </ul>
+
+			<div id="tabs-exp" class="mytab">
+
+			<div class="interface_container">
+
+			<div class="left_panel">
+
+			<div class="plot_container">
+			  <div class="plot_top_row">
+			    <div class="plot_y_label">
+			      <div class="plot_y_label_text">Elves per team</div>
+			    </div>
+			    <div class="plot_y_gradient">
+			    </div>
+			    <div class="plot_space">
+			      <canvas class="plot_canvas" width="512" height="256"></canvas>
+			    </div>
+			  </div>
+			  <div class="plot_bottom_row">
+			    <div class="plot_x_label">
+			      <div class="plot_team_label_left">Sparklies won</div>
+			      <div class="plot_team_label_right">Jinglies won</div>
+			      <div class="plot_x_label_text">Evidence of difference</div>
+			    </div>
+			    <div class="plot_x_gradient_container">
+			      <div class="plot_x_gradient_left"></div>
+			      <div class="plot_x_gradient_right"></div>
+			    </div>
+			  </div>
+			</div>
+
+			</div>
+
+			<div class="right_panel">
+
+			<div class="slidecontainer">
+			  Elves per team: <input type="range" min="0" class="n_slider">
+			</div>
+
+			<div class="form_container">
+			<button class="results_button">Perform an experiment</button>
+			<div class="elf_message_container"><div class="elf_message"></div></div>
+			</div>
+
+			<div class="spss_container">
+Santa's Pretty Simple Statistics v.15
+<span class="spss_analysis_number">&nbsp;</span>
+-----------
+<div class="spss_row">Elves per team: <div class="spss_square spss_n"></div></div>
+<div class="spss_row">Fastest team: <div class="spss_number spss_sgn"></div></div>
+<div class="spss_row">Evidence of difference:<div class="spss_square spss_ev"></div></div>
+</div>
+
+			</div>
+			</div>
+
+			</div>
+
+			  <div id="tabs-ran" class="mytab"></div>
+
+			</div>
+			<br/><br/>
+
+			<div>
+				When you're ready to report to Santa, choose the options below that describes why and click the &rarr; button. <br/><br/>
+
+				"I'm ready to report to Santa, and..."
+				<br/><br/>
+				<form class = "pure-form">
+					<input type="radio" name="dec"></input> ...I will tell him that I conclude that the SPARKLIES are faster when making <span class="toyname">TOY_NAME</span>."<br/>
+					<input type="radio" name="dec"></input> ...I will tell him that I conclude that the JINGLIES are faster when making <span class="toyname">TOY_NAME</span>."<br/>
+					<input type="radio" name="dec"></input> ...I will tell him that I conclude that BOTH TEAMS ARE THE SAME SPEED when making <span class="toyname">TOY_NAME</span>."<br/>
+					<input type="radio" name="dec"></input> ...I will tell him that I CANNOT DETECT A DIFFERENCE between the two teams when making <span class="toyname">TOY_NAME</span>."<br/>
+					<input type="radio" name="dec"></input> ...I will tell him that I got bored and want to leave."<br/>
+				</form>
+			</div>
+
+			<div>
+				How confident are you in your assessment above?
+				<br/><br/>
+				<form class = "pure-form">
+					<input type="radio" name="conf"></input> Not confident at all<br/>
+					<input type="radio" name="conf"></input> Somewhat doubtful<br/>
+					<input type="radio" name="conf"></input> Somewhat confident<br/>
+					<input type="radio" name="conf"></input> Very confident<br/>
+				</form>
+			</div>
+
+
+
+		</div>
+
+		<div id="debrief" class = "page textpage">
+
+			<center><img src="img/Green+47700.png" style="width: 400px; height: 200px;" /></center><br />
+
+			In this task, you were asked to make an inference about something that was unknown to you: which of two groups was "faster" than the other. The task was designed to be parallel to the sorts of problems that are faced regularly in science. Understanding the way people reason about statistical information is crucial to understanding science, both when it works and when it fails. <br><br>
+
+			In order to reduce the problem to its basic components, we removed all the typical quantities from the task: sample sizes, test statistics, p values, etc. This will allow us to see whether participants actively seek out information relevant to a significance test --- the "random shuffle reports" --- and if so, how they use that information to make a statistical judgment.<br><br>
+
+			How people perform this task has relevance to a number of debates in the field of statistical cognition. If participants can use the information given in the task to make correct inferences, then this suggests that significance testing is not as counter-intuitive as some claim. Perhaps the difficulty lies in how it is performed. <br><br>
+
+			If, on the other hand, even statistically-trained participants have difficulty, this might support arguments that people find the core logic of significance testing confusing, rather than just the usual way in which it is approached.<br><br>
+
+			If you're interested in trying another strategy, you're welcome to repeat the experiment. Just respond to the appropriate question that you've previously participated, and you'll get the chance to skip the story and instructions.<br><br>
+
+			<div class="csv_container" style="overflow-y: visible!important">
+			<h4>Your "data"</h4><br>
+			We invite you to have a second look at the "data" you collected in this experiment.  You can download the data from all the experiments you performed, and any random shuffle reports, by clicking the appropriate link below. (This should work in all modern browsers)<br>
+			<p><a class="null_file_download">Download random shuffle report csv file</a><br>
+			<a class="exp_file_download">Download experimental data csv file</a></p>
+
+			<p>&nbsp;</p>
+			</div>
+
+			<table border="1" cellpadding="2" cellspacing="1" id="csv_description" style="overflow-y:visible!important;width:600px;" class="pure-table">
+			 <thead>
+			  <tr>
+			   <th scope="col">column name</th>
+			   <th scope="col">column description</th>
+			  </tr>
+			 </thead>
+			 <tbody>
+			  <tr>
+			   <th scope="row">ev</th>
+			   <td>magnitude of the evidence, from 0 (no evidence, white) to 1 (strongest evidence, deep red)</td>
+			  </tr>
+			  <tr>
+			   <th scope="row">sgn</th>
+			   <td>sign of the evidence (-1 favoring "left" group, 1 favoring "right" group)</td>
+			  </tr>
+			  <tr>
+			   <th scope="row">n_idx</th>
+			   <td>selected integer index for "elves per team", from 0 (smallest, white) to 19 (largest, blue)</td>
+			  </tr>
+			  <tr>
+			   <th scope="row">time</th>
+			   <td>browser timestamp when reported</td>
+			  </tr>
+			  <tr>
+			   <th scope="row">toy_name</th>
+			   <td>name of the toy in the experiment</td>
+			  </tr>
+			 </tbody>
+			</table>
+			<br>
+
+			If you'd like to know more, please contact one of us:<br>
+
+			<table border="0" cellpadding="5" cellspacing="1" style="width:90%;">
+			 <tbody>
+			  <tr>
+			   <td style="width:50%;">Dr. Richard Morey<br>
+			   moreyr@cardiff.ac.uk<br>
+			   School of Psychology<br>
+			   Cardiff University</td>
+			   <td style="width:50%;">Dr. Rink Hoekstra<br>
+			   r.hoekstra@rug.nl<br>
+			   Faculty of Behavioural and Social Sciences<br>
+			   University of Groningen</td>
+			  </tr>
+			 </tbody>
+			</table>
+			<br>
+
+		</div>
+
+		<script>
+		$( document ).ready(function() {
+
+			$( function() {
+				$( "#tab_interface" ).tabs();
+				$( "#tab_interface_null" ).tabs();
+			});
+
+
+			$(".toyname").text(toy_name);
+			$("#instr1").show();
+
+			$(".page")
+				.not("#debrief")
+				.append("<div class='next'><div>&rarr;</div></div>");
+
+			$(".next")
+				.click(function(){
+					$(this).parent().hide().next().show();
+					$("body").scrollTop(0);
+				});
+			$("#recap")
+				.children(".next")
+				.click(function(){
+					var idx = $("#tabs-ran-null").find(".n_slider").val();
+					$("#tabs-ran").html( $("#tabs-ran-null").html()  );
+					var destinationCanvas = $("#tabs-ran").find(".plot_canvas")[0]
+					var sourceCanvas = $("#tabs-ran-null").find(".plot_canvas")[0]
+					var destCtx = destinationCanvas.getContext('2d');
+					destCtx.drawImage(sourceCanvas, 0, 0);
+					$("#tabs-ran-null").html( "" );
+					$("#tabs-ran").find(".n_slider").val( idx );
+					$("#tabs-ran").find(".results_button").click(ran_fun);
+				});
+
+			$("#task, #instr4").css("min.width", "1024px!important");
+
+			var oldData = [];
+			var nullData = [];
+
+			var z = new Ziggurat();
+			var exp_tab = $("#tabs-exp");
+			var ran_null_tab = $("#tabs-ran-null");
+
+			ran_null_tab.html( $("#tabs-exp").html()  );
+			ran_null_tab.find(".results_button").text("Request random shuffle results");
+			ran_null_tab.find(".plot_team_label_left").text("Team A");
+			ran_null_tab.find(".plot_team_label_right").text("Team B");
+
+			$(".n_slider").prop( "max", n.length - 1 ).prop( "value", 0 ).change(function(e){
+				var idx = $(e.target).val();
+				$(".n_slider").val(idx);
+			});
+
+			exp_tab.find(".results_button").click(function(){
+
+				exp_tab.find(".results_button").prop('disabled', true).css("visibility", "hidden");
+
+				var n_idx = parseInt( exp_tab.find(".n_slider").val() );
+				var c = exp_tab.find(".plot_canvas")[0];
+				var h = c.offsetHeight;
+				var w = c.offsetWidth;
+
+				var sleep_time = Math.ceil(n[n_idx] / 10);
+				var msg = '"We\'re working!';
+
+				exp_tab.find(".elf_message").show().text(msg + " Time left: " + (sleep_time) + "\"" );
+
+				var i = 0;
+				var intvl = setInterval(function(){
+					exp_tab.find(".elf_message").text(msg + " Time left: " + (sleep_time - ++i) + "\"").delay(500).fadeOut(250).fadeIn(250);
+				}, 1000);
+
+				setTimeout(function(){
+
+					clearInterval(intvl);
+					exp_tab.find(".elf_message").remove();
+					exp_tab.find(".elf_message_container").append("<div class = 'elf_message'></div>");
+
+					exp_tab.find(".elf_message").text('"We\'re all done!"').show().fadeOut(3000);
+					exp_tab.find(".results_button").prop('disabled', false).css("visibility", "visible");
+
+
+					var results = plot_new_point(d, z, n_idx, n, c, h, w);
+					// log it
+					results.toy_name = toy_name;
+					oldData.push(results);
+
+					exp_tab.find(".spss_analysis_number").text("Analysis number: " + oldData.length);
+					exp_tab.find(".spss_n").css("background-color", "rgba(0,0,255," + (n_idx + 1) / (n.length + 1) + ")");
+					exp_tab.find(".spss_ev").css("background-color", "rgba(255,0,0," + results.ev + ")");
+					exp_tab.find(".spss_sgn").text( (results.sgn > 0) ? "jinglies" : "sparklies");
+				}, sleep_time * 1000);
+
+
+			} );
+
+			ran_fun = function(){
+
+				ran_tab = $(this)
+					.parents(".mytab");
+
+				ran_tab.find(".elf_message").text("").show().text('"Here are the results you requested from the random shuffle!"').fadeOut(3000);
+
+				var n_idx = parseInt( ran_tab.find(".n_slider").val() );
+				var c = ran_tab.find(".plot_canvas")[0];
+				var h = c.offsetHeight;
+				var w = c.offsetWidth;
+				var results = plot_new_point(0, z, n_idx, n, c, h, w);
+				// log it
+				results.toy_name = toy_name;
+				nullData.push(results);
+
+				ran_tab.find(".spss_analysis_number").text("Request number: " + nullData.length);
+				ran_tab.find(".spss_n").css("background-color", "rgba(0,0,255," + (n_idx + 1) / (n.length + 1) + ")");
+				ran_tab.find(".spss_ev").css("background-color", "rgba(255,0,0," + results.ev + ")");
+				ran_tab.find(".spss_sgn").text( (results.sgn > 0) ? "Team B" : "Team A");
+
+			}
+
+			ran_null_tab.find(".results_button").click(ran_fun);
+
+			$("#task").find(".next").click(function(){
+				var colnames = [];
+				var name;
+				var nullFile = "";
+				var expFile = "";
+				var i;
+
+				if(nullData.length > 0){
+
+					// Destroy data that should not be accessible
+					for(i = 0; i < nullData.length; i++){
+						delete nullData[i].n;
+						delete nullData[i].d;
+					}
+
+					for(name in nullData[0]){
+						colnames.push( name );
+					}
+
+					nullFile = colnames.join(",") + "\n";
+
+					$.each(nullData, function(index, value){
+						nullFile = nullFile + Object.values(value).join(",") + "\n";
+					});
+
+
+
+				}else{
+					$(".null_file_download").hide();
+				}
+
+				if(oldData.length > 0){
+
+					// Destroy data that should not be accessible
+					for(i = 0; i < oldData.length; i++){
+						delete oldData[i].n;
+						delete oldData[i].d;
+					}
+
+					if(colnames.length === 0){
+						for(name in oldData[0]){
+							colnames.push( name );
+						}
+					}
+
+					expFile = colnames.join(",") + "\n";
+
+					$.each(oldData, function(index, value){
+						expFile = expFile + Object.values(value).join(",") + "\n";
+					});
+				}else{
+					$(".exp_file_download").hide();
+				}
+
+				if( $(".exp_file_download").is(":hidden") & $(".null_file_download").is(":hidden")){
+					$(".csv_container").hide();
+					$("#csv_description").hide();
+				}
+
+				$(".exp_file_download").prop("download", "santa_experiment_data.csv").prop("href","data:text/csv;base64," +btoa(expFile) );
+				$(".null_file_download").prop("download", "santa_shuffle_report_data.csv").prop("href","data:text/csv;base64," +btoa(nullFile) );
+
+			})
+
+		});
+		</script>
+
+	</body>
+</html>

@@ -1,0 +1,5 @@
+theme: jekyll-theme-leap-day
+title: Morey & Hoekstra 2019
+subtitle: "Data, code, and other material for Morey & Hoekstra 2019"
+url: "https://richarddmorey.github.io" # the base hostname & protocol for your site
+baseurl: "MoreyHoekstra2019/"
