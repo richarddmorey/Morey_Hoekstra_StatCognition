@@ -49,18 +49,18 @@ In a nutshell, the main task is to determine the sign of an effect, if it is non
 Participants were randomly assigned to one of eight effect size conditions, each with a unique toy name. The sign of the effect was then also randomly assigned (each with 50% probability). Because we were particularly interested in false positives, we assigned participants to the "no effect" condition with greater probability.
 
 
-|Toy name            | Hidden effect size (δ)| Probability|
-|:-------------------|----------------------:|-----------:|
-|whizbang balls      |                   0.00|        0.25|
-|constructo bricks   |                   0.10|        0.11|
-|rainbow clickers    |                   0.19|        0.11|
-|doodle noodles      |                   0.30|        0.11|
-|singing bling rings |                   0.43|        0.11|
-|brahma buddies      |                   0.60|        0.11|
-|magic colorclay     |                   0.79|        0.11|
-|moon-candy makers   |                   1.00|        0.11|
+|Toy name            | Hidden effect size ($\delta$)| Probability|
+|:-------------------|-----------------------------:|-----------:|
+|whizbang balls      |                          0.00|        0.25|
+|constructo bricks   |                          0.10|        0.11|
+|rainbow clickers    |                          0.19|        0.11|
+|doodle noodles      |                          0.30|        0.11|
+|singing bling rings |                          0.43|        0.11|
+|brahma buddies      |                          0.60|        0.11|
+|magic colorclay     |                          0.79|        0.11|
+|moon-candy makers   |                          1.00|        0.11|
 
-In the task, participants could sample test statistics at will from either a null distribution (δ=0; called "random shuffle reports") or the "experimental" distribution (with their assigned effect size). 
+In the task, participants could sample test statistics at will from either a null distribution ($\delta=0$; called "random shuffle reports") or the "experimental" distribution (with their assigned effect size). 
 
 ### Sample sizes
 
@@ -120,7 +120,7 @@ When the evidence power is $q=3$, all distributions is visually much further to 
 
 The null sampling distributions (the distribution of the "random shuffle reports") are affected by the same transformation. The sampling distribution for the "wide" evidence power is *visually* wider than the narrow one.
 
-We can show see the relative visual spread of the sampling distributions by adding the implied p values to the interface. The participant, of course, would not see these. The figure below shows the implied p values from the narrow null evidence distribution:
+We can show see the relative visual spread of the sampling distributions by adding the implied $p$ values to the interface. The participant, of course, would not see these. The figure below shows the implied $p$ values from the narrow null evidence distribution:
 
 ![Evidence Power 7, p values](img/pvals7.png)
 
@@ -129,7 +129,7 @@ And the wide null evidence distribution:
 ![Evidence Power 3, p values](img/pvals3.png)
 
 
-These distributions must be discovered by the participant by sampling the random shuffle reports. To better see the effect of the evidence power maipulation, we have created an animation that shows how two hypothetical participants who got the same underlying data, but were randomly assigned to different evidence power conditions, would see the experiment. The top shows the narrow evidence power; the bottom, the wide evidence power. The p values are for reference and would not be shown to the participant. 
+These distributions must be discovered by the participant by sampling the random shuffle reports. To better see the effect of the evidence power maipulation, we have created an animation that shows how two hypothetical participants who got the same underlying data, but were randomly assigned to different evidence power conditions, would see the experiment. The top shows the narrow evidence power; the bottom, the wide evidence power. The $p$ values are for reference and would not be shown to the participant. 
 
 <video style="width: 90%" controls>
   <source src="img/double_ani.mp4" type="video/mp4">
