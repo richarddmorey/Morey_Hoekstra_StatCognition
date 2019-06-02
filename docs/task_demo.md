@@ -89,13 +89,29 @@ The participants could choose the sample size per "team", but the number was hid
 |      19| 171|       18|
 |      20| 200|       20|
 
-### Evidence power
 
-The underlying test statistic was simply a $Z$ statistic, sampled from the appropriate
+When a participant generated a sample, they were generating a test statistic. Hidden from the participant, the underlying test statistic was simply a $Z$ statistic, sampled from the appropriate distribution:
 
 $$ Z \sim \mbox{Normal}(\delta\sqrt{n/2}, 1) $$
+
+where $n$ was determined by the sample size slider selection, and $\delta$ by the participant's randomly assigned effect size (or $\delta=0$ if they are drawing null samples).
+
+However, the participant was not shown the $Z$ statistic.
+
+### Evidence power
+
+The $Z$ statistic was transformed by the following equation, not known to the participant:
+
+$$ x = \mbox{sgn}(Z)\left[1 - \left(1 - F_{\chi_1^2}\left(Z^2\right)\right)^{\frac{1}{q}}\right] $$
+
+The value $x$ gives the location on the experimental "interface" and the color (from left, -1 to right, or 1). The power $q$ was randomly assigned to the participant (3 or 7, with equal probability).
+
+
+![Evidence Power 7, distributions](img/evidence7.svg)
+
+![Evidence Power 7, distributions](img/pvals7.svg)
 
 
 ![Evidence Power 7, distributions](img/evidence3.svg)
 
-
+![Evidence Power 7, distributions](img/pvals3.svg)
