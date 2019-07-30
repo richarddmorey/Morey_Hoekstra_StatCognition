@@ -1,0 +1,16 @@
+pandoc: 2.3.1
+pkgdown: 1.3.0
+pkgdown_sha: ~
+articles:
+  _manuscript: _manuscript.html
+  _supplementA: _supplementA.html
+  _supplementB: _supplementB.html
+  data_access: data_access.html
+  design_thoughts: design_thoughts.html
+  man_supp: man_supp.html
+  task_demo: task_demo.html
+  task_materials: task_materials.html
+urls:
+  reference: https://richarddmorey.github.io/Morey_Hoekstra_StatCognition//reference
+  article: https://richarddmorey.github.io/Morey_Hoekstra_StatCognition//articles
+

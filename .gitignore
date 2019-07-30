@@ -1,0 +1,10 @@
+inst/doc
+.Rhistory
+.RData
+.Rproj.user
+packrat/lib*/
+tmp/*
+*.log
+vignettes/manuscript.log
+*.dcf
+MH2019_tmp/*

@@ -1,0 +1,27 @@
+﻿names,description
+true_winner," Which ""team"" was the true winner? Corresponds to sign of effect_size"
+true_null, Was the effect size 0?
+response_null," Was the participant's response ""null""? (same or no detection)"
+response_alt, Negation of response_null
+n_expt, Number of experimental samples requested
+n_null, Number of random shuffle reports requested
+how_use.analysis, (logical) Did the participant select the corresponding response to `how_use`?
+how_use.develop, (logical) Did the participant select the corresponding response to `how_use`?
+how_use.philosophy, (logical) Did the participant select the corresponding response to `how_use`?
+how_use.method_comment, (logical) Did the participant select the corresponding response to `how_use`?
+how_use.none, (logical) Did the participant select the corresponding response to `how_use`?
+how_use.other, (logical) Did the participant select the corresponding response to `how_use`?
+field.bio, (logical) Did the participant select the corresponding response to `field`?
+field.phys, (logical) Did the participant select the corresponding response to `field`?
+field.soc_beh, (logical) Did the participant select the corresponding response to `field`?
+field.comp_tech, (logical) Did the participant select the corresponding response to `field`?
+field.med, (logical) Did the participant select the corresponding response to `field`?
+field.other," (text) If applicable, text response to ""Other"" responses for `field`."
+sig_testing.necessary, (logical) Did the participant select the corresponding response to `sig_testing`?
+sig_testing.prefer_other, (logical) Did the participant select the corresponding response to `sig_testing`?
+sig_testing.misunderstood, (logical) Did the participant select the corresponding response to `sig_testing`?
+sig_testing.no_opinion, (logical) Did the participant select the corresponding response to `sig_testing`?
+sig_testing.discontinued, (logical) Did the participant select the corresponding response to `sig_testing`?
+sig_testing.fatally_flawed, (logical) Did the participant select the corresponding response to `sig_testing`?
+sig_testing.do_not_understand, (logical) Did the participant select the corresponding response to `sig_testing`?
+sig_testing.other," (text) If applicable, text response to ""Other"" responses to `sig_testing`"

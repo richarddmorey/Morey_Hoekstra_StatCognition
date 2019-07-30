@@ -1,0 +1,569 @@
+---
+title: "Supplement A to 'Researchers understand and use the logic of significance testing in a novel statistical reasoning task'"
+subtitle: "Methods details and extra results"
+author: "Richard D. Morey"
+date: "`r Sys.Date()`"
+output:
+  rmdformats::html_clean:
+    highlight: kate
+    dev: svg
+    fig_width: 6
+    fig_height: 4
+    use_bookdown: true
+editor_options: 
+  chunk_output_type: console
+vignette: >
+  %\VignetteIndexEntry{Supplement A}
+  %\VignetteEncoding{UTF-8}
+  %\VignetteEngine{knitr::rmarkdown}
+bibliography: "`r system.file('bib/bibfile.bib', package = 'MoreyHoekstra2019')`"
+nocite: | 
+  @Venables:Ripley:2002
+---
+
+```{r setup, include = FALSE}
+
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+
+source(
+  system.file("font/font_setup.R", package = "MoreyHoekstra2019")
+)
+
+```
+
+
+```{r echo = FALSE, include = FALSE}
+library(ggplot2)
+library(dplyr)
+library(papaja)
+library(knitr)
+library(kableExtra)
+library(tidyr)
+library(broom)
+library(magrittr)
+library(purrr)
+
+knitr::opts_chunk$set(echo = FALSE, 
+                      warning = FALSE,
+                      message = FALSE)
+
+dat <- MoreyHoekstra2019::christmas_stats_participants
+samples <- MoreyHoekstra2019::christmas_stats_samples
+```
+
+# Extended description of experiment
+
+The Christmas 2018 statistical cognition experiment ran continuously from 16 December 2018 to 1 January 2019. Participants were recruited via social media (particularly Twitter and Facebook). We used [Qualtrics](https://www.qualtrics.com) to deploy the experiment, which was written in HTML/CSS/Javascript. Participants were asked to perform a series of fictitious experiments with a two-group design and come to a conclusion regarding which of the two groups was "faster". The way the fictitious results were reported to the participants was unusual --- no numbers were given --- to test participants' ability to use significance testing logic.
+
+Of particular interest to us were:
+
+* whether participants sought information relevant to a significance test, and ignored irrelevant information,
+* whether participants could come to the right conclusion with high probability,
+* whether participants' conclusions were reasonable given the information they were given, and
+* whether participants' descriptions of their strategies were consistent with significance testing logic.
+
+## Basic task setup
+
+```{r EStable, results='asis'}
+prob = c(.25, 
+         .75 * rep(1/7, 7)
+)
+
+samples %>% 
+  filter( type == "expt" ) %>%
+  group_by( toy_name ) %>%
+  summarise( `Hidden effect size (δ)` = first(abs(d)) ) %>%
+  arrange( `Hidden effect size (δ)` ) %>%
+  rename( `Toy name` = "toy_name") %>%
+  mutate(Probability = !!prob) %>%
+  kable(caption="\"Toy\" name, corresponding true effect sizes used in the study (in standard deviation units) and the probability that a participant would be randomly assigned to that effect size.", digits = 2) %>%
+  kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive"), full_width = FALSE, position = "float_right", font_size = 16)
+
+```
+
+Participants were randomly assigned to one of two evidence powers (wide, $q=3$; or narrow, $q=7$) with equal probability. Participants were also randomly assigned to one of eight "true" effect sizes. Because the behaviour of participants when there is no true effect was particularly of interest, the probability of assignment to no effect ($\delta=0$) was 25%. Across the seven other effect sizes listed in Table \@ref(tab:EStable), the remaining 75% probability was evenly distributed. 
+
+The cover story (which can be read here) presented a problem in which it was desired to know which of two groups of elves ("Sparklies" or "Jinglies") was faster. Participants were presented with the results of fictitious experiments as they requested them. 
+
+Participants could increase or decrease the sample size for the experiments as well; importantly, they were *not* aware of the actual sample size. Participants could adjust the sample size with a slider that had 20 divisions. The corresponding 20 hidden sample sizes are shown in Table  \@ref(tab:Ntable).
+
+```{r Ntable,results='asis'}
+samples %>% 
+  group_by(n) %>%
+  mutate(`Time (s)` = ceiling(n / 10) ) %>% summarise(`Time (s)` = first(`Time (s)`)) %>% 
+  mutate(`n index` = order(n)) %>%
+  select(`n index`, n, `Time (s)`) %>%
+  kable(caption="Sample size index, underlying hidden per-group sample size, and corresponding time delay in seconds taken to return the experimental result, if the result requested was an experimental sample. Random shuffle reports were returned instantaneously.", digits = 2) %>%
+  kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive"), full_width = FALSE, position = "float_right", font_size = 16)
+
+```
+
+The results were returned to the participants in a visual fashion: instead of being presented with a test statistic, each result was associated with a color intensity (from white to red) and a horizontal location that we will describe as left (-1) to right (1). Results on the far left were red and were associated with maximum evidence for the Sparklies being faster; results in the center were white were not evidence for either group; and results on the right were again red and were evidence for the Jinglies being faster. The intensity of the red color was defined by a linear gradient on the transparency (alpha) from 0 to -1 or 1 as defined using [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS/linear-gradient).[^1] The resulting horizintal axis is shown in the figure below.
+
+[^1]: The CSS code for the transition between red (-1) to white (0) was `linear-gradient(to right, rgba(255,0,0,1), rgba(255,0,0,0))`; from 0 to 1 the transition was the reverse.
+
+```{r cleanInterface, fig.cap = "The interface on which fictitious results were presented to the participants."}
+knitr::include_graphics(system.file("pkg_html/img/clean_interface.png", package = "MoreyHoekstra2019"))
+```
+
+## Underlying statistical details
+
+Each fictitious result was the result of applying a transformation to randomly sampled $Z$ statistic. The distribution of the $Z$ statistic was a function of the randomly-assigned (but unknown to the participant) effect size $\delta$ and a group sample size $n$ (adjustable by, but unknown to, the participant).
+
+\[
+Z \sim \mbox{Normal}(\delta\sqrt{n/2}, 1)
+\]
+
+The $x$ location of the result, and hence the color, was then defined by the transformation:
+\[
+x = \mbox{sgn}(Z)\left[1 - \left(1 - F_{\chi_1^2}\left(Z^2\right)\right)^{\frac{1}{q}}\right]
+\]
+where evidence power $q\in\{3,7\}$, the location $x \in (-1,1)$, and $F_{\chi_1^2}$ is the cumulative distribution function of the $\chi_1^2$ distribution.
+
+The figure below shows the transformation from $Z$ statistics (top axis) and one-sided $p$ values (bottom axis) to $x$ locations.
+
+```{r transformation, fig.height = 6, fig.cap="Transformation between traditional test statistics ($Z$, $p$) and the $x$ location"}
+MoreyHoekstra2019::fig_desc_evidence_transform()
+```
+
+```{r ev-distributions,fig.cap="Evidence distributions as functions of underlying effect size, for non-negative effect sizes. Distributions from left to right correspond to increasingly large true effect sizes. Evidence distributions for negative effect sizes were mirror images of these distributions. A: Smallest sample size, wide evidence distribution; B: Largest sample size, wide evidence distribution; C: Smallest sample size, narrow evidence distribution; D: Largest sample size, narrow evidence distribution", fig.height = 10}
+par(mfrow = c(4,1))
+ymax = MoreyHoekstra2019::fig_desc_evidence(n = 10, q = 3, letter = "A", scale_y_on = 0)
+MoreyHoekstra2019::fig_desc_evidence(n = 200, q = 3, letter = "B", scale_y_on = -ymax)
+MoreyHoekstra2019::fig_desc_evidence(n = 10, q = 7, letter = "C")
+MoreyHoekstra2019::fig_desc_evidence(n = 200, q = 7, letter = "D")
+
+```
+
+
+```{r pvals-q7, echo = FALSE, out.width='100%', fig.cap="Selected two-sided $p$ values for the null distribution of the evidence for the narrow evidence distribution ($q=7$)"}
+fn = MoreyHoekstra2019::fig_evidence_p_vals(q = 7, letter = "q=7")
+knitr::include_graphics(fn)
+```
+
+```{r pvals-q3, echo = FALSE, out.width='100%', fig.cap="Selected two-sided $p$ values for the null distribution of the evidence for the wide evidence distribution ($q=3$)"}
+fn = MoreyHoekstra2019::fig_evidence_p_vals(q = 3, letter = "q=3")
+knitr::include_graphics(fn)
+
+```
+
+
+# Visual examples of task
+
+## Video example
+
+<video style="width: 90%" controls>
+  <source src="img/santa_task_example.mp4" type="video/mp4">
+</video>
+
+## One participant's final result
+
+```{r null-ex,echo = FALSE, out.width='100%', fig.cap="Caption"}
+idx = 7
+id = MoreyHoekstra2019::christmas_stats_participants$id[idx]
+fn = MoreyHoekstra2019::fig_recreate_display(id, "null", letter = "N")
+knitr::include_graphics(fn)
+```
+
+```{r expt-ex,echo = FALSE, out.width='100%', fig.cap="Caption"}
+fn = MoreyHoekstra2019::fig_recreate_display(id, "expt", letter = "E")
+knitr::include_graphics(fn)
+
+```
+
+This participant's (id: *`r id`*) final decision was "`r MoreyHoekstra2019::christmas_stats_participants[idx,"response"]`".
+
+# Difficulties for likelihood or Bayesian accounts
+
+The task is set up specifically to make it difficult to apply other modes of inference to the problem, while *encouraging* significance testing. We would not argue that significance testing is the only mode of inference that participants might use in other contexts, or that it is their preferred mode; rather, the goal was to test whether they had enough of an understanding of significance testing to apply it.
+
+In order to test this, it was necessary to block other kinds of inference. Two aspects of the task make other inference methods difficult: the arbitrary transformation of the test statistic, and the removal of sample size information.
+
+## Likelihood inference
+
+Consider what would be necessary for a likelihood inference from these data. A likelihoodist would require a model with a parameter $\theta$:
+\[
+l(\theta; \mathbf x) \propto \prod_{i=1}^M f_{n_i}(x_i;\theta)
+\]
+where $\mathbf x$ is the vector of length $M$ of all evidence/$x$-locations of experimental samples produced by the participant, $x_i$ represents the $i$th element of $\mathbf x$, and $f_{n_i}$ represents the density function of experiments for the hidden sample size $n_i$. The density functions are unknown, as are the sample sizes. There is no obvious measure of effect size on which to build a model. 
+
+One might choose an impoverished model that throws out information about $x$ and only uses the ordering of null samples and experimental samples:
+\[
+\theta = Pr(X>X_0),
+\]
+where $X$ is a draw from an experiment and $X_0$ is a draw from the shuffle reports. But then $\theta$ would be dependent on $n_i$ in an unknown way except under the null hypothesis where $\theta=0.5$ (because under the null hypothesis experiments and random shuffle reports have the same distribution, by definition). Thus, the null is the only thing the participant knows.
+
+Even a clever participant who knew about the arbitrary transformation from the $z$ statistic would have difficulty. They might use the following strategy:
+
+1. Sample many random shuffle reports, estimate their distribution
+2. Find a transformation $z_i = g(x_i)$ to take the shuffle reports to standard normal deviates
+3. Use this transformation to transform experimental samples to $z$ statistics
+4. Use likelihood inference on the mean of the $z$ statistics from experimental samples
+
+This strategy would require extensive knowledge of statistical theory and, likely, sophisticated programming skills used during the task. It is difficult to imagine anyone applying it (and certainly no participant reported doing such a strategy). But even this strategy is frustrated, because the transformation conflates the effect size and sample size. Only $\delta\sqrt{n/2}$ is estimable, and $n$ is unknown. No inference about $\delta$ is possible, except that it is different from 0.
+
+
+## Bayesian inference
+
+> "For [statistical] hypotheses, Bayes' theorem tells us this: Unless the observed facts are absolutely impossible on hypothesis $H_0$, it is meaningless to ask how much those facts tend 'in themselves' to confirm or refute $H_0$. Not only the mathematics, but also our innate common sense (if we think about it for a moment) tell us that we have not asked any definite, well-posed question until we specify the possible alternatives to $H_0$." -- @Jaynes:2003
+
+Bayesian inference, being dependent on the likelihood, is saddled with the difficulties outlined above, as well as an additional one: the Bayesian has need of a prior. As Jaynes points out, Bayesian inference requires specified alternative. Typically, this would be a set of alternatives rendered as a prior distribution over some parameter, $p(\theta)$. In this problem, there is no clear parameter and hence it is not clear what the prior would be placed on. Additionally, the sample sizes are unknown, leading to the problem that it is unclear how a Bayesian would update their prior to the posterior; the sample sizes are clearly relevant information, but hidden from the analyst.  The final difficulty is that the likelihood is unknown due to the arbitrary transform applied to the $z$ statistic.
+
+Suppose, however, that the Bayesian analyst knew about the transformation, and applied the strategy described in the previous section to reverse-engineer the transformation back to $z$ scores. The inference about $\delta$ would be dependent on their prior about the sample sizes. As emphasized by Bayesians who appeal to the Jeffreys-Lindley paradox [@Lindley:1957], the statistical support for the null hypothesis $\delta=0$ depend on the sample size such that assuming larger sample sizes guarantees evidence for the null hypothesis. The inference about $\delta$ is completely confounded with $n$: assuming larger $n$ means inferring smaller $\delta$. 
+
+It is possible that a Bayesian making just the right assumptions, and working very hard to reverse-engineer the transformation, could perform the task well. However, their inference would be dependent on these strong assumptions. 
+
+No participant reported using such a strategy (or anything like it).
+
+# Self-reported understanding of shuffle reports
+
+Question: "Do you understand why the random shuffle reports could be useful?"
+
+```{r shuffle-understanding, fig.caption="Caption"}
+MoreyHoekstra2019::fig_shuffle_understanding()
+```
+
+
+# Participants' confidence in their responses
+
+Question: How confident are you in your assessment above?
+
+* Not confident at all 
+* Somewhat doubtful 
+* Somewhat confident 
+* Very confident 
+
+
+```{r confidence-null, fig.cap="Caption"}
+MoreyHoekstra2019::fig_confidence(which_resp = "null")
+```
+
+```{r confidence-alt, fig.cap="Caption"}
+MoreyHoekstra2019::fig_confidence(which_resp = "alt")
+```
+
+
+# Participant sampling behavior
+
+```{r sampling, fig.cap="Sampling behavior by effect size. Each point represents a participant. A: Number of samples from the null distribution as a function of true effect size. B: Number of samples of fictional 'experiments' as a function of true effect size. Note that the $y$ axis is logarithmically scaled. Lines are robust regression fits (Venables \\& Ripley, 2002)."}
+MoreyHoekstra2019::fig_sampling_behavior()
+```
+
+
+```{r}
+kt_null <- kruskal.test(n_null ~ factor(abs(effect_size)), data = MoreyHoekstra2019::christmas_stats_participants)
+kt_expt <- kruskal.test(n_expt ~ factor(abs(effect_size)), data = MoreyHoekstra2019::christmas_stats_participants)
+```
+
+Participants sought out information that would be necessary for significance tests. They made heavy use of shuffle reports (Figure A above). Across all true effect sizes, participants sampled a median of 152 shuffle reports (range: 1-2034).
+
+Participants also made use of "replications" of the fictional experiments. (Figure B above) shows the distribution of the number of experiments sampled as a function of the true effect size. Median numbers of experiments range from 20 when Jinglies and Sparklies were equally fast, down to 9 when the true effect size was $\delta=1$ and thus the effect was relatively easy to detect (`r papaja::apa_print(kt_expt)$statistic`). When the effect size is small and difficult to detect, participants do more experimentation before deciding. 
+
+
+# Open-ended strategy questions
+
+## Coding of strategy-related questions
+
+After they reported their decision, participants were asked three open-ended questions related to their overall experimental strategy:
+
+1. "What facts or observations were most salient in coming to the conclusion that you did (whatever that was)?"
+2. "Please describe your experimental strategy, if any, in your own words."
+3. "Did you make use of the 'random shuffle reports'? If so, how?"
+
+Authors RM and RH coded the responses as one or more of the following. Responses were judged holistically across the three questions; occasionally a response was unclear to one question, but their response to another question clarified their meaning.
+
+Coding was performed without reference to the participant's assigned condition and without reference to their decision (to the greatest extent possible; sometimes the text of their answer suggested the condition or decision).
+
+1. *Comparison to the random shuffle reports*: Participant mentioned comparing the experimental results to the random shuffle reports
+    * Example (to Q1): "A comparison of the experimental results when compared to the 'random shuffle' arrangements."
+    * Example (to Q2): "...[experiments were] much more extreme than would be predicted by chance given the sampling distribution from the random experiments"
+2. *Random shuffle reports to assess sampling variability*: Participant mentioned using the random shuffle reports as a guide to the expected variability of the evidence/sampling distribution/noise/random error etc.
+    * Example (to Q3): "Yup - smashed it to bits to see the variation in difference 'scores'."
+    * Example (to Q2): "Get an idea of the variability (and expected difference, which seemed to be zero difference) using the 'random shuffle' results, and then see how the experimental results varied."
+3. *Asymmetry of experiments*: Participant noted that the observations tend to be on one side or another, or favoring one team or another; that there was a *lack* of asymmetry; or that symmetry was in some way considered by the participant.
+    * Example (to Q2): "Conducted experiment with max participants 4 times; all observations well to the Jinglies' side..."
+    * Example (to Q2): "take samples see whether consistently left or right of middle..."
+    * Example (to Q1): "all [experiments] came out 1 way"
+    * Example (to Q1): "Approx same number of wins for each team ; no clear visual assymetry"
+4. *Increasing asymmetry as N increased*: Participant mentioned noting a pattern where the extremeness of results appeared to increase as the sample size increased, a signature of a true effect, or noting that such information would have been of interest.
+    * Example (to Q1): "...larger sample sizes tended to show clearer evidence of difference"
+5. *Response not relevant*: Responses in this category did not answer the questions posed.
+6. *Response missing*: No response was given to any of the three questions.
+7. *Explicitly denied using shuffle reports*: In describing their strategy, the participant said that they *did not use* the shuffle reports or did not find them useful in their decision.
+
+Categories 1, 2, 3, and 4 are consistent with significance testing logic. Categories 1 and 2 represent high-quality SST strategies, whereas Categories 3 and 4 may represent less efficient (e.g., ignoring variance of null distribution), unclear, or invalid SST strategies.
+
+We must note that although many or most of the responses clearly fit into one category or another, sometimes categorization was not clear. We attempted to ensure the most reasonable coding for each participant through multiple rounds of coding and discussions. Although individual participant's codings might be up for debate, in the aggregate they provide a guide to the strategies deployed by participants and a rough estimate of their frequencies.
+
+## Frequencies of strategies
+
+The figure below shows the frequencies of various self-reported strategies as coded by the authors.
+
+```{r strategies, fig.cap="Coded frequencies of different strategies in the open-ended responses. A \"Strong\" indicates use of comparison to the null distribution or  its use to assess sampling variability/distribution. A \"Weak only\" response indicates some indication of symmetry or asymmetry (or its use as a strategy)."}
+MoreyHoekstra2019::fig_strategies()
+```
+
+```{r results="asis"}
+MoreyHoekstra2019::text_coding %>%
+  select(-id) -> lst_dat
+
+marg_vec <- sapply(lst_dat,sum)/nrow(lst_dat)
+
+prob_mat <- diag(length(lst_dat))*NA
+rownames(prob_mat) <- 
+  colnames(prob_mat) <- 
+  c("Comparison","Asymmetry","Samp. variance", "Inc. asymmetry","No shuffles","Irrelevant","Missing")
+
+for(i in 1:length(lst_dat))
+  for(j in 1:length(lst_dat))
+    prob_mat[i,j] = switch((i == j) + 1,
+                           mean(lst_dat[[i]] & lst_dat[[j]]) / marg_vec[j],
+                           1
+      )
+
+prob_mat = prob_mat[c(1,3,2,4,5),c(1,3,2,4,5)]
+prob_mat %>% 
+  as_tibble() %>%
+  mutate(` ` = rownames(prob_mat)) %>%
+  select(` `, everything()) %>%
+  mutate_if(is.numeric, function(x) {
+    x = c(0,round(x, 2),1)
+    z = cell_spec(x, bold = TRUE, 
+              color = spec_color(x, end = 0.9),
+              font_size = spec_font_size(x))
+    z[c(-1, -length(x))]
+  }) %>%
+  kable(caption=paste0("The conditional probabilities of the various responses. Each entry shows the probability of the response type on the *row* **given** the response type on *column*. These probabilities exclude the ",sum(marg_vec[6:7]*nrow(lst_dat))," missing/irrelevant responses."), escape = FALSE, align = "c") %>%
+  kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive"), full_width = FALSE, position = "float_right", font_size = 16) %>%
+  column_spec(1, bold = TRUE, border_right = TRUE) %>%
+  add_header_above(c(" " = 1, "(given)" = 5))
+
+```
+
+# Exploratory sanity checks
+
+This section reports a few analyses based on the coded open-text responses. Analyses in this section should be treated with skepticism due to theie exploratory nature and the fact that they are conditioning on an observed variable that is likely correlated in interesting ways with the decision. Also, some people did not respond to these questions, so their strategy is unknown; yet they will be categorized with those who responded and offered an invalid strategy.
+
+## Error rates
+
+We can compare error rates of those who reported using a strong significance-testing strategy versus ones who did not. 
+
+```{r fig.cap="Proportion who have a 'difference' response as a function of effect size, for participants who were coded as reported 0, 1, or 2 strong significance testing strategies. Ribbons are standard errors."}
+
+dat <- MoreyHoekstra2019::christmas_stats_participants %>%
+  mutate(n_strong = text_sampling_var + text_comparison) %>%
+  mutate(
+    effect_size = abs(effect_size),
+    ln_null = log10(n_null),
+    ln_expt = log10(n_expt)
+  )
+
+dat %>%
+    mutate(effect_size = abs(effect_size),
+           `# strong` = factor(n_strong)) %>%
+    group_by(effect_size, true_winner, response, `# strong`) %>%
+    tally() %>%
+    complete(effect_size, true_winner, response, `# strong`, fill = list(n = 0)) %>%
+    ungroup() %>%
+    filter(response != "bored") %>%
+    mutate(
+      dec_type = case_when(
+        true_winner != "null" &
+          true_winner != response &
+          response %in% c("jinglies", "sparklies") ~ "sign_error",
+        response %in% c("jinglies", "sparklies") ~ "report_difference",
+        response == "same" ~ "same",
+        response == "no_detect" ~ "no_detect"
+      )
+    ) %>%
+    group_by(dec_type, effect_size, `# strong`) %>%
+    tally( wt = n ) %>%
+    complete(dec_type, effect_size, `# strong`, fill = list(n = 0)) %>%
+    group_by(effect_size, `# strong`) %>%
+    mutate(total = sum(n)) %>%
+  filter(dec_type == "report_difference") %>%
+  mutate(
+      p = n / total,
+      stderr = sqrt(p * (1 - p) / total),
+      lo = qlogis(p),
+      lo.stderr = stderr / dlogis(qlogis(p))
+    ) %>%
+  select(-dec_type) %>% 
+  ggplot(aes(x = effect_size, y = p, group = `# strong`)) +
+      geom_rect(
+      xmin = 0,
+      xmax = 1,
+      ymin = 0,
+      ymax = 1,
+      color = NA,
+      fill = "#EEEEEE",
+      alpha = .1
+    ) +
+    geom_rect(
+      xmin = 0,
+      xmax = 1,
+      ymin = .8,
+      ymax = 1,
+      color = NA,
+      fill = "#DDDDDD",
+      alpha = .1
+    ) +
+    geom_rect(
+      xmin = 0,
+      xmax = 1,
+      ymin = 0,
+      ymax = .2,
+      color = NA,
+      fill = "#DDDDDD",
+      alpha = .1
+    ) +
+    geom_rect(
+      xmin = 0,
+      xmax = 1,
+      ymin = .95,
+      ymax = 1,
+      color = NA,
+      fill = "#CCCCCC",
+      alpha = .1
+    ) +
+    geom_rect(
+      xmin = 0,
+      xmax = 1,
+      ymin = 0,
+      ymax = .05,
+      color = NA,
+      fill = "#CCCCCC",
+      alpha = .1
+    ) +
+    geom_segment(aes(
+      x = 0,
+      y = 0,
+      xend = 0,
+      yend = 1
+    )) +
+    geom_hline(yintercept = c(0, 1)) +
+    geom_line(aes(linetype = `# strong`, col = `# strong`), size = .7) +
+    geom_point(aes(col = `# strong`)) +
+    geom_ribbon(aes(
+      ymin = p - stderr,
+      ymax = p + stderr,
+      fill = `# strong`
+    ),
+    alpha = 0.2) +
+      xlab("Effect size") + ylab("Proportion of responses") +
+    coord_cartesian(
+      ylim = c(0, 1.2),
+      xlim = c(0, 1),
+      expand = FALSE,
+      clip = "off"
+    ) +
+    scale_y_continuous(breaks = seq(0, 1, .1)) +
+    scale_x_continuous(breaks = seq(0, 1, .2)) +
+    theme(
+      panel.grid.major.x = element_blank(),
+      panel.grid.minor.x = element_blank(),
+      panel.background = element_blank(),
+      text = element_text()
+    )
+
+```
+
+## Sampling behaviour
+
+Did participants who reported more strong significance testing strategies use more null samples, on average? It appears so (left figure below; note the log scale).
+
+Did participants who reported more strong significance testing strategies use more (or fewer) experimental samples, on average? There's not much evidence either way, but importantly (see plot) those who reported *fewer* strong significance testing strategies didn't also sample fewer experiments on average. There is nothing here to suggest they were less engaged on average.
+
+```{r fig.cap="Boxes, in order from left to right (red, green, blue) are 0, 1, and 2 strong significance testing strategies, respectively. Lines are robust regression fits. Stars show participants who indicated they did not use the random shuffle reports. Null samples (left) order from bottom to top (0, 1, 2); experimental samples (right) order is (3, 0, 1) from bottom to top."}
+cnull <- dat %>%
+  split(.$n_strong) %>%
+  map( ~ MASS::rlm(ln_null ~ effect_size, data = .)) %>%
+  map_df(coef)
+
+cexpt <- dat %>%
+  split(.$n_strong) %>%
+  map( ~ MASS::rlm(ln_expt ~ effect_size, data = .)) %>%
+  map_df(coef)
+
+dat %>% filter(text_no_shuffle) -> only_no_shuffle
+
+# grouped boxplot
+p1 = ggplot(dat,
+            aes(
+              x = effect_size,
+              y = n_null,
+              group = interaction(n_strong, effect_size),
+              fill = factor(n_strong)
+              )) +
+  geom_boxplot() +
+  scale_y_continuous(trans = 'log10') +
+  theme(legend.position = "none") +
+  ylab("Number of samples") + ggtitle("Null") +
+  xlab("Effect size") +
+  geom_abline(
+    intercept = cnull$`0`[1],
+    slope = cnull$`0`[2],
+    color = scales::hue_pal()(2)[1]
+    ) +
+  geom_abline(
+    intercept = cnull$`1`[1],
+    slope = cnull$`1`[2],
+    color = scales::hue_pal()(2)[2]
+    ) +
+  geom_abline(
+    intercept = cnull$`2`[1],
+    slope = cnull$`2`[2],
+    color = scales::hue_pal()(3)[3]
+    ) +
+  geom_point(data = only_no_shuffle,
+             mapping = aes(x = effect_size, 
+                           y = n_null), 
+             shape = 8,
+             size = 3)
+  
+
+        # grouped boxplot
+p2 = ggplot(dat,
+            aes(
+              x = effect_size,
+              y = n_expt,
+              group = interaction(n_strong, effect_size),
+              fill = factor(n_strong)
+              )) +
+  geom_boxplot() +
+  scale_y_continuous(trans = 'log10') +
+  theme(legend.position = "none") +
+  ylab("Number of samples") + ggtitle("Experiments") +
+  xlab("Effect size") +
+  geom_abline(
+    intercept = cexpt$`0`[1],
+    slope = cexpt$`0`[2],
+    color = scales::hue_pal()(2)[1]
+    ) +
+  geom_abline(
+    intercept = cexpt$`1`[1],
+    slope = cexpt$`1`[2],
+    color = scales::hue_pal()(2)[2]
+    ) +
+  geom_abline(
+    intercept = cexpt$`2`[1],
+    slope = cexpt$`2`[2],
+    color = scales::hue_pal()(3)[3]
+    ) +
+    geom_point(data = only_no_shuffle,
+             mapping = aes(x = effect_size, 
+                           y = n_expt), 
+             shape = 8,
+             size = 3)
+  
+
+gridExtra::grid.arrange(p1, p2, ncol = 2)
+
+```
+
+
+
+# References

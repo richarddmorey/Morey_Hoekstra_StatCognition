@@ -1,0 +1,177 @@
+
+---
+title: "Task demonstration"
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(collapse = TRUE, 
+                      echo=FALSE,
+                      comment = "#>")
+
+library(dplyr)
+library(knitr)
+library(kableExtra)
+```
+
+If you wish to interactively try the task, select parameters for the task below. Leave the settings at the defaults to be randomly assigned to a condition. The task code is in javascript and will run locally on your computer; no data is sent anywhere. At the end, you will have the option to save your data.
+
+<form target = "_blank" action="../extras/task.html" method="get">
+	Evidence power:
+	<select name="q">
+  		<option value="">Random</option>
+  		<option value="3">3 (wide)</option>
+  		<option value="7">7 (narrow)</option>
+	</select>
+	<br/>
+	Toy:
+	<select name="toy_name">
+  		<option value="">Random</option>
+  		<option value="whizbang balls">whizbang balls</option>
+  		<option value="constructo bricks">constructo bricks</option>
+  		<option value="rainbow clickers">rainbow clickers</option>
+  		<option value="doodle noodles">doodle noodles</option>
+   		<option value="singing bling rings">singing bling rings</option>
+   	  	<option value="brahma buddies">brahma buddies</option>
+   	  	<option value="magic colorclay">magic colorclay</option>
+   	  	<option value="moon-candy makers">moon-candy makers</option>
+	</select>
+  <br/>
+  <input type="submit" value="Go">
+</form>
+
+A short video showing the task can be found under [`img/vignettes/santa_task_example.mp4`](https://github.com/richarddmorey/Morey_Hoekstra_StatCognition/blob/master/vignettes/img/santa_task_example.mp4)  (click 'View raw' to download).
+
+Users of the `MoreyHoekstra2019` R package can also load a version of the experimental task:
+
+``` r
+task_demo()
+```
+
+
+-------
+
+## Task details
+
+In a nutshell, the main task is to determine the sign of an effect, if it is nonzero. 
+
+
+### Effect sizes
+
+Participants were randomly assigned to one of eight effect size conditions, each with a unique toy name. The sign of the effect was then also randomly assigned (each with 50% probability). Because we were particularly interested in false positives, we assigned participants to the "no effect" condition with greater probability.
+
+
+```{r EStable, results='asis'}
+prob = c(.25, 
+         .75 * rep(1/7, 7)
+)
+
+MoreyHoekstra2019::christmas_stats_samples %>% 
+  filter( type == "expt" ) %>%
+  group_by( toy_name ) %>%
+  summarise( `Hidden effect size (δ)` = first(abs(d)) ) %>%
+  arrange( `Hidden effect size (δ)` ) %>%
+  rename( `Toy name` = "toy_name") %>%
+  mutate(Probability = !!prob) %>%
+  kable(caption="\"Toy\" name, corresponding true effect sizes used in the study (in standard deviation units) and the probability that a participant would be randomly assigned to that effect size.", digits = 2) %>%
+  kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive"), full_width = FALSE, position = "float_right", font_size = 16)
+
+```
+
+In the task, participants could sample test statistics at will from either a null distribution ($\delta=0$; called "random shuffle reports") or the "experimental" distribution (with their assigned effect size). 
+
+### Sample sizes
+
+The participants could choose the sample size per "team", but the number was hidden from them. The sample size slider has 20 increments, corresponding to team sizes of 10 to 200. The table below shows the sample sizes, which increased non-linearly as a function of the increment. To induce a resource cost to experimentation, the time a participant had to wait for an experimental sample was proportional to the team size. Null samples were instantaneous.
+
+```{r Ntable,results='asis'}
+MoreyHoekstra2019::christmas_stats_samples %>% 
+  group_by(n) %>%
+  mutate(`Time (s)` = ceiling(n / 10) ) %>% summarise(`Time (s)` = first(`Time (s)`)) %>% 
+  mutate(`n index` = order(n)) %>%
+  select(`n index`, n, `Time (s)`) %>%
+  kable(caption="Sample size index, underlying hidden per-group sample size, and corresponding time delay in seconds taken to return the experimental result, if the result requested was an experimental sample. Random shuffle reports were returned instantaneously.", digits = 2) %>%
+  kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive"), full_width = FALSE, position = "float_right", font_size = 16)
+
+```
+When a participant generated a sample, they were generating a test statistic. Hidden from the participant, the underlying test statistic was simply a $Z$ statistic, sampled from the appropriate distribution:
+
+$$ Z \sim \mbox{Normal}(\delta\sqrt{n/2}, 1) $$
+
+where $n$ was determined by the sample size slider selection, and $\delta$ by the participant's randomly assigned effect size (or $\delta=0$ if they are drawing null samples).
+
+However, the participant was not shown the $Z$ statistic.
+
+### Evidence power
+
+The $Z$ statistic was transformed by the following equation, not known to the participant:
+
+$$ x = \mbox{sgn}(Z)\left[1 - \left(1 - F_{\chi_1^2}\left(Z^2\right)\right)^{\frac{1}{q}}\right] $$
+
+The value $x$ gives the location on the experimental "interface" and the color (from left, -1 to right, or 1). The power $q$ was randomly assigned to the participant (3 or 7, with equal probability).
+
+The value $x$ is a monotone transformation of the $Z$ statistic, and hence contains the same information. The value $q$&mdash;called the "evidence power"&mdash;only changes the *visual* effect of the samples. When $q=7$, the visual sampling distribution is narrower on the task interface; when $q=3$, it is wider.
+
+The figure below shows the distributions of the visual evidence ($x$) when $\delta=0.19$ ("rainbow clickers"). Each distribution is a sample size; with increasing sample size, the visual distibution of the test statistic moves further to the right. More extreme values are expected as the sample size increases.
+
+The figure below is for $q=7$, the narrow transformation.
+
+```{r fig.cap="Evidence power 7, distributions"}
+MoreyHoekstra2019::fig_desc_evidence(q = 7, d = .19, n = NULL)
+```
+
+When the evidence power is $q=3$, all distributions is visually much further to the right.
+
+```{r fig.cap="Evidence power 3, distributions"}
+MoreyHoekstra2019::fig_desc_evidence(q = 3, d = .19, n = NULL)
+```
+
+The null sampling distributions (the distribution of the "random shuffle reports") are affected by the same transformation. The sampling distribution for the "wide" evidence power is *visually* wider than the narrow one.
+
+We can show see the relative visual spread of the sampling distributions by adding the implied $p$ values to the interface. The participant, of course, would not see these. The figure below shows the implied $p$ values from the narrow null evidence distribution:
+
+
+```{r fig.cap="Evidence power 7, p values", out.width="60%"}
+knitr::include_graphics(
+  "../reference/figures/pvals7.png"
+)
+# This file is located in man/figures/
+```
+
+And the wide null evidence distribution:
+
+```{r fig.cap="Evidence power 3, p values", out.width="60%"}
+knitr::include_graphics(
+  "../reference/figures/pvals3.png"
+)
+# This file is located in man/figures/
+```
+
+These distributions must be discovered by the participant by sampling the random shuffle reports. To better see the effect of the evidence power maipulation, we have created an animation that shows how two hypothetical participants who got the same underlying data, but were randomly assigned to different evidence power conditions, would see the experiment. The top shows the narrow evidence power; the bottom, the wide evidence power. The $p$ values are for reference and would not be shown to the participant. 
+
+<video style="width: 60%" controls>
+  <!-- This file is located in man/figures/ -->
+  <source src="../reference/figures/double_ani.mp4" type="video/mp4">
+</video>
+
+### Potential strategies
+
+When they are ready, participants must decide which of the two teams was faster based on the data they collected. There are several strategies one might deploy:
+
+* **Null sampling distribution**: Compare "experiments" to their respective null samples ("random shuffle reports") to determine if results as extreme would be unlikely. Under this strategy, "extremeness" is scaled by the sampling distribution. This is a significance testing stragegy.
+* **Sign test**: Count the number of experiments on each side to see if, on balance, they favor one side. This is a significance testing strategy, but a weak one (it throws away a lot of information).
+* **Visual extremeness**: Base the decision on visual extremeness. This is an invalid strategy, but one that might be deployed by someone who did not understand significance testing. Both color and horizontal distance are the most salient features of the display if someone does not know how to use the random shuffle reports.
+
+### Hypotheses
+
+The manipulation of evidence power is designed to determine whether people are using the salient visual cues (color and distance) or the valid significance-testing information (the null sampling distribution) to perform the task. 
+
+* If participants are using a **significance testing** strategy, the probability that one decides in favor of a team should be determined by the extremeness of the evidence *relative to the null sampling distribution*. Thus, visual extremeness will matter much more to participants in the narrow condition than in the wide.
+
+* If participants use an **invalid distance/color-based** strategy, the probability that one decides in favor of a team should be determined by the visual extremeness of the evidence. When aligned on the null sampling distribution, participants will be much more willing to decide in favor of a difference in the wide condition.
+
+
+
+
+

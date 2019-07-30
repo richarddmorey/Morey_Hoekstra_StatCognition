@@ -1,0 +1,12 @@
+^inst/_pkgdown\.yml$
+^docs$
+^pkgdown$
+^tmp$
+^README\.md$
+^README\.Rmd$
+^LICENSE\.md$
+^MoreyHoekstra2019\.Rproj$
+^\.Rproj\.user$
+^packrat/
+^\.Rprofile$
+^MH2019_tmp$

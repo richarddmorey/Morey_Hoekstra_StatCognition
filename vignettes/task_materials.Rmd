@@ -1,0 +1,24 @@
+
+---
+title: "Task materials/code"
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(collapse = TRUE, comment = "#>")
+```
+
+
+Everything necessary to run a stripped-down version of the task code is under [`inst/pkg_html`](https://github.com/richarddmorey/Morey_Hoekstra_StatCognition/tree/master/inst/pkg_html/). This stripped down version runs in the local browser and does not save any data; if you want to save the data you'll need to run it in an environment set up to do that (e.g., Qualtrics, or write your own code depending on how you want to set it up). If you grab all the files in `inst/pkg_html` you'll have everything you need. Run the task by opening  `task.html` in a browser.
+
+The source code for the experimental task can be found in the following files:
+
+| Component  | Description  | File  |
+|:--|:--|:--|
+| Main control code / text | The HTML text and javascript code to run the task itself.  | `inst/pkg_html/task.html`   |
+| Main support functions  | Custom javascript functions related specifically to running the task  | `inst/pkg_html/js/santa_utility.js`  |
+| Setup variables  | Javascript objects related to setting up the task (defining toy names, effect sizes, etc)  | `inst/pkg_html/js/task_pars.js`  |
+| Style | Settings for task interface components (width of elements, etc) | `inst/pkg_html/css/santa.css` |
+
+The [jquery](https://jquery.com/) and [jquery-ui](https://jqueryui.com/) libraries are also required for the task to run properly. Versions of these libraries are included in the respective directories.
+
+

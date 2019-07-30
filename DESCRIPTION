@@ -1,0 +1,56 @@
+Package: MoreyHoekstra2019
+Title: Materials for Morey and Hoekstra's (2019) statistical cognition experiment 
+Version: 0.1
+Authors@R: 
+    c(
+    person(given = "Richard",
+           family = "Morey",
+           role = c("aut", "cre"),
+           email = "richarddmorey@gmail.com"),
+    person(given = "Rink",
+           family = "Hoekstra",
+           role = c("aut"),
+           email = "r.hoekstra@rug.nl")
+    )
+Description: This package contains materials, code, text, and data for
+    Morey and Hoekstra's (2019) statistical cognition experiment.
+License: MIT + file LICENSE
+Encoding: UTF-8
+LazyData: true
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 6.1.1
+Suggests: 
+    knitr,
+    papaja (>= 0.1.0.9842),
+    rticles,
+    rmdformats,
+    kableExtra,
+    broom,
+    gt
+VignetteBuilder: knitr
+Remotes: 
+    crsh/papaja,
+    rstudio/gt
+Imports: 
+    rjson,
+    dplyr (>= 0.8.0.1),
+    tidyr,
+    urltools,
+    ggplot2,
+    png,
+    showtext,
+    shiny,
+    servr,
+    ggpubr,
+    magrittr,
+    purrr,
+    stringr,
+    viridis,
+    DT,
+    htmlwidgets,
+    rmarkdown,
+    MASS,
+    scales,
+    car
+URL: https://richarddmorey.github.io/Morey_Hoekstra_StatCognition/
+BugReports: https://github.com/richarddmorey/Morey_Hoekstra_StatCognition/issues

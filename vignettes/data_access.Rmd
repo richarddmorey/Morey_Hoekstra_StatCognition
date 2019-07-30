@@ -1,0 +1,59 @@
+
+---
+title: "Data and code"
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(collapse = TRUE, comment = "#>")
+```
+
+## Shiny data exploration app
+
+Running the included shiny app will allow you to explore individual participants' response patterns. It offers a way of getting a sense of what the data represents without mucking about with the data files themselves.
+
+``` r
+explore_data()
+```
+You can access an already-deployed version of the shiny app at https://richarddmorey.shinyapps.io/explore/.
+
+The app will let you:
+
+* Search, sort, and filter the data set by experimental condition, response, etc.
+* See the selected participant's interface at the poiint of decision (both experimental samples and random shuffle reports)
+* See an animation showing the selected participant's behaviour over time, up to the point of decision
+* Read the selected participant's responses to the questions about their strategy
+* Search the strategy text using [POSIX regular expressions](https://stat.ethz.ch/R-manual/R-devel/library/base/html/regex.html), optionally (try "chance" to search for all instances of "chance"; "color|colour" will search for mentions of either of the two spelling variants of "color")
+
+
+## Cleaned data
+
+The cleaned data with text responses are made available in the package in the following objects.
+
+Object      | Description
+------------|-------------
+`christmas_stats_participants` | Summary information about each participant, including text responses 
+`christmas_stats_samples` | Every individual sample made by each participant
+`text_coding` | The categorizations of each participant's open-ended strategy text responses
+
+## Compressed data
+
+Because the original csv file downloaded from Qualtrics has the timestamped information for each experiment for each participant in it, the file is quite large. It is stored in compressed in a zip file in the subfolder `inst/extdata/` to save space. You can load the original file in R using the command:
+
+``` r
+load_complete_dataset()
+```
+
+This will unzip the Qualtrics CSV file and check it against an MD5 hash. It will also do some light cleaning (filtering out non-respondents and rejected mobile users and filtering/renaming columns).
+
+## Analysis code
+
+All analysis code is available as package functions, from initial cleaning to figures. 
+
+Function      | Description 
+------------|-------------
+`load_complete_dataset()` | Reads original data from csv file and performs initial filtering
+`compile_complete_dataset()` | Compile the data, separating out the individual participant experimental samples and performing appropriate re-coding, etc.
+`load_clean_dataset()` | Main cleaning of the data set to reduce the sample down to only those that will be analyzed
+`load_text_responses()` | Load the text responses separately for convenience
+
+

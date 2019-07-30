@@ -1,0 +1,62 @@
+destination: docs
+home:
+  links:
+    - text: Code, materials, and data (GitHub)
+      href: https://github.com/richarddmorey/Morey_Hoekstra_StatCognition
+development:
+  destination: docs
+  version_label: unpublished
+  version_tooltip: "Unpublished manuscript"
+url: https://richarddmorey.github.io/Morey_Hoekstra_StatCognition/
+reference:
+  - title: "Access to data"
+    desc: >
+      Functions and objects that give access the data in
+      the paper.
+    contents:
+      - starts_with("compile_")
+      - starts_with("load_")
+      - starts_with("christmas_stats")
+      - text_coding
+  - title: "Figures"
+    desc: "Functions to create project figures."
+    contents:
+      - starts_with("fig_")
+  - title: "Interactivity"
+    desc: >
+      Functions that provide interactive access to
+      project materials
+    contents:
+      - explore_data
+      - task_demo
+  - title: "HTML widget functions"
+    desc: >
+      Functions that make the data
+      exploration HTML widget work in shiny apps
+    contents:
+      - matches("SantaDisplay")
+articles:
+  - title: "Accessing data and material"
+    desc: >
+      Descriptions of the data and material available in
+      this package and how to access it
+    contents:
+      - data_access
+      - task_materials
+      - task_demo
+  - title: "Manuscript and supplements"
+    desc: >
+      Draft of the scientific paper describing the methods and findings,
+      along with supplements that include additional detail, analyses, and
+      breakdowns of participant information/demographics.
+    contents:
+      - man_supp
+figures:
+  dev: grDevices::svg
+  dev.args: []
+  fig.ext: svg
+  fig.width: 6
+  fig.height: 4
+toc:
+  depth: 2
+

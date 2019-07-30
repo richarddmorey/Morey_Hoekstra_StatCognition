@@ -1,0 +1,258 @@
+---
+title: "Supplement B to 'Researchers understand and use the logic of significance testing in a novel statistical reasoning task'"
+subtitle: "Inclusion criteria and demographic/opinion questions"
+author: "Richard D. Morey"
+date: "`r Sys.Date()`"
+output:
+  rmdformats::html_clean:
+    highlight: kate
+    dev: svg
+    fig_width: 6
+    fig_height: 4
+editor_options: 
+  chunk_output_type: console
+vignette: >
+  %\VignetteIndexEntry{Supplement B}
+  %\VignetteEncoding{UTF-8}
+  %\VignetteEngine{knitr::rmarkdown}
+---
+
+```{r setup, include = FALSE}
+
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+
+source(
+  system.file("font/font_setup.R", package = "MoreyHoekstra2019")
+)
+
+```
+
+
+```{r echo = FALSE, include = FALSE}
+library(ggplot2)
+library(dplyr)
+library(papaja)
+
+knitr::opts_chunk$set(echo = FALSE, 
+                      warning = FALSE,
+                      message = FALSE)
+
+dat <- MoreyHoekstra2019::christmas_stats_participants
+```
+
+# Inclusion criteria
+
+The following criteria were all required to be met by participants.
+
+## Requirements of participation
+
+* **Informed consent**. Participants were given the opportunity to stop the experiment if they did not consent to participation. If they declined consent, the experiment ended immediately. 
+* **A desktop browser**. Qualtrics allows the exclusion of users of mobile devices from participation. We disallowed mobile users because the small size of many mobile screens would make the task difficult. Mobile users were shown a message inviting them to participate later from a desktop device.
+
+## Requirements of data inclusion
+
+* **First time doing experiment**: Must have answered "No, this is my FIRST TIME doing this survey" to the question "Have you completed this survey previously?" 
+* **Following directions/engagement**: Must have performed at least 1 null sample and 1 experimental sample. Participants eliminated by this criterion started the instructions, but did not perform the experimental task. 
+* **Field is arguably scientific**: Must have offered an answer to the question "Is your work in a field that would typically be considered scientific?", and that answer must *not* have been "No". 
+* **Education at University level**: Must have offered an answer to the question "What is the highest level of formal education you have achieved in your scientific field?", and that answer must *not* have been "I have no formal scientific education at the University level". 
+
+
+# Deleted/edited records
+
+After data collection was complete, we were made aware of the possibility that our data set included minors. Because our experiment was targeted at scientists, we did not include indication of parental consent for minors in our consent form. Although there is nothing ethically problematic about our experiment, out of an abundance of caution and in consultation with the Cardiff University School of Psychology Board of Ethics we deleted 32 records that may have been minors. We used the following criteria to select these records:
+
+* The participant indicated no university-level education, and
+* In their reply to the question about their scientific field, their response included any of the following terms: "ap" (as in *advanced placement*), "student", "school", "high", or "class".
+
+These records were deleted from Qualtrics. Because none of the deleted records indicated University-level education, this did not affect the data that met the criteria for analysis.
+
+The record deletion was done on 2 May, 2019.
+
+An additional 15 records were deleted on 31 May, 2019 when it was found that some students had indicated their student status in other fields.
+
+One record was further edited to remove personal information on 31 May, 2019. This record (id: *R_2a8OIVnAjcZXHyU*) now includes a note indicating the redaction.
+
+
+# Demographic and informational questions
+
+This section outlines the responses to the informational questions in the Christmas 2018 statistical cognition experiment. Only the "valid" participants are included below.
+
+## Field is scientific
+
+Question: "Is your work in a field that would typically be considered scientific?"
+
+* Yes 
+* No 
+* Depends/Maybe/Other [specify]
+
+
+
+```{r}
+MoreyHoekstra2019::fig_field_scientific()
+```
+
+## Education and training
+
+Question: "What is the highest level of formal education you have achieved in your scientific field?"
+
+* I have no formal scientific education at the University level 
+* I have some education at the Bachelor level (or equivalent) 
+* I have completed a Bachelor's degree (or equivalent) 
+* I have some education above the Bachelor level (e.g., Master's, PhD, or equivalent) 
+* I have completed a PhD (or equivalent) 
+
+```{r}
+MoreyHoekstra2019::fig_edu_training_edu()
+```
+
+Question: "How many years of formal statistical training do you have?"
+
+[enter a number]
+
+```{r}
+MoreyHoekstra2019::fig_edu_training_stats()
+
+summary(dat[,"formal_training"])
+```
+
+## Scientific field
+
+Question: "In what applied field(s) do you use statistics? (check all that apply)"
+
+* Biological sciences 
+* Medical sciences 
+* Physical sciences 
+* Social/Behavioral sciences 
+* Computer science / technology 
+* Other [specify]
+
+
+```{r}
+MoreyHoekstra2019::fig_field()
+```
+
+
+## Role of statistics
+
+Question: "How do statistics play a role in your work? (check all that apply)"
+
+* Statistics do not play a role in my work 
+* I use statistics in practice for the analysis of data 
+* I comment on statistical practice, but do not develop them myself 
+* I develop statistical methods 
+* I comment on the philosophy of statistics 
+* Other [specify]
+
+
+```{r}
+MoreyHoekstra2019::fig_how_use_stat()
+```
+
+
+## Preferred statistical method
+
+Question: "If you use statistics regularly in your work, what sort of inferential procedures would you typically prefer?"
+
+* Classical, frequentist, or error statistical 
+* Bayesian (of any sort) 
+* None; I prefer only descriptive 
+* I do not use statistics in my work 
+* Other [specify]
+
+
+```{r}
+MoreyHoekstra2019::fig_preferred_method()
+```
+
+
+## Significance testing
+
+Question: "What is your opinion about statistical significance testing? (check all that apply)"
+
+* I do not have a strong opinion for or against significance testing 
+* I think significance testing is necessary for science 
+* I think significance testing is fine, but prefer other approaches to statistical inference 
+* I think significance testing is fine, but people misunderstand/misuse it 
+* I think significance testing should be discontinued or performed very rarely 
+* I think the logic of significance testing is fatally flawed 
+* I do not understand the question 
+* Other [specify]
+
+
+```{r}
+MoreyHoekstra2019::fig_sig_testing_opinion()
+```
+
+## Data downloads
+
+During debriefing, participants were given the option of downloading their data for their own analysis. The table below shows how many took advantage of the option for both shuffle reports and experimental samples.
+
+<style>
+.table_label td {
+  padding: 5px;
+}
+</style>
+
+```{r}
+X = with(MoreyHoekstra2019::christmas_stats_participants, 
+     table(downloaded_null, downloaded_expt) )
+dimnames(X) = list(`Shuffle reports` = c("Did not download", "Downloaded"),
+                   `Experiments` = c("Did not download", "Downloaded"))
+
+# https://stackoverflow.com/questions/26429740/preserve-row-column-labels-from-table-using-kable-and-knitr
+table_label <- function(tbl) {
+
+  # table dimensions
+  rows <- dim(tbl)[1]
+  cols <- dim(tbl)[2]
+
+  # get started
+  html_out <- '<table class = "table_label">\n'
+
+  # first row: label only
+  blank_cell <- '<td>&nbsp;</td>'
+  html_out <- 
+    paste0(html_out,
+           '\t<tr>',
+           blank_cell, 
+           '<td>', names(dimnames(tbl))[2], '</td>', # column label
+           rep(blank_cell, cols-2),
+           '</tr>\n')
+
+  # second row:
+  html_out <- 
+    paste0(html_out,
+           '\t<tr>',
+           # label...
+           '<td>', names(dimnames(tbl))[1], '</td>',
+           # ...and headers
+           paste0('<td>', dimnames(tbl)[[2]], '</td>', collapse=''),
+           '</tr>\n')
+
+  # subsequent rows
+  for (i in 1:rows) {
+    html_out <- 
+      paste0(html_out,
+             '\t<tr>',
+             # header... 
+             '<td>', dimnames(tbl)[[1]][i], '</td>',                        
+             # ...and values
+             paste0('<td>', tbl[i,], '</td>', collapse=''),
+             '</tr>\n')
+  }
+
+  # last row
+  html_out <- paste0(html_out, '</table>')
+  return(html_out)
+}
+
+```
+
+```{r, results='asis'}
+cat(table_label(X))
+```
+
+

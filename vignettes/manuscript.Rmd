@@ -1,0 +1,271 @@
+---
+title: Use of significance test logic by scientists in a novel reasoning task
+titlerunning: Statistical reasoning in scientists
+authorrunning: Morey & Hoekstra
+authors: 
+- name: Richard D. Morey
+  address: School of Psychology, Cardiff University
+  email: moreyr@cardiff.ac.uk
+- name: Rink Hoekstra
+  address: Faculty of Behavioural and Social Sciences, University of Groningen
+  email: r.hoekstra@rug.nl
+keywords:
+- cognitive science
+- psychology
+- science
+- statistics
+- statistical cognition
+#PACS: 
+    
+MSC:
+- 91E10    
+abstract: |
+     Although statistical significance testing is one of the most widely-used techniques across science, previous research has suggested that scientists have a poor understanding of how it works. If scientists misunderstand one of their primary inferential tools the implications are dramatic: potentially unchecked, unjustified conclusions and wasted resources. Scientists' apparent difficulties with significance testing have led to calls for its abandonment or increased reliance on alternative tools, which would represent a substantial, untested, shift in scientific practice. However, if scientists' understanding of significance testing is truly as poor as thought, one could argue such drastic action is required. We show using a novel experimental method that scientists do, in fact, understand the logic of significance testing and can use it effectively. This suggests that scientists may not be as statistically-challenged as often believed, and that reforms should take this into account.
+bibliography: "`r system.file('bib/bibfile.bib', package = 'MoreyHoekstra2019')`"
+csl: nature.csl
+output: rticles::springer_article
+vignette: >
+  %\VignetteIndexEntry{Manuscript}
+  %\VignetteEncoding{UTF-8}
+  %\VignetteEngine{knitr::rmarkdown}
+editor_options: 
+  chunk_output_type: console
+#nocite: | 
+#  @Venables:Ripley:2002
+header-includes: |
+  \usepackage{booktabs}
+  \usepackage{longtable}
+  \usepackage{subfig}
+  \renewcommand{\thesubfigure}{\Alph{subfigure}}
+pkgdown:
+  as_is: true
+  extension: pdf
+---
+
+```{r include = FALSE}
+source(
+  system.file("font/font_setup.R", package = "MoreyHoekstra2019")
+)
+
+knitr::opts_chunk$set(echo = FALSE, 
+                      warning = FALSE,
+                      message = FALSE,
+                      out.width = "0.95\\textwidth")
+
+library(dplyr)
+library(papaja)
+library(tidyr)
+library(broom)
+```
+
+
+Despite statistical significance testing (SST) use in a majority of research projects across fields, there is debate over whether scientists understand SST and can use it competently. Methodologists and statistical cognition researchers point to evidence from questionnaires and vignette studies to argue that researchers do not, in fact, grasp the core logic of SST. In one highly influential study of research psychologists, Oakes [-@Oakes:1986] presented six statements about a hypothetical significance test result to be categorized as true or false (e.g., "[The $p$ value provides] the probability of the null hypothesis being true"). Despite all of these statements being false, 97% of the research psychologists categorized at least one as true. Oakes argues that this shows that the participants have an "[un]sound understanding of the logic of the significance test" (p. 82).
+
+Oakes' basic method and results have been replicated and extended with various groups, showing that students [@Falk:Greenbaum:1995], instructors [@Haller:Krauss:2002], and statisticians [@Lecoutre:etal:2003] all misinterpret SST results. Moreover, these misinterpretations are difficult to eliminate even through targeted interventions [@Kalinowski:etal:2008]. As a result, many have argued that use of SST should be discontinued or dramatically reduced, and may even contribute to wide-spread replication problems in the sciences [@Carver:1978;@Oakes:1986;@Fidler:2006;@The:2011;@Wasserstein:Lazar:2016].
+
+The interpretation of studies of researchers' understanding of SST are limited, however, by their methodology. A typical study presents a vignette describing research results. Statistical results are offered to the participants (e.g., a $t$ statistic and $p$ value), who are then asked to explicitly give or endorse various interpretations that are thought to represent participants' understanding of SST. However, there are reasons to be cautious of drawing strong conclusions from these studies, including the abstract nature of such vignettes, the lack of investment researchers have in the fictional research, and their disconnection from research activity (e.g., experimentation and replication). It is unclear how well vignette studies (including ones by the present authors; @Hoekstra:etal:2014]) tap understanding of the core logic of SST or, say, familiarity with the technical terminology used to present statistical results. Conceptual understanding and fluency with common representations are both important, but are distinct.
+
+A second major piece of evidence for misunderstandings of SST logic is reasoning errors in published papers. [@Gelman:Stern:2006;@Hoekstra:etal:2006;@Nieuwenhuis:etal:2011;@Weisburd:etal:2003]. Like evidence from vignette studies, however, these errors are difficult to interpret as misunderstandings of SST logic *per se*. To avoid conflating problems with statistical reasoning with motivated scientific reasoning, one must test scientists' statistical reasoning where these incentives are not in play.
+
+using a simulated experimental task, we tested researchers' and trainees' understanding and application of SST. Our key innovation allowing us to focus on SST was to prevent---or make difficult---the use of alternative strategies. If participants have poor understanding of SST, one would predict they would perform poorly and would not be sensitive to SST-related information. In fact, scientists performed well, explicitly reported using SST strategies, and were sensitive to SST-related information. Our results strongly suggest that common methods for assessing scientists' competence may miss important aspects of their statistical knowledge, and hence that the case for abandoning significance testing may be overstated.
+
+
+# Testing reasoning by withholding information
+
+In tests of perception --- e.g., of colorblindness [@Ishihara:1972] --- it is common to eliminate one cue (e.g., brightness) in order assess the ability to use another (e.g., color). If color is the only useful cue for reading a number, deficits in color vision make the number difficult to read. We adopt a similar strategy to test statistical reasoning: we eliminate numerical information from statistical results to test scientists' ability to interpret results with reference to a null sampling distribution (i.e., SST logic). Without numerical information, many other strategies and heuristics, such as confidence intervals or Bayesian inference, are difficult or impossible to apply. 
+
+Participants were scientists or trainees recruited via social media. Our statistical reasoning task required them to perform a series of experiments to judge which of two groups of Christmas elves --- "Jinglies" or "Sparklies" --- could make more of a particular toy, where the true effect size was a randomly-assigned group difference between 0 and 1 standard deviations ($\delta$). The numerical information for an experiment, including sample sizes and the test statistic, was translated into color and location and displayed as a point on a two-dimensional visual interface (Figure \ref{fig:interface}). Participants could change the sample size per group for each experiment (increasing the time required to return a result), but did not know its numerical value. The interpretation of these colors and locations was unknown to the participants, aside from the monotone relationship with the statistical evidence.
+
+```{r interface, fig.cap="The interface on which samples were reported. The $x$-axis monotonically (but nonlinearly) related to the strength of the statistical evidence ($z$ statistic) favoring one group; the $y$-axis is monotonically (but nonlinearly) related to the sample size. Underlying numerical values of the statistical evidence and sample sizes were unknown to the participant."}
+fn = system.file("pkg_html/img/clean_interface.png", package = "MoreyHoekstra2019")
+knitr::include_graphics(fn)
+
+```
+
+Participants were also offered the opportunity to sample "random shuffle reports" that were described as the results of experiments with random assignment of elves to groups: that is, the result of experiments in which the null hypothesis was true. These results took no time to return. Participants were not instructed how to use these samples, only that they might use them.
+
+After sampling as many "experiments" and "random shuffle reports" as they liked, participants could report whether they believed Jinglies or Sparklies were better, that they could not detect a difference, that there was no difference, or that they were bored and wanted to stop. Following their decision they were asked several open-ended questions about their strategy. Our key questions are whether participants can effectively find the "truth", whether they report strategies consistent with SST, and whether their behaviour shows evidence of SST use.
+
+
+```{r}
+total_n = nrow(MoreyHoekstra2019::christmas_stats_participants)
+```
+
+Here, we report the results of `r total_n` scientists or trainees who completed the statistical reasoning task. We provide an interactive app for exploring participants' responses at https://richarddmorey.shinyapps.io/explore/.
+
+# Success rates identifying effect sign
+
+```{r error_rates, fig.cap="Decision error rates as a function of true effect size. The red solid line represents the rate at which participants {\\em correctly} determined the direction of the effect, except for at an effect size of 0, where it represents an incorrect claim of an effect. The shaded region around the solid line is one standard error wide. The difference between the black and the gray dashed lines shows the proportion of participants who decided that the two groups were the same (as opposed to failing to detect a difference)."}
+MoreyHoekstra2019::fig_error_rates()
+```
+
+Decision error rates as a function of true effect size are shown in Figure \ref{fig:error_rates}.
+
+```{r}
+null_n =  sum(MoreyHoekstra2019::christmas_stats_participants$true_null)
+
+null_resp_count = MoreyHoekstra2019::christmas_stats_participants %>% 
+  filter(true_null) %>% 
+  group_by(response) %>%
+  summarise(n=n())
+
+t1_err_count = (MoreyHoekstra2019::christmas_stats_participants %>% 
+  filter(true_null, response_alt) %>% 
+  summarise(n=n()))$n
+
+null_same_count = (null_resp_count %>% filter(response=="same"))$n
+null_nodet_count = (null_resp_count %>% filter(response=="no_detect"))$n
+
+sign_err_count = nrow(MoreyHoekstra2019::christmas_stats_participants %>% 
+  filter( (effect_size<0 & response == "jinglies") | (effect_size>0 & response == "sparklies")))
+
+```
+
+Of the `r null_n` participants for whom the null hypothesis was true (i.e. $\delta=0$), `r t1_err_count` participants (`r round(t1_err_count/null_n * 100, 0)`%) incorrectly indicated an effect. This is larger than the typically-accepted 5% false positive rate in many sciences; however, participants were performing a novel task with no recourse to numbers or statistical software. Those who did not indicate an effect when $\delta=0$ tended to indicated that they *did not detect* an effect (`r null_nodet_count`; `r round(null_nodet_count/null_n * 100,0)`%), which is the correct conclusion from the SST perspective. The other `r null_same_count` (`r round(null_same_count/null_n * 100,0)`%) indicated that the groups were the same, which under SST is a fallacy.
+
+When there was a true effect ($|\delta|>0$), correct decisions increased as a function of effect size, plateauing at about 95%. Of the `r total_n - null_n` participants for whom $|\delta|>0$, only `r sign_err_count` (`r round(sign_err_count/(total_n - null_n)*100,1)`%) indicated the incorrect team [a sign, or Type S, error; @Gelman:Carlin:2014]. For larger effect sizes, participants never incorrectly indicated that the two groups were the same.
+
+Another way one can evaluate the participants' responses is whether they reflect the information in the display at the time the decision is made, taking into account all points. To roughly quantify the evidence for a difference for each participant, we computed $p$ values from the Wilcoxon rank-sum test between the shuffle reports and the fictitious experimental results as they stood when the participant made their decision. Small Wilcoxon $p$ values suggest a difference between the shuffle reports and the experiments.
+
+```{r response_ev, fig.cap="Statistical evidence underlying participants' decisions. The Wilcoxon rank-sum test $p$ value ($x$ axis) between the participants' null samples and experimental samples is used as a rough index of evidential strength. Kernel density estimates for the evidence are shown for three relevant conclusions. Each point at the bottom represents a single participant. Filled circles show correct decisions; hollow circles, incorrect decisions. The two hollow squares show sign errors."}
+MoreyHoekstra2019::fig_response_evidence()
+```
+
+
+Figure \ref{fig:response_ev} shows the distribution of Wilcoxon $p$ values (arranged by the direction of the decision). Kernel density estimates show the distributions of $p$ values when participants indicated that Sparklies were faster, no detection/same, or that Jinglies were faster. With few exceptions, participants' conclusions appear reasonable given the information in the display, though a few participants appear to ignore clear evidence of an effect.
+
+# Self-Reported SST Strategies
+
+After they reported their decision regarding which team they believed was faster, we asked participants three questions about how they performed the task: what was the most salient information for their decision, what was their general strategy, and whether/how they used the shuffle reports. 
+
+We coded their responses according to whether they indicated comparing to the shuffle reports or using them to assess sampling variability (which we term "strong" significance testing strategy), assessing asymmetry in the display (a "weak" significance testing strategy, because it ignores information), and whether they explicitly deny using the shuffle reports.
+
+```{r strategy_table}
+MoreyHoekstra2019::christmas_stats_participants %>% 
+  mutate(text_strong = text_comparison | text_sampling_var,
+               text_only_weak = (text_asymmetry | text_inc_asymmetry ) & !text_strong,
+               text_none = !(text_strong | text_only_weak),
+               text_missing = text_missing | text_irrelevant) %>%
+  summarise(Strong = sum(text_strong),
+            `Only weak` = sum(text_only_weak),
+            Neither = sum(text_none),
+            `No shuffles` = sum(text_no_shuffle),
+            `Missing` = sum(text_missing),
+            Total = n()) -> for_table
+
+for_table = rbind(for_table, paste0(round(for_table/for_table$Total * 100, 2),"%"))
+rownames(for_table) = c("Count","%")
+
+knitr::kable(for_table[,c(1:3,6,4,5)], caption = "\\label{tab:strategies} Frequencies of self-reported strategies.", format = "latex",  align =c("r", "r", "r|", "r||", "r", "r"), booktabs = TRUE)
+
+```
+
+As Table \ref{tab:strategies} shows that a large majority of participants (`r for_table[1,1]`, `r round( 100*as.numeric(for_table[1,1]) / as.numeric(for_table[1,6]), 2)`%) indicated using strong significance testing strategies. We should be cautious, however, because participants were told in the instructions that the shuffle reports could be used for assessing sampling variability. We did this to make clear what the shuffle reports were, but without explaining how to use them. To some extent, then, the text responses may reflect the instructions. However, the data strongly suggest a deeper understanding; first, among the responses were richer, lucid descriptions of SST logic, such as:
+
+> "[t]he random [shuffles] showed quite often such 'strong evidence', even at high sample sizes. That should not happen when the evidence is really strong, so probably the end of the scale was not [so] strong evidence...The random [shuffles] helped me to judge how common misleading evidence in that order of magnitude is, and after 5 samples from the real experiment I concluded that this result is probably not misleading evidence."
+
+The instructions did not tell the participants *how* they should use the shuffles reports, yet many participants gave detailed accounts. Moreover, as we show next, participants' decisions were sensitive to a key manipulation of the shuffles reports in the manner that one would expect if they were using SST logic.
+
+# Sensitivity to SST-Relevant Information
+
+```{r response_ev2, fig.height=4, fig.cap="The effect of the evidence transformation manipulation on responding. Points on top (narrow scale; $q=7$) and bottom (wide scale; $q=3$) represent participants' decisions as a function of the most extreme experiment sampled. ``N'' indicates a ``no detect'' or ``same'' response; ``J/S'' indicates a response in favor of a difference between the groups. Curves show predicted probability by a logistic regression fit with standard errors.", fig.show = "hold", fig.subcap = c("Predicted response probabilities relative to visual extremity. Vertical lines show the critical 0.05 for the corresponding null sampling distribution.","Predicted response probabilities relative to the null sampling distributions (implicit $p$ values)."), out.width = "0.90\\textwidth", fig.ncol = 1}
+glm_obj_x <- MoreyHoekstra2019::fig_evidence_scale_logistic_x()
+
+pval = .05
+
+glm_pars_x = broom::tidy(glm_obj_x)
+glm_anova_x = broom::tidy(anova(glm_obj_x, test = "Chisq"))
+glm_apa_x = papaja::apa_print.glm(glm_obj_x)
+
+pred_p = outer(c(3,7), c(3,7), function(true, z_calc){
+  plogis(predict.glm(glm_obj_x, 
+              newdata = list(ev = MoreyHoekstra2019:::evz(qnorm(1 - pval / 2), z_calc), 
+                 evidence_power = true)
+              )
+  )
+})
+dimnames(pred_p) <- list("true"=c("Wide (3)","Narrow (7)"),
+                         "z_calc"=c("Wide (3)","Narrow (7)"))
+
+glm_obj_p <- MoreyHoekstra2019::fig_evidence_scale_logistic_p()
+
+glm_pars_p = broom::tidy(glm_obj_p)
+glm_anova_p = broom::tidy(anova(glm_obj_p, test = "Chisq"))
+glm_apa_p = papaja::apa_print.glm(glm_obj_p)
+
+
+```
+
+In addition to a random effect size, participants were randomly assigned to one of two transformations of the location/color test statistic from an underlying $z$ statistic. Of particular interest was how the transformation affected responding for the same visual deviation from the center. In one condition ("wide"), the null sampling distribution was visually about twice as wide as in the other ("narrow"). If participants were using the shuffle reports to interpret the data, as would be predicted if they were using SST logic, the transformation should affect their interpretation of the visual evidence.
+
+Figure \ref{fig:response_ev2} (top) shows responses (no detect/same or Jinglies/Sparklies) as a function of the most extreme experiment sampled ($x$ axis) and the transformation. There was a strong effect of the transformation consistent with use of the null sampling distribution; participants randomly assigned to the "narrow" evidence transformation responded "Jinglies/Sparklies" for much less visually extreme evidence (sequential LRT: $\chi^2_2 = `r round(sum(glm_anova_x[3:4,3]),3)`, p<.001$). 
+
+A logistic regression relating responses to the visual extremeness of the evidence and the transformation provides predicted probabilities of responding "Jinglies/Sparklies" when the visual evidence corresponded to $p=0.05$ for the null sampling distribution. In both the wide and the narrow conditions, the predicted probability of a "Jinglies/Sparklies" response at the critical value was about 22%, despite that in the wide transformation condition this point was about twice as visually extreme. 
+
+Applying the same analysis to the responses corrected for their respective sampling distributions (Figure \ref{fig:response_ev2}, bottom) almost completely eliminates the effect of experimental condition, as would be expected if most participants were using the sampling distributions to calibrate (sequential LRT: $\chi^2_2 = `r round(sum(glm_anova_p[3:4,3]),3)`, p=`r round(1 - pchisq(sum(glm_anova_p[3:4,3]),2),3)`$).  
+
+# Discussion
+
+Although it has previously been suggested that scientists have dramatic misunderstandings of SST logic, scientists and trainees in our experiment demonstrate both understanding and the ability to use it to come to the correct conclusion in a simulated statistical task. Moreover, they report strategies consistent with SST, and the signature of SST reasoning can be seen in their responses. Because we removed numerical effect size and sample size information --- making strategies other than pure significance testing difficult or impossible to apply --- our results are strong evidence that scientists *can* successfully deploy SST logic. It is still an open question what causes SST to be misunderstood so often, but it seems comprehension of its underlying logic can be ruled out for many scientists. 
+
+Our findings echo other work showing that human reasoning can, under some conditions, be better than previously understood. [@Cosmides:Tooby:1992;@Gigerenzer:Hoffrage:1995]. Suggestions that SST be discontinued due to scientists' apparent misunderstandings may have been hasty. Of course, there may be other reasons why some favor abandoning SST, but our work shows that given the opportunity, scientists successfully deploy basic SST logic. In spite of scientists' real-life statistical behaviour often resembling a "ritual" [@Gigerenzer:etal:2004], when we eliminate the ritual --- no $p$ value, or any other familiar number, was offered --- they think statistically, very often arriving at the correct conclusion about the sign of the effect. Effective methodological reform in the sciences may be easier than abandoning significance testing, if we can harness scientists' already existing statistical competence.
+
+
+# Methods
+
+## Participants
+
+Participants were recruited via social media platforms such as Twitter and Facebook. All participants gave informed consent. Data inclusion criteria included sampling at least one shuffle report and experimental result, working in a scientific field, having at least some University education in science, and that it was their first time participating. Details are given in Supplement B.
+
+After applying all inclusion criteria, `r nrow(MoreyHoekstra2019::christmas_stats_participants)` participants remained for analysis.
+
+## Experimental Design and Procedure
+
+Each participant was randomly assigned to one of eight true effect sizes (from $\delta=0$ to $\delta=1$) and one of two evidence powers ("wide" $q=3$ or "narrow" $q=7$; see "Evidence Distributions" below).  The probability of being assigned $\delta=0$ was 25%, while the remaining effect sizes were equally probable at 11%. The probability of assignment to either evidence power was 50%.  Details are given in Table 1.1 in Supplement A.
+
+After offering informed consent, participants read the cover story and instructions. During the instructions, the participant was introduced to the task through sampling random shuffle reports. After a brief recap of the instructions, participants performed the main task --- sampling either random shuffles or experiments --- until they made a decision about which, if either, elf group was faster. They were then asked several open-ended questions about their strategy, some informational questions (results in Supplement B) and debriefed.
+
+```{r}
+med_dur = median(as.numeric(MoreyHoekstra2019::christmas_stats_participants$duration) / 60)
+
+```
+
+Qualtrics' duration estimate indicated that the median time spent on the experiment was `r round(med_dur,0)` minutes.
+
+All materials, code, and data are freely available at https://github.com/richarddmorey/Morey_Hoekstra_StatCognition.
+
+
+## Evidence distributions
+
+The evidence/horizontal ($x$) location test statistic presented to the participant was derived from a transformed $Z$ statistic:
+\[
+Z \sim \mbox{Normal}(\delta\sqrt{n/2}, 1)
+\]
+where $\delta$ is a true effect size (randomly assigned to each participant, from 0 to 1) and $n$ is the selected but unknown sample size (from 10 to 200 participants per group). $Z$ then transformed to the (-1,1) space:
+\[
+x = \mbox{sgn}(Z)\left[1 - \left(1 - F_{\chi_1^2}\left(Z^2\right)\right)^{\frac{1}{q}}\right],\ -1\leq x \leq 1.
+\]
+where $F_{\chi_1^2}$ is the cumulative distribution function of a $\chi^2_1$ random variable, and $q\in\{3,7\}$ was randomly assigned for each participant. $x=-1$ represented the left edge of the interface, $x=0$ the middle, and $x=1$ the right edge. The setting of $q$ determined how spread out the test statistic was on the display. This arbitrary transformation was done to ensure that the test statistic's distribution was unfamiliar to the participant. See Supplement A for more details, including graphical depictions of the evidence distributions.
+
+## Coding of open-ended strategy questions
+
+We determined the coding scheme and independently categorized the first 20 participant, discussing the source of disagreements. After categorizing the remaining participants, some disagreements were resolved through agreement, and a discussion between the authors was had over what caused the disagreements. The remainder of the disagreements were re-coded separately, and a final round of discussion resolved the remaining disagreements. Participants' codings described in detail in Supplement B.
+
+# References
+
+<div id="refs"></div>
+
+# End notes
+
+* **Data and materials availability**: 
+
+* Supplementary Information is linked to the online version of the paper at www.nature.com/nature 
+
+
+* **Author Contributions**: 
+
+* Reprints and permissions information is available at www.nature.com/reprints.
+
+* The authors declare no competing interests.
+
+* Correspondence and requests for materials should be addressed to Richard D. Morey (richarddmorey@gmail.com).
