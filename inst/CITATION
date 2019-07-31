@@ -3,7 +3,7 @@ note <- sprintf("R package version %s", meta$Version)
 
 bibentry(bibtype = "unpublished",
          title = "Use of significance test logic by scientists in a novel reasoning task",
-         author = c(person("Richard Donald", "Morey"),
+         author = c(person("Richard", "Morey", "Donald"),
                     person("Rink", "Hoekstra")),
          year = 2019,
          note = "unpublished manuscript",
