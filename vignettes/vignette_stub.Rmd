@@ -1,0 +1,38 @@
+---
+title: "Stub for compilation of vignettes"
+output: html_document
+vignette: >
+  %\VignetteIndexEntry{Vignette stub}
+  %\VignetteEncoding{UTF-8}
+  %\VignetteEngine{knitr::rmarkdown}
+---
+
+This file only exists to compile the main manuscript documents. 
+
+```{r compile-vignettes, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+
+outdir = normalizePath(".")
+
+dir(outdir)
+file.path(outdir, "manuscript.pdf")
+
+infile = system.file("manuscript/manuscript.Rmd", 
+                     package = "MoreyHoekstra2019")
+rmarkdown::render(input = infile,
+                  output_file =  file.path(outdir, "manuscript.pdf"))
+
+infile = system.file("manuscript/supplementA.Rmd", package = "MoreyHoekstra2019")
+rmarkdown::render(input = infile,
+                  output_file =  file.path(outdir, "supplementA.html"))
+
+infile = system.file("manuscript/supplementB.Rmd", package = "MoreyHoekstra2019")
+rmarkdown::render(input = infile,
+                  output_file =  file.path(outdir, "supplementB.html"))
+```
+
+* [Manuscript](manuscript.pdf)
+* [Supplement A](supplementA.html)
+* [Supplement B](supplementB.html)
+
+

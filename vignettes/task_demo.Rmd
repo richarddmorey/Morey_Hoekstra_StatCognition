@@ -41,7 +41,7 @@ If you wish to interactively try the task, select parameters for the task below.
   <input type="submit" value="Go">
 </form>
 
-A short video showing the task can be found under [`img/vignettes/santa_task_example.mp4`](https://github.com/richarddmorey/Morey_Hoekstra_StatCognition/blob/master/vignettes/img/santa_task_example.mp4)  (click 'View raw' to download).
+A short video showing the task can be found under [`inst/manuscript/img/santa_task_example.mp4`](https://github.com/richarddmorey/Morey_Hoekstra_StatCognition/blob/master/inst/manuscript/img/santa_task_example.mp4)  (click 'View raw' to download).
 
 Users of the `MoreyHoekstra2019` R package can also load a version of the experimental task:
 

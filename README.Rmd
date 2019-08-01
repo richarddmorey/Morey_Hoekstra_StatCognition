@@ -41,7 +41,7 @@ devtools::install_github("richarddmorey/Morey_Hoekstra_StatCognition")
 
 ## Task demonstration
 
-A short video showing the task can be found under [`img/vignettes/santa_task_example.mp4`](https://github.com/richarddmorey/Morey_Hoekstra_StatCognition/blob/master/vignettes/img/santa_task_example.mp4)  (click 'View raw' to download).
+A short video showing the task can be found under [`inst/manuscript/img/santa_task_example.mp4`](https://github.com/richarddmorey/Morey_Hoekstra_StatCognition/blob/master/inst/manuscript/img/santa_task_example.mp4)  (click 'View raw' to download).
 
 You can find an [online version of the task demonstration](articles/task_demo.html).
 

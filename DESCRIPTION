@@ -27,8 +27,9 @@ Suggests:
     rmdformats,
     kableExtra,
     broom,
-    gt
-VignetteBuilder: knitr
+    gt,
+    R.rsp
+VignetteBuilder: knitr, R.rsp
 Remotes: 
     crsh/papaja,
     rstudio/gt
