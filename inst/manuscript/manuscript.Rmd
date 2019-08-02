@@ -268,4 +268,6 @@ We determined the coding scheme and independently categorized the first 20 parti
 
 * The authors declare no competing interests.
 
-* Correspondence and requests for materials should be addressed to Richard D. Morey (richarddmorey@gmail.com).
+* Correspondence and requests for materials should be addressed to Richard D. Morey (richarddmorey@gmail.com). 
+
+* Compiled `r Sys.time()` (`r Sys.timezone()`) under `r version$version.string`.

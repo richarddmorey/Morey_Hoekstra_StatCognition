@@ -564,6 +564,10 @@ gridExtra::grid.arrange(p1, p2, ncol = 2)
 
 ```
 
+-------
 
+*Compiled `r Sys.time()` (`r Sys.timezone()`) under `r version$version.string`.*
+
+-------
 
 # References

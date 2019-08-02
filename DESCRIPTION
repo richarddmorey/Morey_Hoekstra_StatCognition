@@ -5,7 +5,7 @@ Authors@R:
     c(
     person(given = "Richard",
            family = "Morey",
-           middle = "Donald",
+           middle = "D.",
            role = c("aut", "cre"),
            email = "richarddmorey@gmail.com"),
     person(given = "Rink",
@@ -28,7 +28,9 @@ Suggests:
     kableExtra,
     broom,
     gt,
-    R.rsp
+    R.rsp,
+    here,
+    fs
 VignetteBuilder: knitr, R.rsp
 Remotes: 
     crsh/papaja,

@@ -26,13 +26,13 @@ packages that are not on CRAN:
 
 Then you can install this package with
 
-    devtools::install_github("richarddmorey/Morey_Hoekstra_StatCognition")
+    devtools::install_github("richarddmorey/Morey_Hoekstra_StatCognition", build_vignettes = TRUE, depedencies = TRUE)
 
 Task demonstration
 ------------------
 
 A short video showing the task can be found under
-[`img/vignettes/santa_task_example.mp4`](https://github.com/richarddmorey/Morey_Hoekstra_StatCognition/blob/master/vignettes/img/santa_task_example.mp4)
+[`inst/manuscript/img/santa_task_example.mp4`](https://github.com/richarddmorey/Morey_Hoekstra_StatCognition/blob/master/inst/manuscript/img/santa_task_example.mp4)
 (click ‘View raw’ to download).
 
 You can find an [online version of the task

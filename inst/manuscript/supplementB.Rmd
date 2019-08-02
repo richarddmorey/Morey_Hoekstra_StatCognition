@@ -256,3 +256,8 @@ cat(table_label(X))
 ```
 
 
+
+-------
+
+*Compiled `r Sys.time()` (`r Sys.timezone()`) under `r version$version.string`.*
+

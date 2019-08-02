@@ -12,5 +12,5 @@ knitr::opts_chunk$set(collapse = TRUE, comment = "#>")
 * **Supplement A** <a href="../extras/supplementA.html" target="_blank">(supplementA.html)</a>: Methodological details and additional analyses
 * **Supplement B** <a href="../extras/supplementB.html" target="_blank">(supplementB.html)</a>: Data inclusion criteria, coding details, and breakdown of participant information/demographics
 
-The Rmarkdown (`.Rmd`) source of these documents may be found in the [`vignettes/`](https://github.com/richarddmorey/Morey_Hoekstra_StatCognition/tree/master/vignettes) subfolder of the project (note that each filename has a "`_`" prepended for technical reasons).
+The Rmarkdown (`.Rmd`) source of these documents may be found in the [`inst/manuscript/`](https://github.com/richarddmorey/Morey_Hoekstra_StatCognition/tree/master/inst/manuscript) subfolder of the project.
 
