@@ -36,7 +36,7 @@ A short video showing the task can be found under
 (click ‘View raw’ to download).
 
 You can find an [online version of the task
-demonstration](articles/task_demo.html).
+demonstration](https://richarddmorey.github.io/Morey_Hoekstra_StatCognition/articles/task_demo.html).
 
 Users of the package can also load a version of the experimental task
 from within R:
