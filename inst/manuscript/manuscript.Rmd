@@ -63,18 +63,18 @@ Despite statistical significance testing (SST) use in a majority of research pro
 
 Oakes' basic method and results have been replicated and extended with various groups, showing that students [@Falk:Greenbaum:1995], instructors [@Haller:Krauss:2002], and statisticians [@Lecoutre:etal:2003] all misinterpret SST results. Moreover, these misinterpretations are difficult to eliminate even through targeted interventions [@Kalinowski:etal:2008]. As a result, many have argued that use of SST should be discontinued or dramatically reduced, and may even contribute to wide-spread replication problems in the sciences [@Carver:1978;@Oakes:1986;@Fidler:2006;@The:2011;@Wasserstein:Lazar:2016].
 
-The interpretation of studies of researchers' understanding of SST are limited, however, by their methodology. A typical study presents a vignette describing research results. Statistical results are offered to the participants (e.g., a $t$ statistic and $p$ value), who are then asked to explicitly give or endorse various interpretations that are thought to represent participants' understanding of SST. However, there are reasons to be cautious of drawing strong conclusions from these studies, including the abstract nature of such vignettes, the lack of investment researchers have in the fictional research, and their disconnection from research activity (e.g., experimentation and replication). It is unclear how well vignette studies (including ones by the present authors; @Hoekstra:etal:2014]) tap understanding of the core logic of SST or, say, familiarity with the technical terminology used to present statistical results. Conceptual understanding and fluency with common representations are both important, but are distinct.
+The interpretation of studies of researchers' understanding of SST are limited, however, by their methodology. A typical study presents a vignette describing research results. Statistical results are offered to the participants (e.g., a $t$ statistic and $p$ value), who are then asked to explicitly give or endorse various interpretations that are thought to represent participants' understanding of SST. However, there are reasons to be cautious of drawing strong conclusions from these studies, including the abstract nature of such vignettes, the lack of investment researchers have in the fictional research, and their disconnection from research activity (e.g., experimentation and replication). It is unclear how well vignette studies (including ones by the present authors [@Hoekstra:etal:2014]) tap understanding of the core logic of SST or, say, familiarity with the technical terminology used to present statistical results. Conceptual understanding and fluency with common representations are both important, but are distinct.
 
 A second major piece of evidence for misunderstandings of SST logic is reasoning errors in published papers. [@Gelman:Stern:2006;@Hoekstra:etal:2006;@Nieuwenhuis:etal:2011;@Weisburd:etal:2003]. Like evidence from vignette studies, however, these errors are difficult to interpret as misunderstandings of SST logic *per se*. To avoid conflating problems with statistical reasoning with motivated scientific reasoning, one must test scientists' statistical reasoning where these incentives are not in play.
 
-using a simulated experimental task, we tested researchers' and trainees' understanding and application of SST. Our key innovation allowing us to focus on SST was to prevent---or make difficult---the use of alternative strategies. If participants have poor understanding of SST, one would predict they would perform poorly and would not be sensitive to SST-related information. In fact, scientists performed well, explicitly reported using SST strategies, and were sensitive to SST-related information. Our results strongly suggest that common methods for assessing scientists' competence may miss important aspects of their statistical knowledge, and hence that the case for abandoning significance testing may be overstated.
+Using a simulated experimental task, we tested researchers' and trainees' understanding and application of SST. Our key innovation allowing us to focus on SST was to prevent---or make difficult---the use of alternative strategies. If participants have poor understanding of SST, one would predict they would perform poorly and would not be sensitive to SST-related information. In fact, scientists performed well, explicitly reported using SST strategies, and were sensitive to SST-related information. Our results strongly suggest that common methods for assessing scientists' competence may miss important aspects of their statistical knowledge, and hence that the case for abandoning significance testing may be overstated.
 
 
 # Testing reasoning by withholding information
 
 In tests of perception --- e.g., of colorblindness [@Ishihara:1972] --- it is common to eliminate one cue (e.g., brightness) in order assess the ability to use another (e.g., color). If color is the only useful cue for reading a number, deficits in color vision make the number difficult to read. We adopt a similar strategy to test statistical reasoning: we eliminate numerical information from statistical results to test scientists' ability to interpret results with reference to a null sampling distribution (i.e., SST logic). Without numerical information, many other strategies and heuristics, such as confidence intervals or Bayesian inference, are difficult or impossible to apply. 
 
-Participants were scientists or trainees recruited via social media. Our statistical reasoning task required them to perform a series of experiments to judge which of two groups of Christmas elves --- "Jinglies" or "Sparklies" --- could make more of a particular toy, where the true effect size was a randomly-assigned group difference between 0 and 1 standard deviations ($\delta$). The numerical information for an experiment, including sample sizes and the test statistic, was translated into color and location and displayed as a point on a two-dimensional visual interface (Figure \ref{fig:interface}). Participants could change the sample size per group for each experiment (increasing the time required to return a result), but did not know its numerical value. The interpretation of these colors and locations was unknown to the participants, aside from the monotone relationship with the statistical evidence.
+Participants were scientists or trainees recruited via social media. Our statistical reasoning task required them to perform a series of experiments to judge which of two groups of "Christmas elves" --- "Jinglies" or "Sparklies" --- could make more of a particular toy, where the true effect size was a randomly-assigned group difference between 0 and 1 standard deviations ($\delta$). Because the study was run around the Christmas holiday season, it was hoped that the theme would make the task more enjoyable. The numerical information for an experiment, including sample size and the test statistic, was translated into color and location and displayed as a point on a two-dimensional visual interface (Figure \ref{fig:interface}). Participants could change the sample size per group for each experiment (increasing the time required to return a result), but did not know its numerical value. Importantly, the meaning of the colors and locations was unknown to the participants, aside from the monotone relationship with the sample size and statistical evidence.
 
 ```{r interface, fig.cap="The interface on which samples were reported. The $x$-axis monotonically (but nonlinearly) related to the strength of the statistical evidence ($z$ statistic) favoring one group; the $y$-axis is monotonically (but nonlinearly) related to the sample size. Underlying numerical values of the statistical evidence and sample sizes were unknown to the participant."}
 fn = system.file("pkg_html/img/clean_interface.png", package = "MoreyHoekstra2019")
@@ -82,7 +82,7 @@ knitr::include_graphics(fn)
 
 ```
 
-Participants were also offered the opportunity to sample "random shuffle reports" that were described as the results of experiments with random assignment of elves to groups: that is, the result of experiments in which the null hypothesis was true. These results took no time to return. Participants were not instructed how to use these samples, only that they might use them.
+Participants were also offered the opportunity to sample "random shuffle reports" that were described as the results of experiments with random assignment of elves to groups: that is, the result of experiments in which the null hypothesis was true. These results took no time to return. Participants were not told how to use these samples, only that they might use them.
 
 After sampling as many "experiments" and "random shuffle reports" as they liked, participants could report whether they believed Jinglies or Sparklies were better, that they could not detect a difference, that there was no difference, or that they were bored and wanted to stop. Following their decision they were asked several open-ended questions about their strategy. Our key questions are whether participants can effectively find the "truth", whether they report strategies consistent with SST, and whether their behaviour shows evidence of SST use.
 
@@ -138,7 +138,7 @@ Figure \ref{fig:response_ev} shows the distribution of Wilcoxon $p$ values (arra
 
 After they reported their decision regarding which team they believed was faster, we asked participants three questions about how they performed the task: what was the most salient information for their decision, what was their general strategy, and whether/how they used the shuffle reports. 
 
-We coded their responses according to whether they indicated comparing to the shuffle reports or using them to assess sampling variability (which we term "strong" significance testing strategy), assessing asymmetry in the display (a "weak" significance testing strategy, because it ignores information), and whether they explicitly deny using the shuffle reports.
+We coded their responses according to whether they indicated comparing to the shuffle reports or using them to assess sampling variability (which we term "strong" significance testing strategies), assessing asymmetry in the display (a "weak" significance testing strategy, because it ignores information), and whether they explicitly deny using the shuffle reports.
 
 ```{r strategy_table}
 MoreyHoekstra2019::christmas_stats_participants %>% 
@@ -249,7 +249,7 @@ where $F_{\chi_1^2}$ is the cumulative distribution function of a $\chi^2_1$ ran
 
 ## Coding of open-ended strategy questions
 
-We determined the coding scheme and independently categorized the first 20 participant, discussing the source of disagreements. After categorizing the remaining participants, some disagreements were resolved through agreement, and a discussion between the authors was had over what caused the disagreements. The remainder of the disagreements were re-coded separately, and a final round of discussion resolved the remaining disagreements. Participants' codings described in detail in Supplement B.
+We determined the coding scheme and independently categorized the first 20 participant, discussing the source of disagreements. After categorizing the remaining participants, some disagreements were resolved through mutual agreement, and a discussion between the authors was had over what caused the disagreements. The remainder of the disagreements were re-coded separately, and a final round of discussion resolved the remaining disagreements. Participants' codings described in detail in Supplement B.
 
 # References
 
@@ -257,14 +257,10 @@ We determined the coding scheme and independently categorized the first 20 parti
 
 # End notes
 
-* **Data and materials availability**: 
-
-* Supplementary Information is linked to the online version of the paper at www.nature.com/nature 
+* **Data and materials availability**: All materials, code, and data are freely available at https://github.com/richarddmorey/Morey_Hoekstra_StatCognition.
 
 
-* **Author Contributions**: 
-
-* Reprints and permissions information is available at www.nature.com/reprints.
+* **Author Contributions**: RDM conceptualized and designed the study in consultation with RH. RDM analysed the data and created the materials and figures. The manuscript was written by RDM and RH.
 
 * The authors declare no competing interests.
 

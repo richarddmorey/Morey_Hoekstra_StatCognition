@@ -14,3 +14,6 @@ knitr::opts_chunk$set(collapse = TRUE, comment = "#>")
 
 The Rmarkdown (`.Rmd`) source of these documents may be found in the [`inst/manuscript/`](https://github.com/richarddmorey/Morey_Hoekstra_StatCognition/tree/master/inst/manuscript) subfolder of the project.
 
+* **ReprohackNL feedback letter ** <a href="../extras/reprohack2019_feedback_letter.pdf" target="_blank">(reprohack2019_feedback_letter.pdf)</a>: Feedback from participants in [ReprohackNL (2019)](https://reprohacknl.github.io/ReproHack/) who attempted to reproduce the results in the manuscript from the data (including tables and figures). All results were successfully reproduced.
+
+

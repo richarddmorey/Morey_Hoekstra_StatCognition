@@ -26,7 +26,7 @@ packages that are not on CRAN:
 
 Then you can install this package with
 
-    devtools::install_github("richarddmorey/Morey_Hoekstra_StatCognition", build_vignettes = TRUE, depedencies = TRUE)
+    devtools::install_github("richarddmorey/Morey_Hoekstra_StatCognition", build_vignettes = TRUE, dependencies = TRUE)
 
 Task demonstration
 ------------------

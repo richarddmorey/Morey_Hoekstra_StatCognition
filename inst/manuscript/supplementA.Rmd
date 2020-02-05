@@ -161,14 +161,14 @@ knitr::include_graphics(fn)
 
 ## One participant's final result
 
-```{r null-ex,echo = FALSE, out.width='100%', fig.cap="Caption"}
+```{r null-ex,echo = FALSE, out.width='100%', fig.cap="Selected participant's random shuffle report samples."}
 idx = 7
 id = MoreyHoekstra2019::christmas_stats_participants$id[idx]
 fn = MoreyHoekstra2019::fig_recreate_display(id, "null", letter = "N")
 knitr::include_graphics(fn)
 ```
 
-```{r expt-ex,echo = FALSE, out.width='100%', fig.cap="Caption"}
+```{r expt-ex,echo = FALSE, out.width='100%', fig.cap="Selected participant's experimental samples."}
 fn = MoreyHoekstra2019::fig_recreate_display(id, "expt", letter = "E")
 knitr::include_graphics(fn)
 
@@ -212,7 +212,7 @@ This strategy would require extensive knowledge of statistical theory and, likel
 
 Bayesian inference, being dependent on the likelihood, is saddled with the difficulties outlined above, as well as an additional one: the Bayesian has need of a prior. As Jaynes points out, Bayesian inference requires specified alternative. Typically, this would be a set of alternatives rendered as a prior distribution over some parameter, $p(\theta)$. In this problem, there is no clear parameter and hence it is not clear what the prior would be placed on. Additionally, the sample sizes are unknown, leading to the problem that it is unclear how a Bayesian would update their prior to the posterior; the sample sizes are clearly relevant information, but hidden from the analyst.  The final difficulty is that the likelihood is unknown due to the arbitrary transform applied to the $z$ statistic.
 
-Suppose, however, that the Bayesian analyst knew about the transformation, and applied the strategy described in the previous section to reverse-engineer the transformation back to $z$ scores. The inference about $\delta$ would be dependent on their prior about the sample sizes. As emphasized by Bayesians who appeal to the Jeffreys-Lindley paradox [@Lindley:1957], the statistical support for the null hypothesis $\delta=0$ depend on the sample size such that assuming larger sample sizes guarantees evidence for the null hypothesis. The inference about $\delta$ is completely confounded with $n$: assuming larger $n$ means inferring smaller $\delta$. 
+Suppose, however, that the Bayesian analyst knew about the transformation, and applied the strategy described in the previous section to reverse-engineer the transformation back to $z$ scores. The inference about $\delta$ would be dependent on their prior about the sample sizes. As emphasized by Bayesians who appeal to the Jeffreys-Lindley paradox [@Lindley:1957], the statistical support for the null hypothesis $\delta=0$ depends on the sample size such that assuming larger sample sizes guarantees evidence for the null hypothesis. The inference about $\delta$ is completely confounded with $n$: assuming larger $n$ means inferring smaller $\delta$. 
 
 It is possible that a Bayesian making just the right assumptions, and working very hard to reverse-engineer the transformation, could perform the task well. However, their inference would be dependent on these strong assumptions. 
 
@@ -222,7 +222,7 @@ No participant reported using such a strategy (or anything like it).
 
 Question: "Do you understand why the random shuffle reports could be useful?"
 
-```{r shuffle-understanding, fig.caption="Caption"}
+```{r shuffle-understanding, fig.caption="Frequencies of responses to the initial question, \"Do you understand why the random shuffle reports could be useful?\""}
 MoreyHoekstra2019::fig_shuffle_understanding()
 ```
 
@@ -237,11 +237,11 @@ Question: How confident are you in your assessment above?
 * Very confident 
 
 
-```{r confidence-null, fig.cap="Caption"}
+```{r confidence-null, fig.cap="Reported confidence ratings (vertical axis) in their response for participants who judged that they either could not detect a difference between the groups, or that the groups were the same, by true effect size (horizontal axis). Columns with very vew participants in them (when the effect size was large, but they did not respond that there was a difference) are faded to indicate lack of trustworthiness of the frequencies."}
 MoreyHoekstra2019::fig_confidence(which_resp = "null")
 ```
 
-```{r confidence-alt, fig.cap="Caption"}
+```{r confidence-alt, fig.cap="Reported confidence ratings (vertical axis) in their response for participants who judged that they either could not detect a difference between the groups, or that the groups were the same, by true effect size (horizontal axis)."}
 MoreyHoekstra2019::fig_confidence(which_resp = "alt")
 ```
 
@@ -351,7 +351,7 @@ This section reports a few analyses based on the coded open-text responses. Anal
 
 We can compare error rates of those who reported using a strong significance-testing strategy versus ones who did not. 
 
-```{r fig.cap="Proportion who have a 'difference' response as a function of effect size, for participants who were coded as reported 0, 1, or 2 strong significance testing strategies. Ribbons are standard errors."}
+```{r fig.cap="Proportion who have a \"difference\" response as a function of effect size, for participants who were coded as reported 0, 1, or 2 strong significance testing strategies. Ribbons are standard errors."}
 
 dat <- MoreyHoekstra2019::christmas_stats_participants %>%
   mutate(n_strong = text_sampling_var + text_comparison) %>%

@@ -36,7 +36,7 @@ devtools::install_github("rstudio/gt")
 Then you can install this package with
 
 ``` r
-devtools::install_github("richarddmorey/Morey_Hoekstra_StatCognition", build_vignettes = TRUE, depedencies = TRUE)
+devtools::install_github("richarddmorey/Morey_Hoekstra_StatCognition", build_vignettes = TRUE, dependencies = TRUE)
 ```
 
 ## Task demonstration

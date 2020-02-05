@@ -10,7 +10,8 @@ tmpdir = tempdir()
 
 which_files = c("MoreyHoekstra2019/inst/doc/manuscript.pdf",
                 "MoreyHoekstra2019/inst/doc/supplementA.html",
-                "MoreyHoekstra2019/inst/doc/supplementB.html")
+                "MoreyHoekstra2019/inst/doc/supplementB.html",
+                "MoreyHoekstra2019/inst/reprohack/reprohack2019_feedback_letter.pdf")
 which_dirs = c("MoreyHoekstra2019/inst/pkg_html")
 
 pkg_file = devtools::build( pkg = here(),
