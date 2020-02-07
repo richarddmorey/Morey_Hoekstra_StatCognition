@@ -14,7 +14,9 @@
 #' @export
 #'
 #' @examples
-#' fig_strategies()
+#' suppressWarnings(
+#'   fig_strategies()
+#' )
 fig_strategies <- function(
   filter_func = function(data, ...) return(data),
   print_plot = TRUE
@@ -57,7 +59,7 @@ fig_strategies <- function(
     coord_flip() +
     theme_classic() +
     theme(legend.position = "top",
-          text = element_text(size=12),
+          text = element_text(size=12, family = pkg_options("ggplot_family")),
           plot.margin = unit(c(0,1,0,0), "cm")) +
     xlab("Sig. test content in text") -> g
 

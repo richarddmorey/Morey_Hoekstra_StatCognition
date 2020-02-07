@@ -14,7 +14,9 @@
 #'
 #' @export
 #' @examples
-#' fig_sampling_behavior()
+#' suppressWarnings(
+#'   fig_sampling_behavior()
+#' )
 fig_sampling_behavior <- function(
   filter_func = function(data, ...) return(data),
   print_plot = TRUE
@@ -40,7 +42,8 @@ fig_sampling_behavior <- function(
     ) +
     scale_y_continuous(trans = "log10") +
     ylab("Null samples") +
-    xlab("Effect size") -> g1
+    xlab("Effect size") +
+    theme(text = element_text(family = pkg_options("ggplot_family"))) -> g1
 
   dat %>%
     MASS::rlm(log(n_expt) ~ abs(effect_size), data = .) -> rlm_obj_expt
@@ -60,7 +63,8 @@ fig_sampling_behavior <- function(
     ) +
     scale_y_continuous(trans = "log10") +
     ylab("Experimental samples") +
-    xlab("Effect size") -> g2
+    xlab("Effect size") +
+    theme(text = element_text(family = pkg_options("ggplot_family"))) -> g2
 
   g0 <- ggpubr::ggarrange(
     g1,

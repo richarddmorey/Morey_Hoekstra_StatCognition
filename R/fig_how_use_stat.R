@@ -10,7 +10,9 @@
 #'
 #' @export
 #' @examples
-#' fig_how_use_stat()
+#' suppressWarnings(
+#'   fig_how_use_stat()
+#' )
 fig_how_use_stat <- function(
   filter_func = function(data, ...) return(data),
   print_plot = TRUE
@@ -47,7 +49,8 @@ fig_how_use_stat <- function(
     xlab("Reported use of statistics in position") + ylab("Proportion of participants") +
     ylim(0, 1) +
     theme_bw() +
-    theme(legend.position = "none") +
+    theme(legend.position = "none",
+          text = element_text(family = pkg_options("ggplot_family"))) +
     geom_hline(yintercept = c(0, 1)) +
     geom_text(
       stat = "identity",
@@ -56,7 +59,8 @@ fig_how_use_stat <- function(
         label = summaries * nrow(dat),
         group = 1
       ),
-      hjust = -.2
+      hjust = -.2,
+      family = pkg_options("ggplot_family")
     ) +
     coord_flip() -> g
 

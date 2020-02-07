@@ -4,8 +4,11 @@
 \alias{fig_confidence}
 \title{Response confidence ratings}
 \usage{
-fig_confidence(which_resp = c("null", "alt"), shade_limit = 20,
-  filter_func = function(data, ...) return(data))
+fig_confidence(
+  which_resp = c("null", "alt"),
+  shade_limit = 20,
+  filter_func = function(data, ...) return(data)
+)
 }
 \arguments{
 \item{which_resp}{Which responses to plot (responses indicating null or alt)}

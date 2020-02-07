@@ -16,7 +16,7 @@ which_dirs = c("MoreyHoekstra2019/inst/pkg_html")
 
 pkg_file = devtools::build( pkg = here(),
                             path = tmpdir,
-                            quiet = TRUE )
+                            quiet = FALSE )
 
 untar( pkg_file,
        files = c( which_files, which_dirs ),

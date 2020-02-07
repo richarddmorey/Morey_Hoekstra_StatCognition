@@ -4,8 +4,14 @@
 \alias{fig_desc_evidence}
 \title{Show distributions of the "evidence" as a function of sample size, evidence scale/power, and true effect size}
 \usage{
-fig_desc_evidence(n = 10, q = 7, d = NULL, letter = "",
-  scale_y_on = 1, d_scale = 1)
+fig_desc_evidence(
+  n = 10,
+  q = 7,
+  d = NULL,
+  letter = "",
+  scale_y_on = 1,
+  d_scale = 1
+)
 }
 \arguments{
 \item{n}{sample sizes (single value or vector)}

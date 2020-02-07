@@ -4,8 +4,10 @@
 \alias{fig_sig_testing_opinion}
 \title{Distribution of opinions about significance testing in sample}
 \usage{
-fig_sig_testing_opinion(filter_func = function(data, ...) return(data),
-  print_plot = TRUE)
+fig_sig_testing_opinion(
+  filter_func = function(data, ...) return(data),
+  print_plot = TRUE
+)
 }
 \arguments{
 \item{filter_func}{function to filter the data before plotting}
@@ -19,5 +21,7 @@ Invisibly returns the ggplot object
 Distribution of opinions about significance testing in sample
 }
 \examples{
-fig_sig_testing_opinion()
+suppressWarnings(
+  fig_sig_testing_opinion()
+)
 }

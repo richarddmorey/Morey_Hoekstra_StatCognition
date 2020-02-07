@@ -10,7 +10,9 @@
 #'
 #' @export
 #' @examples
-#' fig_preferred_method()
+#' suppressWarnings(
+#'   fig_preferred_method()
+#' )
 fig_preferred_method <- function(
   filter_func = function(data, ...) return(data),
   print_plot = TRUE
@@ -33,7 +35,8 @@ fig_preferred_method <- function(
              )) +
     geom_text(stat = "identity",
               aes(y = p, label = n, group = 1),
-              hjust = -.2) +
+              hjust = -.2,
+              family = pkg_options("ggplot_family")) +
     ylim(0, 1) +
     #coord_cartesian(ylim = c(0,1), expand = FALSE, clip = "off") +
     theme_bw() +
@@ -41,7 +44,7 @@ fig_preferred_method <- function(
       panel.grid.major.y = element_blank(),
       panel.grid.minor.y = element_blank(),
       #panel.background = element_blank(),
-      text = element_text()
+      text = element_text(family = pkg_options("ggplot_family"))
     ) +
     geom_hline(yintercept = c(0, 1)) +
     xlab("Preferred statistical method") +

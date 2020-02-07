@@ -4,8 +4,10 @@
 \alias{fig_sampling_behavior}
 \title{Number of samples per participant for each activity, by effect size}
 \usage{
-fig_sampling_behavior(filter_func = function(data, ...) return(data),
-  print_plot = TRUE)
+fig_sampling_behavior(
+  filter_func = function(data, ...) return(data),
+  print_plot = TRUE
+)
 }
 \arguments{
 \item{filter_func}{function to filter the data before plotting}
@@ -20,5 +22,7 @@ and the result of the robust regression analysis
 Number of samples per participant for each activity, by effect size
 }
 \examples{
-fig_sampling_behavior()
+suppressWarnings(
+  fig_sampling_behavior()
+)
 }

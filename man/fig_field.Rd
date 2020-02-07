@@ -4,8 +4,7 @@
 \alias{fig_field}
 \title{Distribution of self-reported scientific field in the sample}
 \usage{
-fig_field(filter_func = function(data, ...) return(data),
-  print_plot = TRUE)
+fig_field(filter_func = function(data, ...) return(data), print_plot = TRUE)
 }
 \arguments{
 \item{filter_func}{function to filter the data before plotting}
@@ -19,5 +18,7 @@ Invisibly returns the ggplot object
 Distribution of self-reported scientific field in the sample
 }
 \examples{
-fig_field()
+suppressWarnings(
+  fig_field()
+)
 }

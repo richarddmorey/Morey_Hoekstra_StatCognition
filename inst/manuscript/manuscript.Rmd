@@ -47,10 +47,13 @@ source(
   system.file("font/font_setup.R", package = "MoreyHoekstra2019")
 )
 
+MoreyHoekstra2019::pkg_options(ggplot_family="Lato Light")
+
 knitr::opts_chunk$set(echo = FALSE, 
                       warning = FALSE,
                       message = FALSE,
-                      out.width = "0.95\\textwidth")
+                      out.width = "0.95\\textwidth",
+                      dev = "cairo_pdf")
 
 library(dplyr)
 library(papaja)
@@ -95,7 +98,7 @@ Here, we report the results of `r total_n` scientists or trainees who completed 
 
 # Success rates identifying effect sign
 
-```{r error_rates, fig.cap="Decision error rates as a function of true effect size. The red solid line represents the rate at which participants {\\em correctly} determined the direction of the effect, except for at an effect size of 0, where it represents an incorrect claim of an effect. The shaded region around the solid line is one standard error wide. The difference between the black and the gray dashed lines shows the proportion of participants who decided that the two groups were the same (as opposed to failing to detect a difference)."}
+```{r error_rates, fig.cap="Decision error rates as a function of true effect size. The red solid line represents the rate at which participants {\\em correctly} determined the direction of the effect, except for at an effect size of 0, where it represents an incorrect claim of an effect. The shaded region around the solid line is one standard error wide. The difference between the black and the gray dashed lines shows the proportion of participants who decided that the two groups were the same (as opposed to failing to detect a difference).", fig.showtext=FALSE}
 MoreyHoekstra2019::fig_error_rates()
 ```
 

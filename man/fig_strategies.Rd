@@ -4,8 +4,10 @@
 \alias{fig_strategies}
 \title{Frequencies of self-reported strategies}
 \usage{
-fig_strategies(filter_func = function(data, ...) return(data),
-  print_plot = TRUE)
+fig_strategies(
+  filter_func = function(data, ...) return(data),
+  print_plot = TRUE
+)
 }
 \arguments{
 \item{filter_func}{function to filter the data before plotting}
@@ -20,5 +22,7 @@ Coded responses to the three open-ended text questions
 about participants' strategies.
 }
 \examples{
-fig_strategies()
+suppressWarnings(
+  fig_strategies()
+)
 }

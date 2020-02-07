@@ -4,8 +4,10 @@
 \alias{fig_how_use_stat}
 \title{Distribution of self-reported ways participants use statistics}
 \usage{
-fig_how_use_stat(filter_func = function(data, ...) return(data),
-  print_plot = TRUE)
+fig_how_use_stat(
+  filter_func = function(data, ...) return(data),
+  print_plot = TRUE
+)
 }
 \arguments{
 \item{filter_func}{function to filter the data before plotting}
@@ -19,5 +21,7 @@ Invisibly returns the ggplot object
 Distribution of self-reported ways participants use statistics
 }
 \examples{
-fig_how_use_stat()
+suppressWarnings(
+  fig_how_use_stat()
+)
 }

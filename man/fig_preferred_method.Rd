@@ -4,8 +4,10 @@
 \alias{fig_preferred_method}
 \title{Distribution of self-reported preferences for statistical methods}
 \usage{
-fig_preferred_method(filter_func = function(data, ...) return(data),
-  print_plot = TRUE)
+fig_preferred_method(
+  filter_func = function(data, ...) return(data),
+  print_plot = TRUE
+)
 }
 \arguments{
 \item{filter_func}{function to filter the data before plotting}
@@ -19,5 +21,7 @@ Invisibly returns the ggplot object
 Distribution of self-reported preferences for statistical methods
 }
 \examples{
-fig_preferred_method()
+suppressWarnings(
+  fig_preferred_method()
+)
 }

@@ -4,8 +4,10 @@
 \alias{fig_error_rates}
 \title{Error/correct response rates as a function of effect size}
 \usage{
-fig_error_rates(filter_func = function(data, ...) return(data),
-  print_plot = TRUE)
+fig_error_rates(
+  filter_func = function(data, ...) return(data),
+  print_plot = TRUE
+)
 }
 \arguments{
 \item{filter_func}{function to filter the data before plotting}
@@ -19,5 +21,7 @@ Invisibly returns the ggplot object
 Error/correct response rates as a function of effect size
 }
 \examples{
-fig_error_rates()
+suppressWarnings(
+  fig_error_rates()
+)
 }

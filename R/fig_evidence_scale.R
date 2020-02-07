@@ -17,7 +17,9 @@
 #' @export
 #'
 #' @examples
-#' fig_evidence_scale_boxes()
+#' suppressWarnings(
+#'   fig_evidence_scale_boxes()
+#' )
 fig_evidence_scale_boxes <- function(
         filter_func = function(data, ...) return(data),
         print_plot = TRUE
@@ -63,7 +65,8 @@ fig_evidence_scale_boxes <- function(
                 ) +
                 #geom_point(position=position_dodge(width=0.06),aes(group=interaction(evidence_power, effect_size))) +
                 scale_y_continuous(trans = 'log10') +
-                theme(legend.position = "none") +
+                theme(legend.position = "none",
+                      text = element_text(family = pkg_options("ggplot_family"))) +
                 ylab("Number of samples") + ggtitle("Null") +
                 xlab("Effect size")
 
@@ -87,7 +90,8 @@ fig_evidence_scale_boxes <- function(
                         color = scales::hue_pal()(2)[2]
                 ) +
                 scale_y_continuous(trans = 'log10') +
-                theme(legend.position = "none") +
+                theme(legend.position = "none",
+                      text = element_text(family = pkg_options("ggplot_family"))) +
                 ylab("Number of samples") + ggtitle("Experimental") +
                 xlab("Effect size")
 

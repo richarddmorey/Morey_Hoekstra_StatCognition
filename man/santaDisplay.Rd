@@ -4,8 +4,14 @@
 \alias{santaDisplay}
 \title{HTML widget for displaying an animation of participant behavior}
 \usage{
-santaDisplay(value, label = "", tooltip = "", width = NULL,
-  height = NULL, elementId = NULL)
+santaDisplay(
+  value,
+  label = "",
+  tooltip = "",
+  width = NULL,
+  height = NULL,
+  elementId = NULL
+)
 }
 \arguments{
 \item{value}{Participant ID to display}

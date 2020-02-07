@@ -10,7 +10,9 @@
 #'
 #' @export
 #' @examples
-#' fig_response_evidence()
+#' suppressWarnings(
+#'   fig_response_evidence()
+#' )
 fig_response_evidence <- function(filter_func = function(data, ...) return(data)) {
 
   dat <- MoreyHoekstra2019::christmas_stats_participants %>%

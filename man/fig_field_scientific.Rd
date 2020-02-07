@@ -4,8 +4,10 @@
 \alias{fig_field_scientific}
 \title{Participants' reports of whether others would call their field scientific}
 \usage{
-fig_field_scientific(filter_func = function(data, ...) return(data),
-  print_plot = TRUE)
+fig_field_scientific(
+  filter_func = function(data, ...) return(data),
+  print_plot = TRUE
+)
 }
 \arguments{
 \item{filter_func}{function to filter the data before plotting}
@@ -19,5 +21,7 @@ Invisibly returns the ggplot object
 Participants' reports of whether others would call their field scientific
 }
 \examples{
-fig_field_scientific()
+suppressWarnings(
+  fig_field_scientific()
+)
 }

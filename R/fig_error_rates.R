@@ -11,7 +11,9 @@
 #' @export
 #'
 #' @examples
-#' fig_error_rates()
+#' suppressWarnings(
+#'   fig_error_rates()
+#' )
 fig_error_rates <- function(
   filter_func = function(data, ...) return(data),
   print_plot = TRUE
@@ -132,14 +134,16 @@ fig_error_rates <- function(
       x = summaries_all_null$effect_size,
       y = 1.06,
       label = paste0("(", summaries_all_null$total, ")"),
-      size = 3
+      size = 3,
+      family = pkg_options("ggplot_family")
     ) +
     annotate(
       "text",
       x = .5,
       y = 1.15,
       label = "(Number of participants)",
-      size = 3
+      size = 3,
+      family = pkg_options("ggplot_family")
     ) +
     geom_ribbon(aes(
       ymin = p - stderr,
@@ -163,7 +167,7 @@ fig_error_rates <- function(
       panel.grid.major.x = element_blank(),
       panel.grid.minor.x = element_blank(),
       panel.background = element_blank(),
-      text = element_text()
+      text = element_text(family = pkg_options("ggplot_family"))
     ) -> g
 
 

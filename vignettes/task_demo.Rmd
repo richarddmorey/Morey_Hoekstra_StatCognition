@@ -134,7 +134,7 @@ We can show see the relative visual spread of the sampling distributions by addi
 
 ```{r fig.cap="Evidence power 7, p values", out.width="60%"}
 knitr::include_graphics(
-  "../reference/figures/pvals7.png"
+  "img/pvals7.png"
 )
 # This file is located in man/figures/
 ```
@@ -143,7 +143,7 @@ And the wide null evidence distribution:
 
 ```{r fig.cap="Evidence power 3, p values", out.width="60%"}
 knitr::include_graphics(
-  "../reference/figures/pvals3.png"
+  "img/pvals3.png"
 )
 # This file is located in man/figures/
 ```

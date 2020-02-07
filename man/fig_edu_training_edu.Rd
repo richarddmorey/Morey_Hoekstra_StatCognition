@@ -4,8 +4,10 @@
 \alias{fig_edu_training_edu}
 \title{Distribution of attained educational level in the sample}
 \usage{
-fig_edu_training_edu(filter_func = function(data, ...) return(data),
-  print_plot = TRUE)
+fig_edu_training_edu(
+  filter_func = function(data, ...) return(data),
+  print_plot = TRUE
+)
 }
 \arguments{
 \item{filter_func}{function to filter the data before plotting}
@@ -19,5 +21,7 @@ Invisibly returns the ggplot object
 Distribution of attained educational level in the sample
 }
 \examples{
-fig_edu_training_edu()
+suppressWarnings(
+  fig_edu_training_edu()
+)
 }

@@ -16,5 +16,7 @@ Invisibly returns NULL
 Distribution of "evidence" in the display by response
 }
 \examples{
-fig_response_evidence()
+suppressWarnings(
+  fig_response_evidence()
+)
 }

@@ -4,8 +4,10 @@
 \alias{fig_shuffle_understanding}
 \title{Distribution of self-reported understanding of what usefulness of random shuffle reports before experiment}
 \usage{
-fig_shuffle_understanding(filter_func = function(data, ...) return(data),
-  print_plot = TRUE)
+fig_shuffle_understanding(
+  filter_func = function(data, ...) return(data),
+  print_plot = TRUE
+)
 }
 \arguments{
 \item{filter_func}{function to filter the data before plotting}
@@ -19,5 +21,7 @@ Invisibly returns the ggplot object
 Distribution of self-reported understanding of what usefulness of random shuffle reports before experiment
 }
 \examples{
-fig_shuffle_understanding()
+suppressWarnings(
+  fig_shuffle_understanding()
+)
 }

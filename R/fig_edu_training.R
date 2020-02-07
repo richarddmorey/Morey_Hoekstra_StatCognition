@@ -10,7 +10,9 @@
 #' @export
 #'
 #' @examples
-#' fig_edu_training_edu()
+#' suppressWarnings(
+#'   fig_edu_training_edu()
+#' )
 fig_edu_training_edu <- function(filter_func = function(data, ...) return(data),
                                  print_plot = TRUE) {
 
@@ -22,7 +24,8 @@ fig_edu_training_edu <- function(filter_func = function(data, ...) return(data),
     geom_bar(mapping = aes(x = education, y = ..prop.., group = 1)) +
     geom_text(stat = "count",
               aes(y = ..prop.., label = ..count.., group = 1),
-              hjust = -.2) +
+              hjust = -.2,
+              family = pkg_options("ggplot_family")) +
     ylim(0, 1) +
     #coord_cartesian(ylim = c(0,1), expand = FALSE, clip = "off") +
     theme_bw() +
@@ -30,7 +33,7 @@ fig_edu_training_edu <- function(filter_func = function(data, ...) return(data),
       panel.grid.major.y = element_blank(),
       panel.grid.minor.y = element_blank(),
       #panel.background = element_blank(),
-      text = element_text()
+      text = element_text(family = pkg_options("ggplot_family"))
     ) +
     geom_hline(yintercept = c(0, 1)) +
     xlab("Highest education") +
@@ -55,7 +58,9 @@ fig_edu_training_edu <- function(filter_func = function(data, ...) return(data),
 #' @export
 #'
 #' @examples
-#' fig_edu_training_stats()
+#' suppressWarnings(
+#'   fig_edu_training_stats()
+#' )
 fig_edu_training_stats <- function(
   filter_func = function(data, ...) return(data),
   print_plot = TRUE
@@ -77,7 +82,8 @@ fig_edu_training_stats <- function(
       label = missing,
       hjust = 1.1,
       vjust = 1.5,
-      size = 5
+      size = 5,
+      family = pkg_options("ggplot_family")
     ) +
     xlab("Self-reported years of statistical training") +
     ylab("Frequency") +
@@ -86,7 +92,7 @@ fig_edu_training_stats <- function(
       panel.grid.major.y = element_blank(),
       panel.grid.minor.y = element_blank(),
       #panel.background = element_blank(),
-      text = element_text()
+      text = element_text(family = pkg_options("ggplot_family"))
     ) +
     geom_hline(yintercept = 0) -> g
 

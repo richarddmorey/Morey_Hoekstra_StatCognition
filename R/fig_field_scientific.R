@@ -9,7 +9,9 @@
 #' @export
 #'
 #' @examples
-#' fig_field_scientific()
+#' suppressWarnings(
+#'   fig_field_scientific()
+#' )
 fig_field_scientific <- function(
   filter_func = function(data, ...) return(data),
   print_plot = TRUE
@@ -24,7 +26,8 @@ fig_field_scientific <- function(
     geom_bar(mapping = aes(x = is_science, y = ..prop.., group = 1)) +
     geom_text(stat = "count",
               aes(y = ..prop.., label = ..count.., group = 1),
-              hjust = -.2) +
+              hjust = -.2,
+              family = pkg_options("ggplot_family")) +
     ylim(0, 1) +
     #coord_cartesian(ylim = c(0,1), expand = FALSE, clip = "off") +
     theme_bw() +
@@ -32,7 +35,7 @@ fig_field_scientific <- function(
       panel.grid.major.y = element_blank(),
       panel.grid.minor.y = element_blank(),
       #panel.background = element_blank(),
-      text = element_text()
+      text = element_text(family = pkg_options("ggplot_family"))
     ) +
     geom_hline(yintercept = c(0, 1)) +
     xlab("Field is considered scientific") +

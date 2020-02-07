@@ -147,7 +147,6 @@ knitr::include_graphics(fn)
 ```{r pvals-q3, echo = FALSE, out.width='100%', fig.cap="Selected two-sided $p$ values for the null distribution of the evidence for the wide evidence distribution ($q=3$)"}
 fn = MoreyHoekstra2019::fig_evidence_p_vals(q = 3, letter = "q=3")
 knitr::include_graphics(fn)
-
 ```
 
 
@@ -222,7 +221,7 @@ No participant reported using such a strategy (or anything like it).
 
 Question: "Do you understand why the random shuffle reports could be useful?"
 
-```{r shuffle-understanding, fig.caption="Frequencies of responses to the initial question, \"Do you understand why the random shuffle reports could be useful?\""}
+```{r shuffle-understanding, fig.caption="Frequencies of responses to the initial question, \"Do you understand why the random shuffle reports could be useful?\"", fig.showtext=FALSE}
 MoreyHoekstra2019::fig_shuffle_understanding()
 ```
 
@@ -248,7 +247,7 @@ MoreyHoekstra2019::fig_confidence(which_resp = "alt")
 
 # Participant sampling behavior
 
-```{r sampling, fig.cap="Sampling behavior by effect size. Each point represents a participant. A: Number of samples from the null distribution as a function of true effect size. B: Number of samples of fictional 'experiments' as a function of true effect size. Note that the $y$ axis is logarithmically scaled. Lines are robust regression fits (Venables \\& Ripley, 2002)."}
+```{r sampling, fig.cap="Sampling behavior by effect size. Each point represents a participant. A: Number of samples from the null distribution as a function of true effect size. B: Number of samples of fictional 'experiments' as a function of true effect size. Note that the $y$ axis is logarithmically scaled. Lines are robust regression fits (Venables \\& Ripley, 2002).", fig.showtext=FALSE}
 MoreyHoekstra2019::fig_sampling_behavior()
 ```
 
@@ -302,7 +301,7 @@ We must note that although many or most of the responses clearly fit into one ca
 
 The figure below shows the frequencies of various self-reported strategies as coded by the authors.
 
-```{r strategies, fig.cap="Coded frequencies of different strategies in the open-ended responses. A \"Strong\" indicates use of comparison to the null distribution or  its use to assess sampling variability/distribution. A \"Weak only\" response indicates some indication of symmetry or asymmetry (or its use as a strategy)."}
+```{r strategies, fig.cap="Coded frequencies of different strategies in the open-ended responses. A \"Strong\" indicates use of comparison to the null distribution or  its use to assess sampling variability/distribution. A \"Weak only\" response indicates some indication of symmetry or asymmetry (or its use as a strategy).", fig.showtext=FALSE}
 MoreyHoekstra2019::fig_strategies()
 ```
 
@@ -351,7 +350,7 @@ This section reports a few analyses based on the coded open-text responses. Anal
 
 We can compare error rates of those who reported using a strong significance-testing strategy versus ones who did not. 
 
-```{r fig.cap="Proportion who have a \"difference\" response as a function of effect size, for participants who were coded as reported 0, 1, or 2 strong significance testing strategies. Ribbons are standard errors."}
+```{r fig.cap="Proportion who have a \"difference\" response as a function of effect size, for participants who were coded as reported 0, 1, or 2 strong significance testing strategies. Ribbons are standard errors.", fig.showtext=FALSE}
 
 dat <- MoreyHoekstra2019::christmas_stats_participants %>%
   mutate(n_strong = text_sampling_var + text_comparison) %>%
@@ -466,7 +465,9 @@ dat %>%
       panel.grid.major.x = element_blank(),
       panel.grid.minor.x = element_blank(),
       panel.background = element_blank(),
-      text = element_text()
+      text = element_text(
+        family = MoreyHoekstra2019::pkg_options("ggplot_family")
+        )
     )
 
 ```
@@ -477,7 +478,7 @@ Did participants who reported more strong significance testing strategies use mo
 
 Did participants who reported more strong significance testing strategies use more (or fewer) experimental samples, on average? There's not much evidence either way, but importantly (see plot) those who reported *fewer* strong significance testing strategies didn't also sample fewer experiments on average. There is nothing here to suggest they were less engaged on average.
 
-```{r fig.cap="Boxes, in order from left to right (red, green, blue) are 0, 1, and 2 strong significance testing strategies, respectively. Lines are robust regression fits. Stars show participants who indicated they did not use the random shuffle reports. Null samples (left) order from bottom to top (0, 1, 2); experimental samples (right) order is (3, 0, 1) from bottom to top."}
+```{r fig.cap="Boxes, in order from left to right (red, green, blue) are 0, 1, and 2 strong significance testing strategies, respectively. Lines are robust regression fits. Stars show participants who indicated they did not use the random shuffle reports. Null samples (left) order from bottom to top (0, 1, 2); experimental samples (right) order is (3, 0, 1) from bottom to top.", fig.showtext=FALSE}
 cnull <- dat %>%
   split(.$n_strong) %>%
   map( ~ MASS::rlm(ln_null ~ effect_size, data = .)) %>%
@@ -500,7 +501,10 @@ p1 = ggplot(dat,
               )) +
   geom_boxplot() +
   scale_y_continuous(trans = 'log10') +
-  theme(legend.position = "none") +
+  theme(legend.position = "none",
+        text = element_text(
+          family = MoreyHoekstra2019::pkg_options("ggplot_family"))
+        ) +
   ylab("Number of samples") + ggtitle("Null") +
   xlab("Effect size") +
   geom_abline(
@@ -535,7 +539,10 @@ p2 = ggplot(dat,
               )) +
   geom_boxplot() +
   scale_y_continuous(trans = 'log10') +
-  theme(legend.position = "none") +
+  theme(legend.position = "none",
+        text = element_text(
+          family = MoreyHoekstra2019::pkg_options("ggplot_family"))
+        ) +
   ylab("Number of samples") + ggtitle("Experiments") +
   xlab("Effect size") +
   geom_abline(

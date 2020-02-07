@@ -144,8 +144,10 @@
     <p>Distribution of opinions about significance testing in sample</p>
     </div>
 
-    <pre class="usage"><span class='fu'>fig_sig_testing_opinion</span>(<span class='kw'>filter_func</span> <span class='kw'>=</span> <span class='kw'>function</span>(<span class='no'>data</span>, <span class='no'>...</span>) <span class='fu'><a href='https://rdrr.io/r/base/function.html'>return</a></span>(<span class='no'>data</span>),
-  <span class='kw'>print_plot</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
+    <pre class="usage"><span class='fu'>fig_sig_testing_opinion</span>(
+  <span class='kw'>filter_func</span> <span class='kw'>=</span> <span class='kw'>function</span>(<span class='no'>data</span>, <span class='no'>...</span>) <span class='fu'><a href='https://rdrr.io/r/base/function.html'>return</a></span>(<span class='no'>data</span>),
+  <span class='kw'>print_plot</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>
+)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -165,7 +167,9 @@
     <p>Invisibly returns the ggplot object</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>fig_sig_testing_opinion</span>()</div><div class='img'><img src='fig_sig_testing_opinion-1.svg' alt='' width='576' height='384' /></div></pre>
+    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/warning.html'>suppressWarnings</a></span>(
+  <span class='fu'>fig_sig_testing_opinion</span>()
+)</div><div class='img'><img src='fig_sig_testing_opinion-1.svg' alt='' width='576' height='384' /></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

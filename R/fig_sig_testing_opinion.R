@@ -10,7 +10,9 @@
 #'
 #' @export
 #' @examples
-#' fig_sig_testing_opinion()
+#' suppressWarnings(
+#'   fig_sig_testing_opinion()
+#' )
 fig_sig_testing_opinion <- function(
   filter_func = function(data, ...) return(data),
   print_plot = TRUE
@@ -46,7 +48,8 @@ fig_sig_testing_opinion <- function(
     xlab("Opinion about significance testing") + ylab("Proportion of participants") +
     ylim(0, 1) +
     theme_bw() +
-    theme(legend.position = "none") +
+    theme(legend.position = "none",
+          text = element_text(family = pkg_options("ggplot_family"))) +
     geom_hline(yintercept = c(0, 1)) +
     geom_text(
       stat = "identity",
@@ -55,7 +58,8 @@ fig_sig_testing_opinion <- function(
         label = summaries * nrow(dat),
         group = 1
       ),
-      hjust = -.2
+      hjust = -.2,
+      family = pkg_options("ggplot_family")
     ) +
     coord_flip() -> g
 

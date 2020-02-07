@@ -4,9 +4,14 @@
 \alias{fig_evidence_scale_logistic_x}
 \title{Probability of making a "difference" decision as a function of the most extreme x value and evidence scale}
 \usage{
-fig_evidence_scale_logistic_x(pval = 0.05, seed = 1, shift_y = 0.2,
-  around_y = 0.1, jitter_y = around_y/4, filter_func = function(data,
-  ...) return(data))
+fig_evidence_scale_logistic_x(
+  pval = 0.05,
+  seed = 1,
+  shift_y = 0.2,
+  around_y = 0.1,
+  jitter_y = around_y/4,
+  filter_func = function(data, ...) return(data)
+)
 }
 \arguments{
 \item{pval}{vector of p values at which to indicate the scale of the respective null sampling distribution}
