@@ -1,12 +1,10 @@
 library(here)
 
-pkgdown::build_site( here() )
+pkgdown::build_site( here::here() )
 
 rmarkdown::render( input = here("README.Rmd"),
                    output_file = here("README.md"),
                    output_format = "md_document")
-
-tmpdir = tempdir()
 
 which_files = c("MoreyHoekstra2019/inst/doc/manuscript.pdf",
                 "MoreyHoekstra2019/inst/doc/supplementA.html",
@@ -14,9 +12,11 @@ which_files = c("MoreyHoekstra2019/inst/doc/manuscript.pdf",
                 "MoreyHoekstra2019/inst/reprohack/reprohack2019_feedback_letter.pdf")
 which_dirs = c("MoreyHoekstra2019/inst/pkg_html")
 
-pkg_file = devtools::build( pkg = here(),
+tmpdir = tempdir()
+
+pkg_file = devtools::build( pkg = here::here(),
                             path = tmpdir,
-                            quiet = FALSE )
+                            quiet = TRUE )
 
 untar( pkg_file,
        files = c( which_files, which_dirs ),

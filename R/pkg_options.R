@@ -1,7 +1,8 @@
 # Variable, global to package's namespace. 
 # This function is not exported to user space and does not need to be documented.
 MYPKGOPTIONS <- settings::options_manager(
-  ggplot_family = "Lato Light"
+  ggplot_family = "Lato Light",
+  base_family   = "lato"
 )
 
 # User function that gets exported:
@@ -14,6 +15,7 @@ MYPKGOPTIONS <- settings::options_manager(
 #' The following options are supported
 #' \itemize{
 #'  \item{\code{ggplot_family}}{(\code{character};"Lato Light") Font family to use for ggplot2 graphs }
+#'  \item{\code{base_family}}{(\code{character};"lato") Font family to use for base graphs }
 #' }
 #'
 #' @export
