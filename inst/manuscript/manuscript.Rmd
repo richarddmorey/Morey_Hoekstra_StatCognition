@@ -15,9 +15,9 @@ corresp_author_email: "moreyr@cardiff.ac.uk"
 
 
 subject:
-  - "subject 1"
-  - "subject 2"
-  - "subject 3"
+  - "Cognition and decision making"
+  - "Psychology and cognitive neuroscience"
+  - "Statistics"
 
 keywords:
   - reasoning
@@ -84,11 +84,11 @@ library(tidyr)
 library(broom)
 ```
 
-Despite statistical significance testing (SST) use in a majority of research projects across fields, there is debate over whether scientists understand SST and can use it competently. Methodologists and statistical cognition researchers point to evidence from questionnaires and vignette studies to argue that researchers do not, in fact, grasp the core logic of SST. In one highly influential study of research psychologists, Oakes [@Oakes:1986] presented six statements about a hypothetical significance test result to be categorized as true or false (e.g., "[The $p$ value provides] the probability of the null hypothesis being true"). Despite all of these statements being false, 97% of the research psychologists categorized at least one as true. Oakes argues that this shows that the participants have an "[un]sound understanding of the logic of the significance test" (p. 82).
-
+For most of the past century, the dominant method of statistical inference has been statistical significance testing (SST). In a significance test, the statistical evidence in the form of a test statistic is compared to what would be expected under a particular hypothesis (often called the "null" hypothesis). If it would be rare to observe evidence as strong as what was observed under this hypothesis, the strength of the evidence is deemed surprising enough to call the assumed hypothesis into doubt. The rarity of evidence as strong as what was observed under the assumed hypothesis---the so-called $p$ value---is the typical way that results of significance tests are reported. The key feature of SST for our purposes is the assessment of evidence by means of comparing a result to a "null" distribution.
 
 \EndFirstPage
 
+Despite the use of SST in a majority of research projects across fields, there is debate over whether scientists understand SST and can use it competently. Methodologists and statistical cognition researchers point to evidence from questionnaires and vignette studies to argue that researchers do not, in fact, grasp the core logic of SST. In one highly influential study of research psychologists, Oakes [@Oakes:1986] presented six statements about a hypothetical significance test result to be categorized as true or false (e.g., "[The $p$ value provides] the probability of the null hypothesis being true"). Despite all of these statements being false, 97% of the research psychologists categorized at least one as true. Oakes argues that this shows that the participants have an "[un]sound understanding of the logic of the significance test" (p. 82).
 
 Oakes' basic method and results have been replicated and extended with various groups, showing that students [@Falk:Greenbaum:1995], instructors [@Haller:Krauss:2002], and statisticians [@Lecoutre:etal:2003] all misinterpret SST results. Moreover, these misinterpretations are difficult to eliminate even through targeted interventions [@Kalinowski:etal:2008]. As a result, many have argued that use of SST should be discontinued or dramatically reduced, and may even contribute to wide-spread replication problems in the sciences [@Carver:1978;@Oakes:1986;@Fidler:2006;@The:2011;@Wasserstein:Lazar:2016].
 
@@ -122,7 +122,7 @@ Here, we report the results of `r total_n` scientists or trainees who completed 
 
 # Success rates identifying effect sign
 
-```{r error-rates, fig.cap="Decision error rates as a function of true effect size. The red solid line represents the rate at which participants {\\em correctly} determined the direction of the effect, except for at an effect size of 0, where it represents an incorrect claim of an effect. The shaded region around the solid line is one standard error wide. The difference between the black and the gray dashed lines shows the proportion of participants who decided that the two groups were the same (as opposed to failing to detect a difference).", fig.showtext=FALSE, out.width=".9\\columnwidth"}
+```{r error-rates, fig.cap="Correct decision and error rates as a function of true effect size. The red solid line represents the rate at which participants {\\em correctly} determined the direction of the effect, except for at an effect size of 0, where it represents an incorrect claim of an effect. The shaded region around the solid line is one standard error wide. The difference between the black and the gray dashed lines shows the proportion of participants who decided that the two groups were the same (as opposed to failing to detect a difference).", fig.showtext=FALSE, out.width=".9\\columnwidth"}
 MoreyHoekstra2019::fig_error_rates()
 ```
 
@@ -196,7 +196,15 @@ Secondly---and most importantly---the instructions did not tell the participants
 
 # Sensitivity to SST-Relevant Information
 
-```{r response-ev2, fig.height=4, fig.cap="The effect of the evidence transformation manipulation on responding. Points on top (narrow scale; $q=7$) and bottom (wide scale; $q=3$) represent participants' decisions as a function of the most extreme experiment sampled. ``N'' indicates a ``no detect'' or ``same'' response; ``J/S'' indicates a response in favor of a difference between the groups. Curves show predicted probability by a logistic regression fit with standard errors.", fig.show = "hold", fig.subcap = c("Predicted response probabilities relative to visual extremity. Vertical lines show the critical 0.05 for the corresponding null sampling distribution.","Predicted response probabilities relative to the null sampling distributions (implicit $p$ values)."), out.width=".9\\columnwidth", fig.ncol = 1}
+```{r response-pvals, fig.cap="Selected two-tailed $p$ values from the null sampling distributions of the narrow (top) and wide (bottom) conditions, projected onto the experimental interface. Participants were not shown the $p$ values; they had to intuit them by using samples from the null distribution (``random shuffle reports'').", fig.show = "hold", fig.subcap = c("Implied $p$ values for the ``narrow'' condition.","Implied $p$ values for the ``wide'' condition."), out.width=".9\\columnwidth", fig.ncol = 1}
+fn = MoreyHoekstra2019::fig_evidence_p_vals(q = 7, letter = "")
+knitr::include_graphics(fn)
+fn = MoreyHoekstra2019::fig_evidence_p_vals(q = 3, letter = "")
+knitr::include_graphics(fn)
+```
+
+
+```{r response-ev2, fig.cap="The effect of the evidence transformation manipulation on responding. Points on top (narrow scale; $q=7$) and bottom (wide scale; $q=3$) represent participants' decisions as a function of the most extreme experiment sampled. See the methods details for the interpretation of $q$. ``N'' indicates a ``no detect'' or ``same'' response; ``J/S'' indicates a response in favor of a difference between the groups. Curves show predicted probability by a logistic regression fit with standard errors.", fig.show = "hold", fig.subcap = c("Predicted response probabilities relative to visual extremity. Vertical lines show the critical 0.05 for the corresponding null sampling distribution.","Predicted response probabilities relative to the null sampling distributions (implicit $p$ values)."), out.width=".9\\columnwidth", fig.ncol = 1}
 glm_obj_x <- MoreyHoekstra2019::fig_evidence_scale_logistic_x()
 
 pval = .05
@@ -224,7 +232,10 @@ glm_apa_p = papaja::apa_print.glm(glm_obj_p)
 
 ```
 
-In addition to a random effect size, participants were randomly assigned to one of two transformations of the location/color test statistic from an underlying $z$ statistic. Of particular interest was how the transformation affected responding for the same visual deviation from the center. In one condition ("wide"), the null sampling distribution was visually about twice as wide as in the other ("narrow"). If participants were using the shuffle reports to interpret the data, as would be predicted if they were using SST logic, the transformation should affect their interpretation of the visual evidence: a visually-extreme point should be more discounted against the sampling distribution that is visually wider.
+In addition to a random effect size, participants were randomly assigned to one of two transformations of the location/color test statistic from an underlying $z$ statistic. Of particular interest was how the transformation affected responding for the same visual deviation from the center. In one condition ("wide"), the null sampling distribution was visually about twice as wide as in the other ("narrow"). If participants were using the shuffle reports to interpret the data, as would be predicted if they were using SST logic, the transformation should affect their interpretation of the visual evidence: a visually-extreme point should be more discounted against the sampling distribution that is wider.
+
+The effects of the manipulation are shown in figure \ref{fig:response-pvals}.
+
 
 Figure \ref{fig:response-ev2} (top) shows responses (no detect/same or Jinglies/Sparklies) as a function of the most extreme experiment sampled ($x$ axis) and the transformation. There was a strong effect of the transformation consistent with use of the null sampling distribution; participants randomly assigned to the "narrow" evidence transformation responded "Jinglies/Sparklies" for much less visually extreme evidence (sequential LRT: $\chi^2_2 = `r round(sum(glm_anova_x[3:4,3]),3)`, p<.001$). 
 

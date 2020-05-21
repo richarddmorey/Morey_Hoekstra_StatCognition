@@ -139,7 +139,7 @@ fig_evidence_scale_logistic_x <- function(pval = .05,
              xlab = "Most extreme evidence / x location",
              ylab = "Prob. Sparklies/Jinglies responses", xaxs = 'i',
              yaxs = 'i', axes=FALSE)
-        legend("left",legend = c("Wide (3)","Narrow (7)"), col = colors_ggplot,
+        legend("left",legend = c("Wide","Narrow"), col = colors_ggplot,
                lwd = 2, bty = 'n', lty = 1:2)
         mtext("Most extreme evidence / x location", 3, par()$mgp[1])
 
@@ -258,7 +258,7 @@ fig_evidence_scale_logistic_p <- function(pval = .05,
              xlab = "Most extreme p value",
              ylab = "Prob. Sparklies/Jinglies response", xaxs = 'i',
              yaxs = 'i', axes=FALSE)
-        legend("left",legend = c("Wide (3)","Narrow (7)"), col = colors_ggplot,
+        legend("left",legend = c("Wide","Narrow"), col = colors_ggplot,
                lwd = 2, bty = 'n', lty = 1:2)
         mtext("Most extreme p value", 3, par()$mgp[1])
 
