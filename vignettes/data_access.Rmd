@@ -1,6 +1,10 @@
-
 ---
 title: "Data and code"
+output: html_document
+vignette: >
+  %\VignetteIndexEntry{Data access}
+  %\VignetteEncoding{UTF-8}
+  %\VignetteEngine{knitr::rmarkdown}
 ---
 
 ```{r, include = FALSE}

@@ -38,7 +38,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">MoreyHoekstra2019</a>
-        <span class="version label label-unpublished" data-toggle="tooltip" data-placement="bottom" title="Unpublished manuscript">0.1</span>
+        <span class="version label label-unpublished" data-toggle="tooltip" data-placement="bottom" title="Unpublished manuscript">0.1.1</span>
       </span>
     </div>
 
@@ -91,7 +91,7 @@
 
       
 
-      </header><div class="row">
+      </header><script src="data_access_files/header-attrs-2.1/header-attrs.js"></script><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1>Data and code</h1>
@@ -108,7 +108,7 @@
 <h2 class="hasAnchor">
 <a href="#shiny-data-exploration-app" class="anchor"></a>Shiny data exploration app</h2>
 <p>Running the included shiny app will allow you to explore individual participants’ response patterns. It offers a way of getting a sense of what the data represents without mucking about with the data files themselves.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="kw"><a href="../reference/explore_data.html">explore_data</a></span>()</a></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="kw"><a href="../reference/explore_data.html">explore_data</a></span>()</span></code></pre></div>
 <p>You can access an already-deployed version of the shiny app at <a href="https://richarddmorey.shinyapps.io/explore/" class="uri">https://richarddmorey.shinyapps.io/explore/</a>.</p>
 <p>The app will let you:</p>
 <ul>
@@ -152,7 +152,7 @@
 <h2 class="hasAnchor">
 <a href="#compressed-data" class="anchor"></a>Compressed data</h2>
 <p>Because the original csv file downloaded from Qualtrics has the timestamped information for each experiment for each participant in it, the file is quite large. It is stored in compressed in a zip file in the subfolder <code>inst/extdata/</code> to save space. You can load the original file in R using the command:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="kw"><a href="../reference/load_complete_dataset.html">load_complete_dataset</a></span>()</a></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a><span class="kw"><a href="../reference/load_complete_dataset.html">load_complete_dataset</a></span>()</span></code></pre></div>
 <p>This will unzip the Qualtrics CSV file and check it against an MD5 hash. It will also do some light cleaning (filtering out non-respondents and rejected mobile users and filtering/renaming columns).</p>
 </div>
 <div id="analysis-code" class="section level2">

@@ -1,6 +1,10 @@
-
 ---
 title: "Task materials/code"
+output: html_document
+vignette: >
+  %\VignetteIndexEntry{Task materials and code}
+  %\VignetteEncoding{UTF-8}
+  %\VignetteEngine{knitr::rmarkdown}
 ---
 
 ```{r, include = FALSE}

@@ -1,6 +1,10 @@
-
 ---
 title: "Design thoughts"
+output: html_document
+vignette: >
+  %\VignetteIndexEntry{Design thoughts}
+  %\VignetteEncoding{UTF-8}
+  %\VignetteEngine{knitr::rmarkdown}
 ---
 
 ```{r, include = FALSE}

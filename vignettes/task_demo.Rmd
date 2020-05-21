@@ -1,8 +1,10 @@
-
 ---
 title: "Task demonstration"
-editor_options: 
-  chunk_output_type: console
+output: html_document
+vignette: >
+  %\VignetteIndexEntry{Task demonstration}
+  %\VignetteEncoding{UTF-8}
+  %\VignetteEngine{knitr::rmarkdown}
 ---
 
 ```{r, include = FALSE}
@@ -152,7 +154,7 @@ These distributions must be discovered by the participant by sampling the random
 
 <video style="width: 60%" controls>
   <!-- This file is located in man/figures/ -->
-  <source src="../reference/figures/double_ani.mp4" type="video/mp4">
+  <source src="https://richarddmorey.github.io/Morey_Hoekstra_StatCognition/reference/figures/double_ani.mp4" type="video/mp4">
 </video>
 
 ### Potential strategies

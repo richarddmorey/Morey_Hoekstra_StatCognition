@@ -1,4 +1,5 @@
 <!-- README.md is generated from README.Rmd. Please edit that file -->
+
 Resources for Morey & Hoekstra (2019) <img src="man/figures/logo.png" align="right" alt="" width="120" />
 =========================================================================================================
 

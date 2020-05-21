@@ -1,6 +1,10 @@
-
 ---
 title: "Manuscript and supplements"
+output: html_document
+vignette: >
+  %\VignetteIndexEntry{Manuscript and supplements}
+  %\VignetteEncoding{UTF-8}
+  %\VignetteEngine{knitr::rmarkdown}
 ---
 
 ```{r, include = FALSE}
