@@ -100,7 +100,10 @@ Using a simulated experimental task, we tested researchers' and trainees' unders
 
 # Testing reasoning by withholding information
 
-In tests of perception --- e.g., of colorblindness [@Ishihara:1972] --- it is common to eliminate one cue (e.g., brightness) in order assess the ability to use another (e.g., color). If color is the only useful cue for reading a number, deficits in color vision make the number difficult to read. We adopt a similar strategy to test statistical reasoning: we eliminate numerical information from statistical results to test scientists' ability to interpret results with reference to a null sampling distribution (i.e., SST logic). Without numerical information, many other strategies and heuristics, such as confidence intervals or Bayesian inference, are difficult or impossible to apply. 
+In tests of perception --- e.g., of colorblindness [@Ishihara:1972] --- it is common to eliminate one cue (e.g., brightness) in order assess the ability to use another (e.g., color). If color is the only useful cue for reading a number, deficits in color vision make the number difficult to read. We adopt a similar strategy to test statistical reasoning: we eliminate numerical information from statistical results to test scientists' ability to interpret results with reference to a null sampling distribution (i.e., SST logic). Without numerical information, many other strategies and heuristics, such as confidence intervals or Bayesian inference, are difficult or impossible to apply.[^1] 
+
+[^1]: A formal statistical explanation showing that the task is difficult or impossible to perform using non-SST logic is given in Section 3 of Supplement A.
+
 
 Participants were scientists or trainees recruited via social media. Our statistical reasoning task required them to perform a series of experiments to judge which of two groups of "Christmas elves" --- "Jinglies" or "Sparklies" --- could make more of a particular toy, where the true effect size was a randomly-assigned group difference between 0 and 1 standard deviations ($\delta$). Because the study was run around the Christmas holiday season, it was hoped that the theme would make the task more enjoyable. The numerical information for an experiment, including sample size and the test statistic, was translated into color and location and displayed as a point on a two-dimensional visual interface (Figure \ref{fig:interface}). Participants could change the sample size per group for each experiment (increasing the time required to return a result), but did not know its numerical value. Importantly, the meaning of the colors and locations was unknown to the participants, aside from the monotone relationship with the sample size and statistical evidence.
 
@@ -109,6 +112,7 @@ fn = system.file("pkg_html/img/clean_interface.png", package = "MoreyHoekstra201
 knitr::include_graphics(fn)
 
 ```
+
 Participants were also offered the opportunity to sample "random shuffle reports" that were described as the results of experiments with random assignment of elves to groups: that is, the result of experiments in which the null hypothesis was true. These results took no time to return. Participants were not told how to use these samples, only that they might use them.
 
 After sampling as many "experiments" and "random shuffle reports" as they liked, participants could report whether they believed Jinglies or Sparklies were better, that they could not detect a difference, that there was no difference, or that they were bored and wanted to stop. Following their decision they were asked several open-ended questions about their strategy. Our key questions are whether participants can effectively find the "truth", whether they report strategies consistent with SST, and whether their behaviour shows evidence of SST use.
