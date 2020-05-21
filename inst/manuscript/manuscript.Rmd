@@ -270,8 +270,6 @@ med_dur = median(as.numeric(MoreyHoekstra2019::christmas_stats_participants$dura
 
 Qualtrics' duration estimate indicated that the median time spent on the experiment was `r round(med_dur,0)` minutes.
 
-All materials, code, and data are freely available at https://github.com/richarddmorey/Morey_Hoekstra_StatCognition.
-
 
 ## Evidence distributions
 
