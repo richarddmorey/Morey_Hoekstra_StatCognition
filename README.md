@@ -29,6 +29,17 @@ Then you can install this package with
 
     devtools::install_github("richarddmorey/Morey_Hoekstra_StatCognition", build_vignettes = TRUE, dependencies = TRUE)
 
+### Problems installing
+
+If you have difficulties installing the package due to failure to
+compile the vignettes — particularly on Windows — you can try setting
+`build_vignettes` to `FALSE` in the command above. You can also move
+your R installation and temp folder to a location without spaces. This
+is a good idea even if turning off compilation of the vignettes solves
+the immediate problem. See
+[here](https://lcolladotor.github.io/2019/09/18/windows-user-space-issues-with-installing-r-packages/)
+for details.
+
 Task demonstration
 ------------------
 

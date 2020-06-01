@@ -1,10 +1,11 @@
 library(here)
 
-pkgdown::build_site( here::here() )
-
 rmarkdown::render( input = here("README.Rmd"),
                    output_file = here("README.md"),
                    output_format = "md_document")
+
+pkgdown::build_site( here::here() )
+
 
 which_files = c("MoreyHoekstra2019/inst/doc/manuscript.pdf",
                 "MoreyHoekstra2019/inst/doc/supplementA.html",

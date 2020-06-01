@@ -100,6 +100,11 @@
 <span id="cb1-3"><a href="#cb1-3"></a>devtools<span class="op">::</span><span class="kw">install_github</span>(<span class="st">"rstudio/gt"</span>)</span></code></pre></div>
 <p>Then you can install this package with</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a>devtools<span class="op">::</span><span class="kw">install_github</span>(<span class="st">"richarddmorey/Morey_Hoekstra_StatCognition"</span>, <span class="dt">build_vignettes =</span> <span class="ot">TRUE</span>, <span class="dt">dependencies =</span> <span class="ot">TRUE</span>)</span></code></pre></div>
+<div id="problems-installing" class="section level3">
+<h3 class="hasAnchor">
+<a href="#problems-installing" class="anchor"></a>Problems installing</h3>
+<p>If you have difficulties installing the package due to failure to compile the vignettes — particularly on Windows — you can try setting <code>build_vignettes</code> to <code>FALSE</code> in the command above. You can also move your R installation and temp folder to a location without spaces. This is a good idea even if turning off compilation of the vignettes solves the immediate problem. See <a href="https://lcolladotor.github.io/2019/09/18/windows-user-space-issues-with-installing-r-packages/">here</a> for details.</p>
+</div>
 </div>
 <div id="task-demonstration" class="section level2">
 <h2 class="hasAnchor">
