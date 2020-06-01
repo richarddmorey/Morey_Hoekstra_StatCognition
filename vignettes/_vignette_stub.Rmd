@@ -19,23 +19,20 @@ file.copy(from = system.file("manuscript",
                      package = "MoreyHoekstra2019"),
           to = outdir, recursive = TRUE)
 
-infile = file.path(outdir, "manuscript", "manuscript.Rmd")
-outfile = file.path(outdir, "manuscript", "manuscript.pdf")
-rmarkdown::render(input = infile,
+file_list = c(
+  "manuscript/manuscript"  = ".pdf",
+  "manuscript/supplementA" = ".html",
+  "manuscript/supplementB" = ".html"
+)
+
+lapply(names(file_list), function(name){
+  ext = file_list[ name ]
+  infile  = file.path(outdir, paste0(name, ".Rmd"))
+  outfile = file.path(outdir, paste0(name,    ext))
+  rmarkdown::render(input = infile,
                   output_file = outfile)
-file.copy(outfile, ".")
-
-infile = file.path(outdir, "manuscript", "supplementA.Rmd")
-outfile = file.path(outdir, "manuscript", "supplementA.html")
-rmarkdown::render(input = infile,
-                  output_file =  outfile)
-file.copy(outfile, ".")
-
-infile = file.path(outdir, "manuscript", "supplementB.Rmd")
-outfile = file.path(outdir, "manuscript", "supplementB.html")
-rmarkdown::render(input = infile,
-                  output_file =  outfile)
-file.copy(outfile, ".")
+  file.copy(outfile, ".")
+})
 
 ```
 
