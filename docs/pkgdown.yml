@@ -1,14 +1,14 @@
-pandoc: 2.7.3
+pandoc: 2.9.2.1
 pkgdown: 1.5.1
 pkgdown_sha: ~
 articles:
+  _vignette_stub: _vignette_stub.html
   data_access: data_access.html
   design_thoughts: design_thoughts.html
   man_supp: man_supp.html
   task_demo: task_demo.html
   task_materials: task_materials.html
-  _vignette_stub: _vignette_stub.html
-last_built: 2020-06-01T17:54Z
+last_built: 2020-06-01T18:09Z
 urls:
   reference: https://richarddmorey.github.io/Morey_Hoekstra_StatCognition//reference
   article: https://richarddmorey.github.io/Morey_Hoekstra_StatCognition//articles
