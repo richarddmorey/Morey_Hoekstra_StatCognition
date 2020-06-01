@@ -22,7 +22,7 @@ fig_evidence_p_vals <- function(q,
                                 ps = c(.005, .025, .05, .125, .25, .5, .75, .875, .95, .975, .995),
                                 letter = ""){
 
-  tf = tempfile(fileext = ".png")
+  tf = gsub( "\\\\", "/", tempfile(fileext = ".png") )
 
   # ima is a global variable
   img_dim = c(dim(ima)[2], dim(ima)[1])

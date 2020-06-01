@@ -13,24 +13,26 @@ This file only exists to compile the main manuscript documents.
 knitr::opts_chunk$set(echo = FALSE)
 
 
-#outdir = normalizePath(".")
-outdir = tempdir()
+outdir = tempfile(pattern = "dir")
+dir.create(outdir)
+file.copy(from = system.file("manuscript", 
+                     package = "MoreyHoekstra2019"),
+          to = outdir, recursive = TRUE)
 
-infile = system.file("manuscript/manuscript.Rmd", 
-                     package = "MoreyHoekstra2019")
-outfile = file.path(outdir, "manuscript.pdf")
+infile = file.path(outdir, "manuscript", "manuscript.Rmd")
+outfile = file.path(outdir, "manuscript", "manuscript.pdf")
 rmarkdown::render(input = infile,
                   output_file = outfile)
 file.copy(outfile, ".")
 
-infile = system.file("manuscript/supplementA.Rmd", package = "MoreyHoekstra2019")
-outfile = file.path(outdir, "supplementA.html")
+infile = file.path(outdir, "manuscript", "supplementA.Rmd")
+outfile = file.path(outdir, "manuscript", "supplementA.html")
 rmarkdown::render(input = infile,
                   output_file =  outfile)
 file.copy(outfile, ".")
 
-infile = system.file("manuscript/supplementB.Rmd", package = "MoreyHoekstra2019")
-outfile = file.path(outdir, "supplementB.html")
+infile = file.path(outdir, "manuscript", "supplementB.Rmd")
+outfile = file.path(outdir, "manuscript", "supplementB.html")
 rmarkdown::render(input = infile,
                   output_file =  outfile)
 file.copy(outfile, ".")

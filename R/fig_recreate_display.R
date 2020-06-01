@@ -23,7 +23,8 @@ fig_recreate_display <- function(id,
                                  ps =
                                    c(.005, .025, .05, .125, .25, .5, .75, .875, .95, .975, .995),
                                  letter = "") {
-  tf = tempfile(fileext = ".png")
+  tf = gsub( "\\\\", "/", tempfile(fileext = ".png") )
+  
 
   dat <- MoreyHoekstra2019::christmas_stats_participants
   samples <- MoreyHoekstra2019::christmas_stats_samples
