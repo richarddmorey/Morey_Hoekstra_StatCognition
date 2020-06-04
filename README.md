@@ -3,6 +3,8 @@
 Resources for Morey & Hoekstra (2019) <img src="man/figures/logo.png" align="right" alt="" width="120" />
 =========================================================================================================
 
+[![DOI](https://zenodo.org/badge/189821493.svg)](https://zenodo.org/badge/latestdoi/189821493)
+
 Data, analysis code, and demonstrations for Morey & Hoekstra’s (2019)
 statistical cognition experiment, which was run over the Christmas
 season in 2018. You can find more details at
