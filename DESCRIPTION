@@ -1,6 +1,6 @@
 Package: MoreyHoekstra2019
 Title: Materials for Morey and Hoekstra's (2019) statistical cognition experiment 
-Version: 0.1.1
+Version: 0.3.0
 Authors@R: 
     c(
     person(given = "Richard",
