@@ -33,7 +33,7 @@ ethics: |
   This research project was evaluated by the Cardiff University School of Psychology (application number EC.18.12.11.5526G). It was found to be within the ethical guidelines for experiments with human participants. All participants gave informed consent prior to their participation.
   
 data_accessibility: |
-  All materials, code, and data are freely available at https://github.com/richarddmorey/Morey_Hoekstra_StatCognition.
+  Data and relevant code for this research work are stored in GitHub: https://github.com/richarddmorey/Morey_Hoekstra_StatCognition and have been archived within the Zenodo repository: https://doi.org/10.5281/zenodo.3877106
 
 author_contributions: |
   RDM conceptualized and designed the study in consultation with RH. RDM analysed the data and created the materials and figures. The manuscript was written by RDM and RH.
@@ -295,5 +295,7 @@ where $F_{\chi_1^2}$ is the cumulative distribution function of a $\chi^2_1$ ran
 ## Coding of open-ended strategy questions
 
 We determined the coding scheme and independently categorized the first 20 participant, discussing the source of disagreements. After categorizing the remaining participants, some disagreements were resolved through mutual agreement, and a discussion between the authors was had over what caused the disagreements. The remainder of the disagreements were re-coded separately, and a final round of discussion resolved the remaining disagreements. The coding of participants' responses is described in detail in [Supplement B](https://richarddmorey.github.io/Morey_Hoekstra_StatCognition/articles/man_supp.html).
+
+* **Funding**: This research was not supported by external funding.
 
 * Compiled `r Sys.time()` (`r Sys.timezone()`) under `r version$version.string`.
