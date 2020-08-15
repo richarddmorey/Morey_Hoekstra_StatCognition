@@ -259,7 +259,7 @@ kt_expt <- kruskal.test(n_expt ~ factor(abs(effect_size)), data = MoreyHoekstra2
 
 Participants sought out information that would be necessary for significance tests. They made heavy use of shuffle reports (Figure A above). Across all true effect sizes, participants sampled a median of 152 shuffle reports (range: 1-2034).
 
-Participants also made use of "replications" of the fictional experiments. (Figure B above) shows the distribution of the number of experiments sampled as a function of the true effect size. Median numbers of experiments range from 20 when Jinglies and Sparklies were equally fast, down to 9 when the true effect size was $\delta=1$ and thus the effect was relatively easy to detect (`r papaja::apa_print.htest(kt_expt)$statistic`). When the effect size is small and difficult to detect, participants do more experimentation before deciding. 
+Participants also made use of "replications" of the fictional experiments. (Figure B above) shows the distribution of the number of experiments sampled as a function of the true effect size. Median numbers of experiments range from 20 when Jinglies and Sparklies were equally fast, down to 9 when the true effect size was $\delta=1$ and thus the effect was relatively easy to detect (`r papaja:::apa_print.htest(kt_expt)$statistic`). When the effect size is small and difficult to detect, participants do more experimentation before deciding. 
 
 
 # Open-ended strategy questions

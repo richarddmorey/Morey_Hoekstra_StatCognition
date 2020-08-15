@@ -217,10 +217,10 @@ pval = .05
 
 glm_pars_x = broom::tidy(glm_obj_x)
 glm_anova_x = broom::tidy(anova(glm_obj_x, test = "Chisq"))
-glm_apa_x = papaja::apa_print.glm(glm_obj_x)
+glm_apa_x = papaja::apa_print(glm_obj_x)
 
 pred_p = outer(c(3,7), c(3,7), function(true, z_calc){
-  plogis(predict.glm(glm_obj_x, 
+  plogis(predict(glm_obj_x, 
               newdata = list(ev = MoreyHoekstra2019:::evz(qnorm(1 - pval / 2), z_calc), 
                  evidence_power = true)
               )
@@ -233,7 +233,7 @@ glm_obj_p <- MoreyHoekstra2019::fig_evidence_scale_logistic_p()
 
 glm_pars_p = broom::tidy(glm_obj_p)
 glm_anova_p = broom::tidy(anova(glm_obj_p, test = "Chisq"))
-glm_apa_p = papaja::apa_print.glm(glm_obj_p)
+glm_apa_p = papaja::apa_print(glm_obj_p)
 
 
 ```
