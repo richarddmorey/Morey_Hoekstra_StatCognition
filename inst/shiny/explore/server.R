@@ -28,18 +28,51 @@ repl_text = c(
     text_missing = "Text missing"
 )
 
-
-suppressWarnings({w_stats = samples %>%
+samples %>%
     mutate(ev0 = ev * sgn) %>%
-    split(.$id) %>%
-    map( ~ wilcox.test(ev0 ~ type, alternative = "less", data = .)) %>%
-    map_dbl("p.value")})
+    split(.$id) -> data_split
 
-w_stats <- w_stats[match(dat$id, names(w_stats))]
+suppressWarnings({
+    names(data_split) %>%
+        map_df(function(id){
+            decision = dat$response[dat$id==id]
+            alt = switch(as.character(decision),
+                         "jinglies" = "greater",
+                         "sparklies" = "less",
+                         "two.sided"
+            )
+            d = data_split[[id]]
+            # This is annoying seems is necessary due to numerical precision
+            # issues with high p values
+            w2_g = wilcox.test(ev0 ~ type, alternative = "greater", data = d)
+            w2_l = wilcox.test(ev0 ~ type, alternative = "less", data = d)
+            w1_g = wilcox.test(ev0 ~ 1, alternative = "greater", data = d %>% filter(type=="expt"))
+            w1_l = wilcox.test(ev0 ~ 1, alternative = "less", data = d %>% filter(type=="expt"))
+            
+            w1_p = min(w1_l$p.value, w1_g$p.value)
+            w2_p = min(w2_l$p.value, w2_g$p.value)
+            
+            w1_winner = ifelse(w1_l$p.value<w1_g$p.value, "sparklies","jinglies")
+            w2_winner = ifelse(w2_l$p.value<w2_g$p.value, "sparklies","jinglies")
+            
+            bind_cols(id = id, two=w2_p, one=w1_p,
+                      two_winner = w2_winner, 
+                      one_winner = w1_winner)
+        }) %>%
+        mutate(lowest = pmin(one,two),
+               lowest_winner = case_when(
+                   one<two ~ one_winner,
+                   TRUE ~ two_winner
+               ),
+               qplot = case_when(
+                   lowest_winner == "jinglies" ~ -qlogis(2*lowest),
+                   TRUE ~ qlogis(2*lowest)
+               )
+        ) %>% 
+        left_join(dat, by="id") -> w_stats
+})
 
-dat$wilcoxon = ifelse(w_stats < .5,
-                      w_stats*2,
-                      (1 - w_stats)/2)
+dat$wilcoxon = 2*w_stats$lowest
 
 values <- reactiveValues(dat = dat)
 
@@ -117,7 +150,7 @@ shinyServer(function(input, output) {
              width = "90%",
              alt = "Evidence display plot")
 
-    })
+    }, deleteFile=TRUE)
 
     output$dataTable <-
         DT::renderDT(
