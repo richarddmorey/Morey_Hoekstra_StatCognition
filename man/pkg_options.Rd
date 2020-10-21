@@ -17,6 +17,7 @@ Set or get options for my package
 The following options are supported
 \itemize{
 \item{\code{ggplot_family}}{(\code{character};"Lato Light") Font family to use for ggplot2 graphs }
+\item{\code{base_family}}{(\code{character};"lato") Font family to use for base graphs }
 }
 }
 

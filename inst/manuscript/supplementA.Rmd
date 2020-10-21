@@ -569,6 +569,7 @@ where $\Phi$ is the cumulative distribution function of the standard normal dist
 The model has 9 parameters (two criteria and seven means, though the monotonicity assumption adds more constraint) for 30 non-redundant data points. The model was fit using maximum likelihood (R code is available in the source of this document).
 
 ```{r sigdet1, fig.cap="Aggregate signal detection analysis. Fitted d' for each effect size. See text for a description of the fitted model.",fig.showtext=FALSE}
+
 MoreyHoekstra2019::christmas_stats_participants %>%
   mutate(
     response = as.character(response),
@@ -578,61 +579,15 @@ MoreyHoekstra2019::christmas_stats_participants %>%
     )
   ) %>%
   group_by(effect_size, response) %>%
-  summarise(n = n()) -> freqs0
-
-freqs0 %>%
+  summarise(n = n()) %>%
   pivot_wider(names_from = "response", values_from = "n") %>%
-  replace_na(list("no detect/same"=0, "sparklies"=0, "jinglies"=0)) -> freqs
-  
-loglike = function(pars, d, return_probs = FALSE){
+  replace_na(list("no detect/same"=0, "sparklies"=0, "jinglies"=0)) %>%
+  MoreyHoekstra2019:::sigdet_model_fit() -> sd_results
 
-  mu0 = cumsum(exp(pars[1:7]))
-  mu     = c(-rev(mu0), 0, mu0)
-  crit1  = pars[8]
-  crit_d = exp(pars[9])
-  crits  = c(-Inf, crit1, crit1 + crit_d, Inf)
+dp = sd_results$dp  
 
-  Y = as.matrix(freqs[,-1])[,c(2,1,3)]
-  
-  pr = t(apply(outer(mu, crits, function(m, c) pnorm(c,m)),
-        1, diff))
-  if(return_probs) return(pr)
-  
-  -sum(Y * log(pr))
-}
+MoreyHoekstra2019::fig_dprime_effect_size()
 
-pars_init = c(rep(-.5,7),-1,1)
-
-g = optim(pars_init, loglike, d=freqs)
-mu0 = cumsum(exp(g$par[1:7]))
-dp     = c(-rev(mu0), 0, mu0)
-
-tibble(dprime = dp, effect_size = freqs$effect_size) %>%
-  ggplot(aes(x = effect_size, y = dp)) +
-  annotate("rect",xmin=-1,xmax=0,ymin=-Inf,ymax=Inf,
-           fill="blue", alpha = .2, linetype=0) +
-  annotate("rect",xmin=1,xmax=0,ymin=-Inf,ymax=Inf,
-           fill="red", alpha = .2, linetype=0) +
-  annotate("text", x = -1, y = 0, angle = 90, color = "blue", label="Sparklies", vjust=1.1, size = 5,
-           family = MoreyHoekstra2019::pkg_options("ggplot_family")
-           ) +
-  annotate("text", x = 1, y = 0, angle = -90, color = "red", label="Jinglies", vjust=1.1, size = 5,
-           family = MoreyHoekstra2019::pkg_options("ggplot_family")
-           ) +
-  geom_line() +
-  geom_point(size = 2) +
-  scale_y_continuous(name = "Estimated d'", expand = c(0,0)) +
-  scale_x_continuous(name = "Effect size", expand = c(0,0)) +
-  coord_cartesian(clip="off") +
-  geom_point(x=0,y=0,size=2, shape = 21, color = "black", fill = "white") +
-  theme_minimal() +
-  theme(
-      panel.grid.minor.y = element_blank(),
-      panel.grid.major.x = element_blank(),
-      panel.grid.minor.x = element_blank(),
-      panel.background = element_blank(),
-      text = element_text(family = MoreyHoekstra2019::pkg_options("ggplot_family"))
-    )
 
 ```
 
@@ -641,64 +596,7 @@ Figure \@ref(fig:sigdet1) shows the estimated $d'$ parameters as a function of e
 
 ```{r sigdet2, fig.cap = "Observed and fitted probabilities for each effect size and response. Lines show predicted probabilities; ribbons show where 68% of the observed probabilities should fall given the predicted probabilities. These limits are approximate due to the discreteness of the response.",fig.showtext=FALSE}
 
-
-loglike(g$par, freqs, return_probs = TRUE) %>%
-  `[`(,c(2,1,3)) %>%
-  data.frame() %>%
-  `colnames<-`(colnames(freqs)[-1]) %>%
-  mutate(effect_size = !!freqs$effect_size) %>%
-  pivot_longer(cols=1:3,names_to = "response", values_to = "predicted") %>%
-  left_join(freqs0, by = c("effect_size", "response")) %>%
-  complete(n, fill = list(n=0)) %>%
-  arrange(effect_size) %>%
-  group_by(effect_size) %>%
-  mutate(n_total = sum(n),
-         prob_obs = n / n_total) %>%
-  mutate(
-    pred_lo = qbinom(pnorm(-1), n_total, predicted)/n_total,
-    pred_up = qbinom(pnorm(1), n_total, predicted)/n_total
-    ) -> error_rates
-
-error_rates %>%
-  mutate(response = tools::toTitleCase(response)) %>%
-  ggplot(aes(x=effect_size,y=predicted,group=response,color=response)) +
-  geom_segment(aes(x=effect_size,xend=effect_size), y=0, yend=1, color = "gray", alpha = .5, size = .2) +
-  geom_line() +
-  geom_ribbon(aes(ymin=pred_lo,ymax=pred_up,fill=response), alpha=.3, linetype=0) +
-  scale_x_continuous(limits=c(-1,1),expand=c(0,0), name = "Effect size", breaks = round(unique(error_rates$effect_size),2)) +
-  scale_y_continuous(limits=c(0,1.25),expand=c(0,0), name = "Probability", breaks = seq(0,1,.2)) +
-  scale_color_manual(name="Response", values = c("#FF0000", "#999999", "#0000FF")) +
-  scale_fill_manual(name="Response",values = c("#FF0000", "#999999", "#0000FF")) +
-  geom_point(aes(y = prob_obs)) +
-  coord_cartesian(clip="off") +
-  annotate(
-    "text",
-    x = freqs$effect_size,
-    y = 1.06,
-    label = paste0("(", rowSums(freqs[,2:4]), ")"),
-    size = 3,
-    angle = 90,
-    family = MoreyHoekstra2019::pkg_options("ggplot_family")
-  ) +
-  annotate(
-    "text",
-    x = 0,
-    y = 1.20,
-    label = "(Number of participants)",
-    size = 3,
-    family = MoreyHoekstra2019::pkg_options("ggplot_family")
-    ) +
-    theme_minimal() +
-    theme(
-      panel.grid.minor.y = element_blank(),
-      panel.grid.major.x = element_blank(),
-      panel.grid.minor.x = element_blank(),
-      panel.background = element_blank(),
-      axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1),
-      text = element_text(family =MoreyHoekstra2019::pkg_options("ggplot_family")),
-      legend.position = "top"
-    )
-
+MoreyHoekstra2019::fig_error_rates_dprime()
 ```
 
  Figure \@ref(fig:sigdet2) shows the predicted and observed probabilities of all responses. The good fit of this model licenses the interpretation of the $d'$ parameters and the collapsing across the sign of the effect in Figure 3 of the main document.
