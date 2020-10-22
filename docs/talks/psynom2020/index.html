@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>Can scientists use significance test logic?</title>
+    <meta charset="utf-8" />
+    <script src="libs/header-attrs-2.4.6/header-attrs.js"></script>
+    <link href="libs/remark-css-0.0.1/ninjutsu.css" rel="stylesheet" />
+    <link href="libs/anchor-sections-1.0/anchor-sections.css" rel="stylesheet" />
+    <script src="libs/anchor-sections-1.0/anchor-sections.js"></script>
+    <link rel="stylesheet" href="xaringan-themer.css" type="text/css" />
+    <link rel="stylesheet" href="include/css/custom_slides.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+class: left, middle, my-title, title-slide
+
+# Can scientists use significance test logic?
+## Richard D. Morey &amp; Rink Hoekstra
+### 
+
+---
+
+
+&lt;!--script src="https://hypothes.is/embed.js" async&gt;&lt;/script--&gt;
+
+
+
+&lt;style&gt;
+.faded{
+opacity: .3;
+}
+.red{
+color: red;
+}
+&lt;/style&gt;
+
+
+
+
+# A methodological controversy
+
+
+&lt;center&gt;
+&lt;img src="img/controversy.png" style="width:75%;" class="no_border" alt="Examples of article or book titles blaming significance testing for problems in research"/&gt;
+&lt;/center&gt;
+
+---
+
+# Two kinds of evidence
+
+### Evidence from statistical cognition
+
+* Studies show misinterpretations
+  * ...but are participants understanding what's being asked?
+  * ...do misinterpretations of specific technical concepts pose a problem?
+
+
+### Evidence from practice
+
+* People often misinterpret `\(p\)` values in papers (eg fallacy of acceptance)
+  * ...but to what extent are these due to motivated reasoning?
+
+
+
+---
+
+# Boiling it down
+
+&lt;br/&gt;
+
+* Expectation about evidence under a single, null hypothesis
+* Unexpectedly extreme evidence taken to contradict hypothesis
+
+#### Can we test &lt;i&gt;just&lt;/i&gt; this? 
+
+
+#### Desired features
+
+* Disallow common heuristics `\((p&lt;0.05)\)`
+* Disallow alternative strategies 
+* Allow dynamic interaction/exploration
+* Compare to a *correct* answer
+
+No numbers, no `\(p\)` values, no test statistics...just raw significance test reasoning.
+
+---
+
+# Evidence width manipulation
+
+&lt;center&gt;
+&lt;video style="width: 85%;" controls&gt;
+  &lt;source src="img/santa_task_example.mp4" type="video/mp4"&gt;
+Your browser does not support the video tag.
+&lt;/video&gt; 
+&lt;/center&gt;
+
+
+
+---
+
+# Experimental manipulations
+
+* Winning "team" (left/right)
+* True effect size (8 levels, `\(\delta=0,...,\delta=1\)`)
+* "Width" of visual display (2 levels)
+  * Arbitrary transformation from test statistic
+
+
+### "Good" reasoners:
+
+* Able to find correct answer
+* Low false positive rate
+* Sensitivity to true effect size
+* *Lack of* sensitivity to irrelevant information
+
+
+---
+
+
+# Evidence width manipulation
+
+&lt;center&gt;
+&lt;video style="width: 35%;" controls&gt;
+  &lt;source src="img/double_ani.mp4" type="video/mp4"&gt;
+Your browser does not support the video tag.
+&lt;/video&gt; 
+&lt;/center&gt;
+
+---
+
+# Participants
+
+&lt;br/&gt;
+* Participants recruited via social media (Facebook, Twitter, email)
+* Open from 16 December, 2018 to 1 January, 2019
+
+* After exclusions, 506 scientists/trainees remain
+  * Must be a scientist/trainee
+  * At least some undergraduate education
+  * Drawn at least one "null" and one "experimental" sample
+  
+  
+  
+---
+
+## Responses by effect size
+
+
+&lt;img src="index_files/figure-html/unnamed-chunk-1-1.svg" width="60%" style="display: block; margin: auto;" /&gt;
+
+---
+
+
+
+
+
+# Effect of width manipulation
+&lt;img src="index_files/figure-html/output_evscale1_15-1.svg" width="60%" style="display: block; margin: auto;" /&gt;
+---
+# Effect of width manipulation
+&lt;img src="index_files/figure-html/output_evscale1_17-1.svg" width="60%" style="display: block; margin: auto;" /&gt;
+---
+# Effect of width manipulation
+&lt;img src="index_files/figure-html/output_evscale1_22-1.svg" width="60%" style="display: block; margin: auto;" /&gt;
+---
+# Effect of width manipulation
+&lt;img src="index_files/figure-html/output_evscale1_27-1.svg" width="60%" style="display: block; margin: auto;" /&gt;
+---
+# Effect of width manipulation
+&lt;img src="index_files/figure-html/output_evscale1_31-1.svg" width="60%" style="display: block; margin: auto;" /&gt;
+
+---
+
+
+
+  
+
+
+# Effect of visual extremeness
+&lt;img src="index_files/figure-html/output_evscale2_18-1.svg" width="60%" style="display: block; margin: auto;" /&gt;
+---
+# Effect of visual extremeness
+&lt;img src="index_files/figure-html/output_evscale2_21-1.svg" width="60%" style="display: block; margin: auto;" /&gt;
+---
+# Effect of visual extremeness
+&lt;img src="index_files/figure-html/output_evscale2_35-1.svg" width="60%" style="display: block; margin: auto;" /&gt;
+---
+# Effect of visual extremeness
+&lt;img src="index_files/figure-html/output_evscale2_39-1.svg" width="60%" style="display: block; margin: auto;" /&gt;
+
+---
+
+# Strategies
+
+&gt; "What facts or observations were most salient in coming to the conclusion that you did (whatever that was)?"
+
+&gt; "Please describe your experimental strategy, if any, in your own words."
+
+&gt; "Did you make use of the 'random shuffle reports'? If so, how?"
+
+* **Strong strategies**: comparison against null distribution, sampling variability
+* **Weak strategies**: sign logic, asymmetry
+
+---
+
+# Strategies
+
+* Strong:
+
+&gt; "...the random dots showed quite often such 'strong evidence', even at high sample sizes. That should not happen when the evidence is really strong, so probably the end of the scale was not soo strong evidence...The random patterns helped me to judge how common misleading evidence in that order of magnitude is..."
+
+* Weak:
+
+&gt; "On most of the trials, the team on the left was faster with pretty much evidence, regardless of sample size."
+
+
+* Irrelevant
+
+---
+
+# Strategies
+
+&lt;img src="index_files/figure-html/unnamed-chunk-4-1.svg" width="60%" style="display: block; margin: auto;" /&gt;
+
+
+---
+
+# Conclusions
+
+&lt;br/&gt;
+
+* Significance testing logic can be successfully used by scientists
+* The reasoning needn't be seen as "backward"!
+* What's *really* causing problems?
+  * Motivated reasoning?
+  * Incentives?
+  * Human factors of *instantiations* of the logic?
+  * Sloppy writing?
+
+--
+
+### Take home point
+
+* If scientists *can* successfully reason with significance testing, reform efforts are best spent elsewhere!
+* What you conclude about reasoning depends on *how you study it*. 
+
+---
+
+# Thank you
+
+&lt;br/&gt;&lt;br/&gt;
+Manuscript, supplements, materials, data, code, and more available at http://bit.ly/ChristmasStats.
+
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"slideNumberFormat": "",
+"ratio": "16:9",
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlides": false
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>

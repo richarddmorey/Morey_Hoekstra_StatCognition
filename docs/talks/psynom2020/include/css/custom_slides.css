@@ -1,0 +1,44 @@
+
+.title-slide h1 {
+  color: rgba(185, 224, 241, 1);
+}
+
+.title-slide h2 {
+  color: rgba(1, 46, 113, 1);
+}
+
+.title-slide h3:nth-of-type(1) {
+  color: gray;
+}
+.title-slide h3:nth-of-type(2) {
+  color: gray;
+}
+
+.inverse, .hljs-github {
+  background-image: url(img/Slide2_logo.png); 
+  background-size: cover;
+}
+
+.title-slide {
+  background-image: url(img/Slide1_logo.png);
+}
+
+.gt_table {
+  background-color: #fff;
+}
+
+th thead {
+  background-color: #fff;
+}
+
+p > img {
+  border: 1px solid black;
+}
+
+center > img {
+  border: 1px solid black;
+}
+
+.no_border {
+  border: none;
+}
