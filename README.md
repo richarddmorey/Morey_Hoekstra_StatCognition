@@ -8,7 +8,7 @@ Resources for Morey & Hoekstra (2019) <img src="man/figures/logo.png" align="rig
 Data, analysis code, and demonstrations for Morey & Hoekstra’s (2019)
 statistical cognition experiment, which was run over the Christmas
 season in 2018. You can find more details at
-<a href="https://richarddmorey.github.io/Morey_Hoekstra_StatCognition/" class="uri">https://richarddmorey.github.io/Morey_Hoekstra_StatCognition/</a>.
+<https://richarddmorey.github.io/Morey_Hoekstra_StatCognition/>.
 
 -   [Installation](#installation)
 -   [Task demonstration](#task-demonstration)
@@ -66,7 +66,7 @@ participants’ response patterns.
     explore_data()
 
 You can access an already-deployed version of the shiny app at
-<a href="https://richarddmorey.shinyapps.io/explore/" class="uri">https://richarddmorey.shinyapps.io/explore/</a>.
+<https://richarddmorey.shinyapps.io/explore/>.
 
 The app will let you:
 

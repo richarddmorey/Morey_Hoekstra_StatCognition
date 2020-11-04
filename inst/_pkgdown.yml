@@ -51,6 +51,7 @@ articles:
       breakdowns of participant information/demographics.
     contents:
       - man_supp
+      - design_thoughts
 figures:
   dev: grDevices::svg
   dev.args: []

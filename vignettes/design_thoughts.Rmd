@@ -11,7 +11,7 @@ vignette: >
 knitr::opts_chunk$set(collapse = TRUE, comment = "#>")
 ```
 
-As we were writing the paper and analyzing participant repsonses, we had a number of thoughts that might be helpful for interpreting the results and designing future studies. We include them here.
+As we were writing the paper and analyzing participant responses, we had a number of thoughts that might be helpful for interpreting the results and designing future studies. We include them here.
 
 ## Fallacies/errors in the responses
 
@@ -19,9 +19,9 @@ As we were writing the paper and analyzing participant repsonses, we had a numbe
 
 The task did not specify what the "evidence" was; in reality, it was a transformed $z$ statistic. Like most test statistics, it was engineered to have the same distribution for all sample sizes. 
 
-Many participants were confused by the fact that the variablility of the random shuffle reports did not decrease with N, apparently expecting the "evidence" to be a like an effect size (e.g., decreasing sampling uncertainty with increasing sample size). They took the lack of difference in sampling variability to mean that there was very little difference between the *sample sizes* from small to large, or that the sample size was already very large. 
+Many participants were confused by the fact that the variability of the random shuffle reports did not decrease with N, apparently expecting the "evidence" to be like an effect size (e.g., decreasing sampling uncertainty with increasing sample size). They took the lack of difference in sampling variability to mean that there was very little difference between the *sample sizes* from small to large, or that the sample size was already very large. 
 
-A representative comment is *R_1kZDBRI07FeT7mM*, who said they used the smallest sample size because the random shuffle distribution didn't change with the sample size.
+A representative comment along these lines is *R_1kZDBRI07FeT7mM*, who said they used the smallest sample size because the random shuffle distribution didn't change with the sample size.
 
 ### Shuffle reports as data
 
@@ -33,7 +33,7 @@ Some people used the random shuffle reports to learn about the task, to check as
 
 ### Confusions between power and sample size
 
-For instance, *R_2CVYgvlxT5zVGTk* said "I conducted 3 highly powered studies to detect even small differences. The results were not conclusive and had similar variability as a shuffle study." Because the sample sizes were unknown and there was no measure of effect size was calculable, participants had no way of assessing the power of the design they chose; in fact, they had no way of even knowing what that design was. Moreover, power requires a decision criterion, and none was given.
+For instance, *R_2CVYgvlxT5zVGTk* said "I conducted 3 highly powered studies to detect even small differences. The results were not conclusive and had similar variability as a shuffle study." Because the sample sizes were unknown and no measure of effect size was calculable, participants had no way of assessing the power of the design they chose; in fact, they had no way of even knowing what that sample size was. Moreover, power requires a decision criterion, and none was given.
 
 ### Fooled by random "patterns"
 
@@ -43,7 +43,7 @@ Sometimes people were tricked by seeing patterns in random variation (e.g., *R_2
 
 ### Sampling delay
 
-There was a mix of people saying the experiments took too long and others who said that they didn't, and the participants used a variety of sample sizes (ie, they didn't automatically use the largest sample size all the time). This seems to indicate that we were successful in inducing people to think about trade-offs in resource use.
+There was a mix of people saying the experiments took too long and others who said that they didn't, and the participants used a variety of sample sizes (i.e., they didn't automatically use the largest sample size all the time). This seems to indicate that we were successful in inducing people to think about trade-offs in resource use.
 
 ### Instructions
 
@@ -58,7 +58,8 @@ Some people complained about the overlap between the points in the interface. We
 
 The task was meant to be intuitive in a way that vignettes are often not: many vignettes use technical terminology like $t$ statistics and $p$ values outside of the context of any other results. The danger is that although people might understand the basic logic of significance testing, they may not strongly grasp this particular way of expressing the result.
 
-However, our task suffers from this same issue (though to a leser extent, we would argue). We made use of ideas in the instructions such as "null" and "sampling distribution", which are part of scientists' training. This allowed us to make use of scientists' prior knowledge and spend less time training them in the task. 
+However, our task suffers from this same issue (though to a lesser extent, we would argue). We made use of ideas in the instructions such as "null" and "sampling distribution", which are part of scientists' training. This allowed us to make use of scientists' prior knowledge and spend less time training them in the task. 
+
 Other populations will not know such terms. A failure to properly train participants from other populations may result in poor performance, for the simple reason that these participants don't understand the task (not because they can't reason about it). Translating the task to other populations will require care.
 
 
