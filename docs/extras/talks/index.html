@@ -1,0 +1,1034 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>Can scientists use significance test logic?</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Richard D. Morey" />
+    <script src="libs/header-attrs-2.10/header-attrs.js"></script>
+    <link href="libs/remark-css-0.0.1/ninjutsu.css" rel="stylesheet" />
+    <link rel="stylesheet" href="xaringan-themer.css" type="text/css" />
+    <link rel="stylesheet" href="include/css/custom_slides.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+class: left, bottom, my-title, title-slide
+
+# Can scientists use significance test logic?
+## Evidence from a novel reasoning task
+### Richard D. Morey
+### Essex Summer School // 16 August 2021
+
+---
+
+
+&lt;!--script src="https://hypothes.is/embed.js" async&gt;&lt;/script--&gt;
+
+
+
+&lt;style&gt;
+.faded{
+opacity: .3;
+}
+.red{
+color: red;
+}
+&lt;/style&gt;
+
+
+
+
+# A methodological controversy
+
+&lt;center&gt;
+&lt;img src="img/controversy.png" style="width:85%;"/&gt;
+&lt;/center&gt;
+
+---
+
+## Discontinue significance testing?
+
+* Oakes (1986) argues that significance testing should be discontinued.
+* Fidler (2006): "[o]ne of the most compelling arguments against NHST is its tendency to be misinterpreted".
+* The (2011): "there’s very little ground for using concepts which are so poorly understood".
+* Wasserstein &amp; Lazar (2016): Argue that misunderstandings of significance testing are an important cause of the reproducibility crisis in the sciences.
+
+### Argument is common among CI/Bayes reformers.
+
+---
+
+# Oakes (1986)
+
+&gt; Suppose you have a treatment which you suspect may alter performance on a certain task. You compare the means of your control and experimental groups (say 20 subjects in each sample). Further, suppose you use a simple independent means `\(t\)` test and your result is `\((t=2.7, d.f. 18, p=0.01)\)` Please mark each of the statements [] as 'true' or 'false'.
+
+---
+
+# Oakes (1986)
+
+### Which of these follow?
+
+1. You have absolutely disproved the null hypothesis (that there is no difference between the population means).
+
+--
+
+2. You have found the probability of the null hypothesis being true.
+
+--
+
+3. You have absolutely proved your experimental hypothesis (that there is a difference between the population means).
+
+--
+
+4. You can deduce the probability of the experimental hypothesis being true.
+
+--
+
+5. You know, if you decided to reject the null hypothesis, the probability that you are making the wrong decision.
+
+--
+
+6. You have a reliable experimental finding in the sense that if, hypothetically, the experiment were repeated a great number of times, you would obtain a significant result on 99% of occasions.
+
+---
+
+## Oakes (1986)
+
+<div id="bapsbzxpdg" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>html {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
+}
+
+#bapsbzxpdg .gt_table {
+  display: table;
+  border-collapse: collapse;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#bapsbzxpdg .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#bapsbzxpdg .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#bapsbzxpdg .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 0;
+  padding-bottom: 6px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#bapsbzxpdg .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#bapsbzxpdg .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#bapsbzxpdg .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#bapsbzxpdg .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#bapsbzxpdg .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#bapsbzxpdg .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#bapsbzxpdg .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#bapsbzxpdg .gt_group_heading {
+  padding: 8px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#bapsbzxpdg .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#bapsbzxpdg .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#bapsbzxpdg .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#bapsbzxpdg .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#bapsbzxpdg .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 12px;
+}
+
+#bapsbzxpdg .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#bapsbzxpdg .gt_first_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+}
+
+#bapsbzxpdg .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#bapsbzxpdg .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#bapsbzxpdg .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#bapsbzxpdg .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#bapsbzxpdg .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#bapsbzxpdg .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding: 4px;
+}
+
+#bapsbzxpdg .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#bapsbzxpdg .gt_sourcenote {
+  font-size: 90%;
+  padding: 4px;
+}
+
+#bapsbzxpdg .gt_left {
+  text-align: left;
+}
+
+#bapsbzxpdg .gt_center {
+  text-align: center;
+}
+
+#bapsbzxpdg .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#bapsbzxpdg .gt_font_normal {
+  font-weight: normal;
+}
+
+#bapsbzxpdg .gt_font_bold {
+  font-weight: bold;
+}
+
+#bapsbzxpdg .gt_font_italic {
+  font-style: italic;
+}
+
+#bapsbzxpdg .gt_super {
+  font-size: 65%;
+}
+
+#bapsbzxpdg .gt_footnote_marks {
+  font-style: italic;
+  font-weight: normal;
+  font-size: 65%;
+}
+</style>
+<table class="gt_table">
+  <thead class="gt_header">
+    <tr>
+      <th colspan="4" class="gt_heading gt_title gt_font_normal" style>Frequencies of ‘true’ responses</th>
+    </tr>
+    <tr>
+      <th colspan="4" class="gt_heading gt_subtitle gt_font_normal gt_bottom_border" style>Oakes (1986), p. 80, Table 3.2.1.</th>
+    </tr>
+  </thead>
+  <thead class="gt_col_headings">
+    <tr>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1"></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1">Statement</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1"><i>f</i></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">%</th>
+    </tr>
+  </thead>
+  <tbody class="gt_table_body">
+    <tr><td class="gt_row gt_center">(1)</td>
+<td class="gt_row gt_left">The null hypothesis is absolutely disproved</td>
+<td class="gt_row gt_right">1</td>
+<td class="gt_row gt_right">1.4</td></tr>
+    <tr><td class="gt_row gt_center">(2)</td>
+<td class="gt_row gt_left">The probability of the null hypothesis has been found</td>
+<td class="gt_row gt_right">25</td>
+<td class="gt_row gt_right">35.7</td></tr>
+    <tr><td class="gt_row gt_center">(3)</td>
+<td class="gt_row gt_left">The experimental hypothesis is absolutely proved</td>
+<td class="gt_row gt_right">4</td>
+<td class="gt_row gt_right">5.7</td></tr>
+    <tr><td class="gt_row gt_center">(4)</td>
+<td class="gt_row gt_left">The probability of the experimental hypothesis can be deduced</td>
+<td class="gt_row gt_right">46</td>
+<td class="gt_row gt_right">65.7</td></tr>
+    <tr><td class="gt_row gt_center">(5)</td>
+<td class="gt_row gt_left">The probability that the decision taken is wrong is known</td>
+<td class="gt_row gt_right">60</td>
+<td class="gt_row gt_right">85.7</td></tr>
+    <tr><td class="gt_row gt_center">(6)</td>
+<td class="gt_row gt_left">Replications have a 0.99 probability of being significant</td>
+<td class="gt_row gt_right">42</td>
+<td class="gt_row gt_right">60.0</td></tr>
+  </tbody>
+  
+  
+</table>
+</div>
+
+
+---
+
+## Decades of work
+
+* Oakes (1986): Research psychologists
+* Falk &amp; Greenbaum (1995): psychology students
+* Haller &amp; Krauss (2002): students, researchers, methods teachers 
+* Kalinowski et al (2008): Intervention only helped marginally
+
+---
+
+## Other examples
+
+### Lai et al (2012)
+
+&gt; "Suppose you conduct a study to compare a Treatment
+and a Control group, each with size `\(N = 40\)`. A large
+sample test, based on the normal distribution, of the
+difference between the two means for your independent
+groups gives `\(z = 2.33, p = .02\)` (two-tailed)."
+
+&gt; "Suppose you carry out the experiment a further 10
+times, with everything identical but each time with
+new samples of the same size (each `\(N = 40\)` ). Consider
+what p values you might obtain. Please enter
+10 `\(p\)` values that, in your opinion, could plausibly
+be obtained in this series of replications. (Please, no
+calculations, and no debate about what model might
+be appropriate! We are interested in your guesstimate,
+your intuitions!)"
+
+
+---
+
+## Lai et al (2012)
+
+* "Almost all `\((133/136; 97.8\%)\)` of the subjective `\(p\)` intervals were shorter than the correct interval, meaning that almost all respondents underestimated the variance of replication `\(p\)`."
+
+* "If researchers do not appreciate that an experiment could easily have given an extremely different `\(p\)` value...they are likely to rely too heavily on the `\(p\)` value they happen to obtain."
+
+### Maybe...
+
+---
+
+# Two kinds of evidence
+
+### Evidence from statistical cognition
+
+* Studies show misinterpretations
+  * ...but are participants understanding what's being asked?
+  * ...do misinterpretations of specific technical concepts pose a problem?
+
+--
+
+### Evidence from practice
+
+* People often misinterpret `\(p\)` values in papers (eg fallacy of acceptance)
+  * ...but to what extent are these due to motivated reasoning?
+
+--
+
+### Can we study *statistical reasoning* by itself?
+
+---
+
+# Boiling it down
+
+&lt;br/&gt;
+
+* Expectation about evidence under a single, null hypothesis
+* Unexpectedly extreme evidence taken to contradict hypothesis
+
+#### Can we test &lt;i&gt;just&lt;/i&gt; this? 
+
+--
+
+#### Desired features
+
+* Disallow common heuristics `\((p&lt;0.05)\)`
+* Disallow alternative strategies 
+* Allow dynamic interaction/exploration
+* Compare to a *correct* answer
+
+No numbers, no `\(p\)` values, no test statistics...just raw significance test reasoning.
+
+---
+
+# Battle of the Christmas Elves
+
+
+&lt;center&gt;
+&lt;img src="img/Christmas_hats2.png" style="width: 50%;"/&gt;
+&lt;/center&gt;
+
+
+.footnote[Task details and demonstration can be found here: https://richarddmorey.github.io/Morey_Hoekstra_StatCognition/articles/task_demo.html]
+
+---
+
+# Experimental manipulations
+
+* Winning "team" (left/right)
+* True effect size (8 levels, `\(\delta=0,...,\delta=1\)`)
+* "Width" of visual display (2 levels)
+  * Arbitrary transformation from test statistic
+
+--
+
+### "Good" reasoners:
+
+* Able to find correct answer
+* Low false positive rate
+* Sensitivity to true effect size
+* *Lack of* sensitivity to irrelevant information
+
+
+---
+
+# Statistical details
+
+* "Experimental" test statistics are traditional two-sample `\(Z\)` statistics:
+
+$$
+Z \sim \mbox{Normal}(\delta\sqrt{n/2}, 1)
+$$
+
+--
+
+* The `\(x\)` location on the screen from a `\(Z\)` statistic:
+
+$$
+\require{color}
+x = \mbox{sgn}(Z)\left[1 - {\color{red}\left(1 - F_{\chi_1^2}\left(Z^2\right)\right)}^{\frac{1}{q}}\right],\ -1\leq x \leq 1.
+$$
+
+`\(q\)` is either 3 (wide) or 7 (narrow).
+
+### Effect size/&lt;i&gt;n&lt;/i&gt; information is destroyed!
+
+---
+
+# Evidence width manipulation
+
+&lt;center&gt;
+&lt;video style="width: 45%;" controls&gt;
+  &lt;source src="img/double_ani.mp4" type="video/mp4"&gt;
+Your browser does not support the video tag.
+&lt;/video&gt; 
+&lt;/center&gt;
+
+---
+
+# Visual distributions: narrow, 𝛿=0
+
+&lt;img src="index_files/figure-html/unnamed-chunk-2-1.svg" width="85%" style="display: block; margin: auto;" /&gt;
+
+---
+
+# Visual distributions: wide, 𝛿=0
+
+&lt;img src="index_files/figure-html/unnamed-chunk-3-1.svg" width="85%" style="display: block; margin: auto;" /&gt;
+
+---
+
+# Visual distributions: narrow, 𝛿=.1
+
+&lt;img src="index_files/figure-html/unnamed-chunk-4-1.svg" width="85%" style="display: block; margin: auto;" /&gt;
+
+---
+
+# Visual distributions: wide, 𝛿=.1
+
+&lt;img src="index_files/figure-html/unnamed-chunk-5-1.svg" width="85%" style="display: block; margin: auto;" /&gt;
+
+
+---
+
+# Visual distributions: narrow, 𝛿=1
+
+&lt;img src="index_files/figure-html/unnamed-chunk-6-1.svg" width="85%" style="display: block; margin: auto;" /&gt;
+
+---
+
+# Visual distributions: wide, 𝛿=1
+
+&lt;img src="index_files/figure-html/unnamed-chunk-7-1.svg" width="85%" style="display: block; margin: auto;" /&gt;
+
+
+---
+
+# Participants
+
+&lt;br/&gt;
+* Participants recruited via social media (Facebook, Twitter, email)
+* Open from 16 December, 2018 to 1 January, 2019
+
+--
+
+* After exclusions, 506 scientists/trainees remain
+  * Must be a scientist/trainee
+  * At least some undergraduate education
+  * Drawn at least one "null" and one "experimental" sample
+  
+  
+  
+---
+
+# Who are the participants?
+
+&lt;center&gt;
+&lt;img src="index_files/figure-html/unnamed-chunk-8-1.svg" width="85%" style="display: block; margin: auto;" /&gt;
+&lt;/center&gt;
+
+---
+
+# Who are the participants?
+
+&lt;center&gt;
+&lt;img src="index_files/figure-html/unnamed-chunk-9-1.svg" width="85%" style="display: block; margin: auto;" /&gt;
+&lt;/center&gt;
+
+---
+
+# Who are the participants?
+
+&lt;center&gt;
+&lt;img src="index_files/figure-html/unnamed-chunk-10-1.svg" width="85%" style="display: block; margin: auto;" /&gt;
+&lt;/center&gt;
+
+---
+
+# Sampling behavior
+
+
+
+
+&lt;img src="index_files/figure-html/unnamed-chunk-12-1.svg" width="85%" style="display: block; margin: auto;" /&gt;
+
+
+---
+
+
+# Sampling behavior
+
+&lt;img src="index_files/figure-html/unnamed-chunk-13-1.svg" width="85%" style="display: block; margin: auto;" /&gt;
+
+---
+
+# Sampling behavior
+
+&lt;img src="index_files/figure-html/unnamed-chunk-14-1.svg" width="85%" style="display: block; margin: auto;" /&gt;
+
+
+---
+
+# Sampling behavior
+
+&lt;img src="index_files/figure-html/unnamed-chunk-15-1.svg" width="85%" style="display: block; margin: auto;" /&gt;
+
+---
+
+
+
+
+
+
+
+
+
+
+
+
+# Error rates
+&lt;img src="index_files/figure-html/output_errrates2_24-1.svg" width="85%" style="display: block; margin: auto;" /&gt;
+---
+# Error rates
+&lt;img src="index_files/figure-html/output_errrates2_41-1.svg" width="85%" style="display: block; margin: auto;" /&gt;
+---
+# Error rates
+&lt;img src="index_files/figure-html/output_errrates2_44-1.svg" width="85%" style="display: block; margin: auto;" /&gt;
+
+
+---
+
+
+
+
+
+
+# Evidence in the display
+&lt;img src="index_files/figure-html/output_evdisplay_46-1.svg" width="85%" style="display: block; margin: auto;" /&gt;
+---
+# Evidence in the display
+&lt;img src="index_files/figure-html/output_evdisplay_66-1.svg" width="85%" style="display: block; margin: auto;" /&gt;
+---
+# Evidence in the display
+&lt;img src="index_files/figure-html/output_evdisplay_93-1.svg" width="85%" style="display: block; margin: auto;" /&gt;
+---
+# Evidence in the display
+&lt;img src="index_files/figure-html/output_evdisplay_116-1.svg" width="85%" style="display: block; margin: auto;" /&gt;
+---
+# Evidence in the display
+&lt;img src="index_files/figure-html/output_evdisplay_139-1.svg" width="85%" style="display: block; margin: auto;" /&gt;
+
+
+
+---
+
+# Implied &lt;i&gt;P&lt;/i&gt; values: narrow
+
+&lt;img src="img/p7.png" width="85%" style="display: block; margin: auto;" /&gt;
+
+
+---
+
+# Implied &lt;i&gt;P&lt;/i&gt; values: wide
+
+&lt;img src="img/p3.png" width="85%" style="display: block; margin: auto;" /&gt;
+
+
+---
+
+
+
+
+
+# Effect of width manipulation
+&lt;img src="index_files/figure-html/output_evscale1_15-1.svg" width="85%" style="display: block; margin: auto;" /&gt;
+---
+# Effect of width manipulation
+&lt;img src="index_files/figure-html/output_evscale1_17-1.svg" width="85%" style="display: block; margin: auto;" /&gt;
+---
+# Effect of width manipulation
+&lt;img src="index_files/figure-html/output_evscale1_22-1.svg" width="85%" style="display: block; margin: auto;" /&gt;
+---
+# Effect of width manipulation
+&lt;img src="index_files/figure-html/output_evscale1_27-1.svg" width="85%" style="display: block; margin: auto;" /&gt;
+---
+# Effect of width manipulation
+&lt;img src="index_files/figure-html/output_evscale1_31-1.svg" width="85%" style="display: block; margin: auto;" /&gt;
+
+---
+
+
+
+  
+
+
+# Effect of visual extremeness
+&lt;img src="index_files/figure-html/output_evscale2_18-1.svg" width="85%" style="display: block; margin: auto;" /&gt;
+---
+# Effect of visual extremeness
+&lt;img src="index_files/figure-html/output_evscale2_21-1.svg" width="85%" style="display: block; margin: auto;" /&gt;
+---
+# Effect of visual extremeness
+&lt;img src="index_files/figure-html/output_evscale2_35-1.svg" width="85%" style="display: block; margin: auto;" /&gt;
+---
+# Effect of visual extremeness
+&lt;img src="index_files/figure-html/output_evscale2_39-1.svg" width="85%" style="display: block; margin: auto;" /&gt;
+
+---
+
+# Strategies
+
+&gt; "What facts or observations were most salient in coming to the conclusion that you did (whatever that was)?"
+
+&gt; "Please describe your experimental strategy, if any, in your own words."
+
+&gt; "Did you make use of the 'random shuffle reports'? If so, how?"
+
+* **Strong strategies**: comparison against null distribution, sampling variability
+* **Weak strategies**: sign logic, asymmetry
+
+.footnote[ An interface for exploring participants' responses can be found at https://richarddmorey.shinyapps.io/explore/.]
+---
+
+# Strategies
+
+* Strong:
+
+&gt; "...the random dots showed quite often such 'strong evidence', even at high sample sizes. That should not happen when the evidence is really strong, so probably the end of the scale was not soo strong evidence...The random patterns helped me to judge how common misleading evidence in that order of magnitude is..."
+
+--
+
+* Weak:
+
+&gt; "On most of the trials, the team on the left was faster with pretty much evidence, regardless of sample size."
+
+--
+
+* Irrelevant:
+
+&gt; "After attempting a few 'experiments', to be entirely candid, my conscience began to eat at me. Is it truly ethical to run tests like these on a community of hapless workers, who are on the brink of complete socioeconomic collapse due to their imminent replacement by a 'more cost effective' form of labor?"
+
+---
+
+# Strategies
+
+&lt;img src="index_files/figure-html/unnamed-chunk-23-1.svg" width="85%" style="display: block; margin: auto;" /&gt;
+
+
+---
+
+# Conclusions
+
+&lt;br/&gt;
+
+* Significance testing logic can be successfully used by scientists
+* The reasoning needn't be seen as "backward"!
+* What's *really* causing problems?
+  * Motivated reasoning?
+  * Incentives?
+  * Human factors of *instantiations* of the logic?
+  * Sloppy writing?
+
+--
+
+### Take home point
+
+* If scientists *can* successfully reason with significance testing, reform efforts are best spent elsewhere!
+* What you conclude about reasoning depends on *how you study it*. 
+
+---
+
+# Thank you
+
+&lt;br/&gt;&lt;br/&gt;
+Manuscript, supplements, materials, data, code, and more available at http://bit.ly/ChristmasStats.
+
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"ratio": "16:10",
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlides": false
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>

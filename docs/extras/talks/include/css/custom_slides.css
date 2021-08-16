@@ -1,0 +1,18 @@
+.title-slide {
+  background-image: url(img/cardiff_geom_background.png);
+}
+
+.title-slide h1 {
+  color: black;
+}
+
+.title-slide h2 {
+  color: gray;
+}
+
+.title-slide h3:nth-of-type(1) {
+  color: gray;
+}
+.title-slide h3:nth-of-type(2) {
+  color: gray;
+}
