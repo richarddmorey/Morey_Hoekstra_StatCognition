@@ -346,6 +346,7 @@ dat %>%
            `# strong` = factor(n_strong)) %>%
     group_by(effect_size, true_winner, response, `# strong`) %>%
     tally() %>%
+    ungroup() %>%
     complete(effect_size, true_winner, response, `# strong`, fill = list(n = 0)) %>%
     ungroup() %>%
     filter(response != "bored") %>%
@@ -361,6 +362,7 @@ dat %>%
     ) %>%
     group_by(dec_type, effect_size, `# strong`) %>%
     tally( wt = n ) %>%
+    ungroup() %>%
     complete(dec_type, effect_size, `# strong`, fill = list(n = 0)) %>%
     group_by(effect_size, `# strong`) %>%
     mutate(total = sum(n)) %>%
