@@ -1,3 +1,5 @@
+^renv$
+^renv\.lock$
 ^inst/_pkgdown\.yml$
 ^docs$
 ^pkgdown$
